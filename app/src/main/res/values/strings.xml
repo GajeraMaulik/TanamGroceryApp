@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Tanam Grocery App</string>
+    <string name="NEXT">NEXT</string>
+    <string name="welcome">Welcome</string>
+    <string name="email_error">Please enter a email address</string>
+    <string name="error_invalid_email">Email is not valid</string>
+    <string name="password_error">Please enter a password</string>
+    <string name="error_invalid_password">Please enter a minimum 8 characters</string>
+    <string name="passwor_pattern">Password is too weak</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="by_tapping_sign_up_you_accept_our_terms_and_condition">By tapping “Sign Up” you accept our<br /> <b><a href='www.google.com'> terms </a></b> and <b> <a href=''>condition</a></b></string>
+    <string name="App_name">tanam</string>
+    <string name="search_bar_hint">Search beverages or foods</string>
+    <string name="title_activity_categories_list">CategoriesListActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="categories">Categories</string>
+    <string name="cart">Add to cart</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="originalPrice"><strike>$8.9</strike></string>
+</resources>

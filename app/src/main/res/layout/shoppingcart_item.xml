@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/slItemImage"
+        android:layout_width="@dimen/_44sdp"
+        android:layout_height="@dimen/_49sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginLeft="@dimen/_23sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/item4"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:id="@+id/productTitle"
+        android:layout_width="@dimen/_186sdp"
+        android:layout_height="@dimen/_17sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:fontFamily="@font/lato"
+        android:text="Fresh Avocados"
+        android:textColor="@color/title"
+        android:textFontWeight="600"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintStart_toEndOf="@+id/slItemImage"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/categoriesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_17sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_1sdp"
+        android:fontFamily="@font/lato"
+        android:text="Fruit"
+        android:textColor="@color/soft"
+        android:textFontWeight="400"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintStart_toEndOf="@+id/slItemImage"
+        app:layout_constraintTop_toBottomOf="@+id/productTitle"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:id="@+id/discountPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_17sdp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="@dimen/_17sdp"
+        android:fontFamily="@font/lato"
+        android:text="$10.9"
+        android:textColor="@color/title"
+        android:textFontWeight="700"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintStart_toStartOf="@+id/categoriesTitle"
+        app:layout_constraintTop_toBottomOf="@+id/categoriesTitle"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:id="@+id/originalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_17sdp"
+        android:layout_marginTop="@dimen/_17sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:fontFamily="@font/lato"
+        android:text="@string/originalPrice"
+        android:textColor="@color/grey02"
+        android:textFontWeight="400"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintStart_toEndOf="@+id/discountPrice"
+        app:layout_constraintTop_toBottomOf="@+id/categoriesTitle"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:id="@+id/itemQty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_180sdp"
+        android:layout_marginRight="@dimen/_6sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/originalPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/originalPrice"
+        app:layout_constraintTop_toBottomOf="@+id/categoriesTitle"
+        app:layout_constraintTop_toTopOf="@+id/originalPrice"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/btnMinus"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:background="@drawable/ic_sl_btn_selector"
+            android:src="@drawable/ic_sl_minus_icon_selector"
+
+            tools:ignore="MissingConstraints,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/txtQuantity"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_17sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/_17sdp"
+            android:fontFamily="@font/lato"
+            android:gravity="center"
+            android:lineHeight="@dimen/_10sdp"
+            android:text="1"
+            android:textColor="@color/txtquanutiy"
+            android:textFontWeight="500"
+            android:textSize="@dimen/_12sdp"
+
+            tools:ignore="HardcodedText,MissingConstraints,UnusedAttribute" />
+
+        <ImageButton
+            android:id="@+id/btnAdd"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:background="@drawable/ic_sl_btn_selector"
+            android:gravity="center"
+            android:src="@drawable/ic_sl_union_icon_selector"
+            android:textAlignment="center"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_gravity="center"
+        android:background="@color/grey02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemQty" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

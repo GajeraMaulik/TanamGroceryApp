@@ -1,0 +1,30 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.TanamGroceryApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#027335</item>
+        <item name="colorPrimaryVariant">#027335</item>
+        <item name="colorOnPrimary">#027335</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#027335</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">#027335</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.TanamGroceryApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.TanamGroceryApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.TanamGroceryApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Divider">
+        <item name="android:layout_width">@dimen/_245sdp</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+</resources>

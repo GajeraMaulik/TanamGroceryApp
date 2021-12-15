@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".categories.HomeActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_115sdp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_110sdp"
+            app:contentScrim="@color/white"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="@dimen/_69sdp"
+                android:layout_height="@dimen/_13sdp"
+                android:layout_marginLeft="@dimen/_22sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:fontFamily="@font/lato"
+                android:text="Good Morning"
+                android:textColor="#293041"
+                android:textFontWeight="400"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintBottom_toTopOf="@+id/user"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/user"
+                android:layout_width="@dimen/_94sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_marginStart="@dimen/_22sdp"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:fontFamily="@font/poppins"
+                android:text=""
+                android:textAlignment="gravity"
+                android:textColor="@color/black"
+                android:textFontWeight="900"
+                android:textSize="@dimen/_15sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText"
+                tools:targetApi="p" />
+
+
+            <LinearLayout
+                android:id="@+id/itemsAdd"
+                android:layout_width="@dimen/_66sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_gravity="center_vertical|end|top"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_22sdp"
+                android:background="@drawable/notification_bakgound"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/user"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView3"
+                tools:ignore="MissingConstraints">
+
+
+                <TextView
+                    android:id="@+id/txtQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:gravity="center_vertical"
+                    android:text="6"
+                    android:textColor="#303733"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/notification"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_gravity="center|end|top"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:background="@drawable/ic_baseline_circle_notification"
+                android:padding="@dimen/_1sdp"
+                android:paddingStart="@dimen/_6sdp"
+                android:paddingLeft="@dimen/_11sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingRight="@dimen/_11sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:src="@drawable/ic_baseline_bell_notifications"
+                app:layout_constraintBottom_toBottomOf="@+id/user"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView3"
+                tools:ignore="MissingConstraints" />
+
+
+
+
+            <EditText
+                android:id="@+id/searchBar"
+                android:layout_width="@dimen/_245sdp"
+                android:layout_height="@dimen/_42sdp"
+                android:autoSizeTextType="uniform"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_60sdp"
+                android:background="@drawable/search_bg"
+                android:drawableStart="@drawable/ic_search_logo"
+                android:drawablePadding="@dimen/_10sdp"
+                android:ems="15"
+                android:fontFamily="@font/lato"
+                android:hint="@string/search_bar_hint"
+                android:inputType="text"
+                android:lineHeight="@dimen/_15sdp"
+                android:padding="@dimen/_5sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:textColor="#303733"
+                android:textColorHint="#7D8FAB"
+                android:textFontWeight="500"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user"
+                tools:ignore="KeyboardInaccessibleWidget,MissingConstraints,RtlSymmetry,UnusedAttribute" />
+
+            <!--    <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_42sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_60sdp"
+                    android:foregroundGravity="center_vertical"
+                    android:gravity="center_horizontal"
+                    app:layout_collapseMode="parallax">
+                </androidx.appcompat.widget.Toolbar>
+    -->
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <FrameLayout
+        android:id="@+id/fl_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_105sdp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.859"
+        tools:ignore="MissingConstraints,UnknownId" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        app:itemIconSize="@dimen/_20sdp"
+        android:paddingStart="0dp"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/menu_bottomnav"
+        tools:ignore="MissingConstraints">
+
+
+        <ImageButton
+            android:id="@+id/cartBtn"
+            android:layout_width="@dimen/_58sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/cart"
+            android:focusable="true" />
+
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
