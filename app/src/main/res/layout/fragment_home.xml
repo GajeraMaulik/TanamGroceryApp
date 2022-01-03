@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,7 +30,7 @@
                 android:id="@+id/viewPager_ImageSlide"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:foregroundGravity="top"
                 android:paddingStart="@dimen/_60sdp"
                 android:paddingEnd="@dimen/_60sdp"
@@ -44,9 +43,9 @@
                 android:id="@+id/categoriesView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
                 android:layout_marginTop="@dimen/_22sdp"
                 android:gravity="center_vertical"
-                android:layout_gravity="center_vertical"
                 app:layout_constraintTop_toBottomOf="@+id/viewPager_ImageSlide"
                 tools:ignore="MissingConstraints">
 
@@ -55,10 +54,10 @@
                     android:layout_width="@dimen/_90sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:layout_gravity="center_vertical|center"
-                    android:gravity="center"
                     android:layout_marginStart="@dimen/_21sdp"
                     android:fontFamily="@font/lato"
-                    android:text="@string/categories"
+                    android:gravity="center"
+                    android:text="@string/fragment_home_categories"
                     android:textColor=" #303733"
                     android:textFontWeight="700"
                     android:textSize="@dimen/_18sdp"
@@ -70,14 +69,14 @@
                     android:id="@+id/categoriesBtn"
                     android:layout_width="@dimen/_9sdp"
                     android:layout_height="@dimen/_15sdp"
+                    android:layout_gravity="center_vertical|center"
                     android:layout_marginStart="@dimen/_160sdp"
                     android:background="@android:color/transparent"
-                    android:layout_gravity="center_vertical|center"
                     android:gravity="center"
                     android:src="@drawable/categories_right_arrow"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView9"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="ContentDescription,MissingConstraints" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -85,12 +84,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
                 android:paddingTop="@dimen/_5sdp"
                 android:paddingBottom="@dimen/_10sdp"
-                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
+                tools:listitem="@layout/item_home_categories"
                 app:layout_constraintTop_toBottomOf="@+id/categoriesView"
                 tools:ignore="MissingConstraints" />
 
@@ -102,7 +103,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_20sdp"
                 android:fontFamily="@font/lato"
-                android:text="Popular Deals"
+                android:text="@string/fragment_home_popular_deals"
                 android:textColor=" #303733"
                 android:textFontWeight="700"
                 android:textSize="@dimen/_18sdp"
@@ -110,21 +111,23 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rvCategories"
                 app:lineHeight="@dimen/_12sdp"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints,UnusedAttribute" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPopolarDeals"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_15sdp"
+                android:orientation="vertical"
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_15sdp"
-
-                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/popularDeals"
-                tools:ignore="MissingConstraints" />
+                app:spanCount="2"
+                tools:ignore="MissingConstraints"
+                tools:listitem="@layout/item_populardeals" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

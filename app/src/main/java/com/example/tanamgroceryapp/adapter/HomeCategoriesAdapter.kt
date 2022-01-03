@@ -5,21 +5,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tanamgroceryapp.R
 import com.example.tanamgroceryapp.Data.HomeCategoriesData
 
-class HomeCategoriesAdapter(private val homeCategoriesList: MutableList<HomeCategoriesData>):RecyclerView.Adapter<HomeCategoriesAdapter.MyViewHolder>() {
+class HomeCategoriesAdapter(private val homeCategoriesList: MutableList<HomeCategoriesData>,var clickListener:ClickListener):RecyclerView.Adapter<HomeCategoriesAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):MyViewHolder {
-        val view =LayoutInflater.from(parent.context).inflate(R.layout.home_categories_item,parent,false)
+        val view =LayoutInflater.from(parent.context).inflate(R.layout.item_home_categories,parent,false)
         return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.catIcon.setImageResource(homeCategoriesList[position].catIcon)
-        holder.catName.text=homeCategoriesList[position].catName
-        holder.catItems.text= homeCategoriesList[position].catItems.toString()
+        val dataModal=homeCategoriesList[position]
+        holder.catIcon.setImageResource(dataModal.catIcon)
+        holder.catName.text=dataModal.catName
+        holder.catItems.text= dataModal.catItems.toString()
+
+        holder.itemView.setOnClickListener {
+            clickListener.clickedItem(dataModal)
+        }
 
     }
 
@@ -31,6 +37,10 @@ class HomeCategoriesAdapter(private val homeCategoriesList: MutableList<HomeCate
         val catIcon:ImageView=itemView.findViewById(R.id.cat_icon)
         val catName:TextView =itemView.findViewById(R.id.cat_name)
         val catItems:TextView=itemView.findViewById(R.id.cat_items)
+       // val hcCardView:CardView=itemView.findViewById(R.id.hcCardView)
+    }
+    interface ClickListener{
+        fun clickedItem(homeCategoriesData: HomeCategoriesData)
     }
 
 }

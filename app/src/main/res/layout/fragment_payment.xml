@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentFragment">
+       <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UnknownId">
+          <androidx.constraintlayout.widget.ConstraintLayout
+              android:id="@+id/viewPage"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvCodBtn"
+        android:layout_width="@dimen/_72sdp"
+        android:layout_height="@dimen/_85sdp"
+        android:layout_marginTop="@dimen/_22sdp"
+        app:cardCornerRadius="@dimen/_12sdp"
+        android:background="@drawable/ic_sl_btn_unseleted_box"
+        android:layout_marginStart="@dimen/_22sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_save_money_unseleted"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Cash On\nDelivery"
+            android:lineHeight="@dimen/_11sdp"
+            android:textColor="@color/dark"
+            android:fontFamily="@font/poppins"
+            android:textSize="@dimen/_9sdp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvCreditCardBtn"
+        android:layout_width="@dimen/_72sdp"
+        android:layout_height="@dimen/_85sdp"
+        android:layout_marginTop="@dimen/_22sdp"
+        app:cardCornerRadius="@dimen/_12sdp"
+        android:background="@drawable/ic_sl_btn_unseleted_box"
+        android:layout_marginStart="@dimen/_15sdp"
+        app:layout_constraintStart_toEndOf="@+id/cvCodBtn"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_credit_card_unselected"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_9sdp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Credit \nCard"
+                android:lineHeight="@dimen/_11sdp"
+                android:textColor="@color/dark"
+                android:fontFamily="@font/poppins"
+                android:textSize="@dimen/_9sdp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvPaipalBtn"
+        android:layout_width="@dimen/_72sdp"
+        android:layout_height="@dimen/_85sdp"
+        android:layout_marginTop="@dimen/_22sdp"
+        app:cardCornerRadius="@dimen/_12sdp"
+        android:background="@drawable/ic_sl_btn_unseleted_box"
+        android:layout_marginStart="@dimen/_15sdp"
+        app:layout_constraintStart_toEndOf="@+id/cvCreditCardBtn"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_paypal_unselected"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_9sdp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Paipal \nMethod"
+                android:lineHeight="@dimen/_11sdp"
+                android:textColor="@color/dark"
+                android:fontFamily="@font/poppins"
+                android:textSize="@dimen/_9sdp"/>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvCreditCard"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_163sdp"
+        android:layout_marginStart="@dimen/_22sdp"
+        android:background="@drawable/ic_credit_background"
+        android:layout_marginEnd="@dimen/_22sdp"
+        app:cardCornerRadius="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_19sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvCreditCardBtn" >
+
+        <TextView
+            android:id="@+id/tvBankName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_28sdp"
+            android:fontFamily="@font/poppins"
+            android:textSize="@dimen/_10sdp"
+            android:textFontWeight="500"
+            android:text="A Bank" />
+
+        <TextView
+            android:id="@+id/tvCardNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_58sdp"
+            android:textSize="@dimen/_25sdp"
+            android:text="**** **** **** ****" />
+
+        <TextView
+            android:id="@+id/tvHolderLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_115sdp"
+            android:fontFamily="@font/poppins"
+            android:textFontWeight="400"
+            android:textSize="@dimen/_10sdp"
+            android:text="CARD HOLDER" />
+
+        <TextView
+            android:id="@+id/tvHolderName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_134sdp"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:textSize="@dimen/_13sdp"
+            android:fontFamily="@font/poppins"
+            android:textFontWeight="600"
+            android:text="Louis Anderson" />
+
+        <TextView
+            android:id="@+id/tvValid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_115sdp"
+            android:layout_marginEnd="@dimen/_11sdp"
+            android:layout_gravity="end"
+            android:fontFamily="@font/poppins"
+            android:textFontWeight="400"
+            android:text="VALID THRU" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_139sdp"
+            android:layout_marginEnd="@dimen/_11sdp"
+            android:layout_gravity="end"
+            android:text="09/11" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvCardHolderName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_21sdp"
+        android:text="Card Holder Name"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintTop_toBottomOf="@+id/cvCreditCard"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints,UnusedAttribute" />
+
+    <EditText
+        android:id="@+id/etHolderName"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:autoSizeTextType="uniform"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_22sdp"
+        android:layout_marginEnd="@dimen/_22sdp"
+        android:background="@drawable/edittext_shipping"
+        android:focusable="auto"
+        android:fontFamily="@font/lato"
+        android:hint="Enter your Holder Name"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:lineHeight="@dimen/_15sdp"
+        android:padding="@dimen/_5sdp"
+        android:paddingStart="@dimen/_15sdp"
+        android:textColor="@color/dark"
+        android:textColorHint="@color/soft"
+        android:textFontWeight="400"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCardHolderName"
+        tools:ignore="Autofill,KeyboardInaccessibleWidget,MissingConstraints,RtlSymmetry,UnusedAttribute" />
+
+    <TextView
+        android:id="@+id/tvCardno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_21sdp"
+        android:text="Card Number"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintTop_toBottomOf="@+id/etHolderName"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints,UnusedAttribute" />
+    <EditText
+        android:id="@+id/etCardno"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:autoSizeTextType="uniform"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_22sdp"
+        android:layout_marginEnd="@dimen/_22sdp"
+        android:background="@drawable/edittext_shipping"
+        android:focusable="auto"
+        android:fontFamily="@font/lato"
+        android:hint="Enter your Card Number"
+        android:imeOptions="actionSearch"
+        android:inputType="number"
+        android:lineHeight="@dimen/_15sdp"
+        android:padding="@dimen/_5sdp"
+        android:paddingStart="@dimen/_15sdp"
+        android:textColor="@color/dark"
+        android:textColorHint="@color/soft"
+        android:textFontWeight="400"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCardno"
+        tools:ignore="Autofill,KeyboardInaccessibleWidget,MissingConstraints,RtlSymmetry,UnusedAttribute" />
+    <TextView
+        android:id="@+id/tvMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_21sdp"
+        android:text="Month/Year"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintTop_toBottomOf="@+id/etCardno"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints,UnusedAttribute" />
+
+
+    <EditText
+        android:id="@+id/etMonth"
+        android:layout_width="@dimen/_115sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_21sdp"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:autoSizeTextType="uniform"
+        android:background="@drawable/edittext_shipping"
+        android:ems="15"
+        android:focusable="auto"
+        android:fontFamily="@font/lato"
+        android:hint="Enter here"
+        android:imeOptions="actionSearch"
+        android:inputType="textEmailAddress"
+        android:lineHeight="@dimen/_15sdp"
+        android:padding="@dimen/_5sdp"
+        android:paddingStart="@dimen/_15sdp"
+        android:textColor="@color/dark"
+        android:textColorHint="@color/soft"
+        android:textFontWeight="400"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMonth"
+        tools:ignore="Autofill,KeyboardInaccessibleWidget,MissingConstraints,RtlSymmetry,UnusedAttribute" />
+
+    <TextView
+        android:id="@+id/tvCvv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:fontFamily="@font/poppins"
+        android:text="CVV"
+        android:textColor="@color/black"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_14sdp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/etMonth"
+        app:layout_constraintTop_toBottomOf="@+id/etCardno"
+        tools:ignore="MissingConstraints,UnusedAttribute" />
+
+
+    <EditText
+        android:id="@+id/etCvv"
+        android:layout_width="@dimen/_115sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:autoSizeTextType="uniform"
+        android:background="@drawable/edittext_shipping"
+        android:ems="15"
+        android:focusable="auto"
+        android:fontFamily="@font/lato"
+        android:hint="Enter here"
+        android:imeOptions="actionSearch"
+        android:inputType="numberPassword"
+        android:lineHeight="@dimen/_15sdp"
+        android:padding="@dimen/_5sdp"
+        android:paddingStart="@dimen/_15sdp"
+        android:textColor="@color/dark"
+        android:textColorHint="@color/soft"
+        android:textFontWeight="400"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintStart_toEndOf="@+id/etMonth"
+        app:layout_constraintTop_toBottomOf="@+id/tvCvv"
+        tools:ignore="Autofill,KeyboardInaccessibleWidget,MissingConstraints,RtlSymmetry,UnusedAttribute" />
+
+              <TextView
+                  android:id="@+id/tvCountry"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:fontFamily="@font/poppins"
+                  android:layout_marginTop="@dimen/_15sdp"
+                  android:layout_marginStart="@dimen/_21sdp"
+                  android:text="Country"
+                  android:textStyle="bold"
+                  android:textColor="@color/black"
+                  android:textFontWeight="500"
+                  android:textSize="@dimen/_14sdp"
+                  app:layout_constraintTop_toBottomOf="@+id/etMonth"
+                  app:layout_constraintStart_toStartOf="parent"
+                  tools:ignore="MissingConstraints,UnusedAttribute" />
+
+              <Spinner
+                  android:id="@+id/spinner"
+                  android:layout_width="match_parent"
+                  android:layout_height="@dimen/_40sdp"
+                  android:layout_marginTop="@dimen/_8sdp"
+                  android:layout_marginStart="@dimen/_22sdp"
+                  android:layout_marginEnd="@dimen/_22sdp"
+                  android:background="@drawable/edittext_shipping"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/tvCountry" />
+
+              <ImageButton
+                  android:id="@+id/spinnerButton"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="@android:color/transparent"
+                  android:layout_marginEnd="@dimen/_24sdp"
+                  android:src="@drawable/address_arrow_drop_down"
+                  app:layout_constraintBottom_toBottomOf="@+id/spinner"
+                  app:layout_constraintEnd_toEndOf="@+id/spinner"
+                  app:layout_constraintTop_toTopOf="@+id/spinner" />
+
+              <CheckBox
+                  android:id="@+id/cbPayment"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="@dimen/_15sdp"
+                  android:layout_marginStart="@dimen/_21sdp"
+                  android:checked="true"
+                  android:fontFamily="@font/poppins"
+                  android:text="Save this card"
+                  android:textAlignment="center"
+                  android:textColor="@color/black"
+                  android:textSize="@dimen/_10sdp"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/spinner"
+                  tools:ignore="HardcodedText" />
+
+              <Button
+                  android:id="@+id/btnPayment"
+                  android:layout_width="match_parent"
+                  android:layout_height="@dimen/_46sdp"
+                  android:layout_marginStart="@dimen/_22sdp"
+                  android:layout_marginTop="@dimen/_15sdp"
+                  android:layout_marginEnd="@dimen/_22sdp"
+                  android:background="@drawable/fill_button_selector"
+                  android:elevation="50dp"
+                  android:text="MAKE PAYMENT"
+                  android:textColor="@drawable/fill_button_text_selector"
+                  android:textSize="@dimen/_12sdp"
+                  android:textStyle="bold"
+                  app:backgroundTint="@null"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/cbPayment"
+                  tools:ignore="MissingConstraints" />
+
+
+
+          </androidx.constraintlayout.widget.ConstraintLayout>
+       </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

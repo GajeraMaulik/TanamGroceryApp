@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/pItemView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/pItemImage"
+        android:layout_width="@dimen/_72sdp"
+        android:layout_height="@dimen/_76sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_22sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/item_product_tomatoes"
+        tools:ignore="ContentDescription" />
+
+
+    <CheckBox
+        android:id="@+id/favItem"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_28sdp"
+        android:background="@drawable/fav_layout"
+        android:button="@null"
+        app:layout_constraintStart_toStartOf="@+id/pItemImage"
+        app:layout_constraintTop_toTopOf="@+id/pItemImage" />
+
+    <TextView
+        android:id="@+id/pItemName"
+        android:layout_width="@dimen/_159sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_14sdp"
+        android:text="@string/ip_fresh_tomatoes"
+        android:fontFamily="@font/lato"
+        android:textFontWeight="800"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintStart_toEndOf="@+id/pItemImage"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UnusedAttribute" />
+
+    <TextView
+        android:id="@+id/pDiscountPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:text="@string/ip_5_0"
+        android:fontFamily="@font/poppins"
+        android:textFontWeight="600"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintStart_toEndOf="@+id/pItemImage"
+        app:layout_constraintTop_toBottomOf="@+id/pItemName"
+        tools:ignore="UnusedAttribute" />
+
+    <TextView
+        android:id="@+id/pOriginalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:text="$ 8.9"
+        android:textFontWeight="400"
+        android:textSize="@dimen/_10sdp"
+        android:textColor="@color/grey02"
+        android:fontFamily="@font/poppins"
+        app:layout_constraintStart_toEndOf="@+id/pDiscountPrice"
+        app:layout_constraintTop_toBottomOf="@+id/pItemName"
+        tools:ignore="HardcodedText,UnusedAttribute" />
+
+    <ImageView
+        android:id="@+id/pDiscountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_22sdp"
+        app:layout_constraintStart_toEndOf="@+id/pItemImage"
+        app:layout_constraintTop_toBottomOf="@+id/pDiscountPrice"
+        app:srcCompat="@drawable/ic_price_tag"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/pDiscount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:fontFamily="@font/lato"
+        android:text="Disc. 10%Off"
+        android:textColor="@color/accent"
+        android:textFontWeight="400"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/pDiscountLabel"
+        app:layout_constraintStart_toEndOf="@+id/pDiscountLabel"
+        app:layout_constraintTop_toTopOf="@+id/pDiscountLabel"
+        tools:ignore="HardcodedText,UnusedAttribute" />
+
+    <ImageButton
+        android:id="@+id/pCartBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_marginStart="@dimen/_49sdp"
+        android:layout_marginEnd="@dimen/_22sdp"
+        android:background="@drawable/item_cart_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pDiscount"
+        app:layout_constraintTop_toBottomOf="@+id/pItemName"
+        app:srcCompat="@drawable/item_cart_ic"
+        tools:ignore="ContentDescription,MissingConstraints" />
+
+
+    <LinearLayout
+        android:id="@+id/itemQty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:visibility="gone"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/pDiscount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pDiscount"
+        app:layout_constraintTop_toTopOf="@+id/pDiscount"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/btnMinus"
+            android:layout_width="@dimen/_22sdp"
+            android:layout_height="@dimen/_22sdp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_pl__minus_box"
+            android:gravity="center"
+            android:padding="@dimen/_1sdp"
+            android:src="@drawable/ic_pl_minus_icon"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvQuantity"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:fontFamily="@font/lato"
+            android:gravity="center"
+            android:lineHeight="@dimen/_10sdp"
+            android:text="1"
+            android:textColor="@color/main"
+            android:textSize="@dimen/_9sdp"
+            tools:ignore="HardcodedText,UnusedAttribute" />
+
+        <ImageButton
+            android:id="@+id/btnAdd"
+            android:layout_width="@dimen/_22sdp"
+            android:layout_height="@dimen/_22sdp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_pl_add_box"
+            android:gravity="center"
+            android:padding="@dimen/_1sdp"
+            android:src="@drawable/ic_pl_add_icon"
+            android:textAlignment="center"
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_gravity="center"
+        android:background="@color/grey01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pItemImage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

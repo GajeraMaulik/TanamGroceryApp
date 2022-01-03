@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/background"
+        android:drawable="@drawable/ratingbar_empty" tools:ignore="StateListReachable" />
+    <item
+        android:id="@+id/secondaryProgress"
+        android:drawable="@drawable/ratingbar_empty" tools:ignore="StateListReachable" />
+    <item
+        android:id="@+id/progress"
+        android:drawable="@drawable/ratingbar_filled"/>
+
+</selector>

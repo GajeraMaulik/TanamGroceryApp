@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".categories.ProductCategoriesActivity">
+    tools:context=".Home.ProductCategoriesActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/pcToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -27,29 +27,22 @@
                 android:padding="@dimen/_2sdp"
                 android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_cart_arrow_back" />
+                android:src="@drawable/ic_cart_arrow_back"
+                tools:ignore="ContentDescription" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="@dimen/_27sdp"
                 android:fontFamily="@font/poppins"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:text="Categories"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@string/fragment_home_categories"
                 android:layout_weight="1"
-                android:textColor="#293041"
+                android:textColor="@color/black"
                 android:textFontWeight="700"
                 android:textSize="@dimen/_20sdp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                tools:ignore="UnusedAttribute" />
 
-            <!--  <ImageButton
-                  android:id="@+id/cartOption"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_marginRight="@dimen/_13sdp"
-                  android:layout_gravity="center_vertical"
-                  android:padding="@dimen/_2sdp"
-                  android:background="@android:color/transparent"
-                  android:src="@drawable/cart_menu_btn"/>-->
         </LinearLayout>
 
     </androidx.appcompat.widget.Toolbar>
@@ -60,10 +53,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginTop="@dimen/_49sdp"
+        app:spanCount="2"
+        tools:listitem="@layout/item_home_categories"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/pcToolbar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

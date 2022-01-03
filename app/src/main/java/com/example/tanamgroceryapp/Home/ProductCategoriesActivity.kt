@@ -1,30 +1,32 @@
-package com.example.tanamgroceryapp.categories
+package com.example.tanamgroceryapp.Home
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageButton
 import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tanamgroceryapp.Data.HomeCategoriesData
 import com.example.tanamgroceryapp.Data.ShoppingCartData
+import com.example.tanamgroceryapp.ProductsActivity
 import com.example.tanamgroceryapp.R
 import com.example.tanamgroceryapp.adapter.ProductCategoriesAdapter
-import kotlinx.android.synthetic.main.activity_product_categories.*
 
-class ProductCategoriesActivity() : AppCompatActivity() {
+class ProductCategoriesActivity() : AppCompatActivity(),ProductCategoriesAdapter.ClickListener {
     private  lateinit var rvProductCategories: RecyclerView
     private  lateinit var productCategoriesAdapter: ProductCategoriesAdapter
     val itemList: MutableList<ShoppingCartData> = ArrayList()
+    val productCategoriesList: MutableList<HomeCategoriesData> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_categories)
-        setSupportActionBar(toolbar)
-
+        setSupportActionBar(findViewById(R.id.pcToolbar))
+        rvProductCategories =findViewById(R.id.rvProductCategories)
 
 
         val pcbackBtn=findViewById<ImageButton>(R.id.pcbackBtn)
@@ -33,10 +35,6 @@ class ProductCategoriesActivity() : AppCompatActivity() {
             return@setOnClickListener
         }
 
-
-
-
-        val productCategoriesList: MutableList<HomeCategoriesData> = ArrayList()
         productCategoriesList.add(
             HomeCategoriesData(
                 R.drawable.fruits,
@@ -103,11 +101,7 @@ class ProductCategoriesActivity() : AppCompatActivity() {
                 )
         )
 
-
-        rvProductCategories =findViewById(R.id.rvProductCategories)
-        rvProductCategories.layoutManager= GridLayoutManager(this,2)
-        productCategoriesAdapter = ProductCategoriesAdapter(productCategoriesList)
-        rvProductCategories.adapter = ProductCategoriesAdapter(productCategoriesList)
+        rvProductCategories.adapter = ProductCategoriesAdapter(productCategoriesList,this)
 
     }
 
@@ -122,5 +116,15 @@ class ProductCategoriesActivity() : AppCompatActivity() {
             R.id.aboutUs-> Toast.makeText(this,"Item 2 seleted", Toast.LENGTH_LONG).show()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun clickedItem(homeCategoriesData: HomeCategoriesData) {
+        Log.d("TAG","maulik" +homeCategoriesData.catName)
+        when(homeCategoriesData.catName){
+            "Fruits" ->
+                startActivity(Intent(this, ProductsActivity::class.java))
+            else ->
+                Toast.makeText(this,"No Action",Toast.LENGTH_LONG).show()
+        }
     }
 }

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +9,7 @@
     tools:context=".ShoppingCartActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/scToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -18,6 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_16sdp"
             android:orientation="horizontal">
 
             <ImageButton
@@ -30,38 +33,32 @@
                 android:src="@drawable/ic_cart_arrow_back" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="@dimen/_27sdp"
                 android:fontFamily="@font/poppins"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:text="Shopping Cart"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@string/shopping_cart"
                 android:layout_weight="1"
-                android:textColor="#293041"
+                android:textColor="@color/black"
                 android:textFontWeight="700"
                 android:textSize="@dimen/_20sdp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                tools:ignore="UnusedAttribute" />
 
-            <!--  <ImageButton
-                  android:id="@+id/cartOption"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_marginRight="@dimen/_13sdp"
-                  android:layout_gravity="center_vertical"
-                  android:padding="@dimen/_2sdp"
-                  android:background="@android:color/transparent"
-                  android:src="@drawable/cart_menu_btn"/>-->
         </LinearLayout>
 
     </androidx.appcompat.widget.Toolbar>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvShoppingcart"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_290sdp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        android:layout_height="@dimen/_280sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/shoppingcart_item"/>
+        app:layout_constraintTop_toBottomOf="@+id/scToolbar"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:listitem="@layout/item_shoppingcart" />
 
     <View
         android:id="@+id/view2"
@@ -70,7 +67,7 @@
         android:layout_marginLeft="@dimen/_22sdp"
         android:layout_marginRight="@dimen/_22sdp"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_19sdp"
         android:background="@drawable/ic_divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,28 +78,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_15sdp"
-        android:layout_marginLeft="@dimen/_22sdp"
+        android:layout_marginStart="@dimen/_22sdp"
         android:text="Subtotal"
         android:textColor="@color/soft"
         android:textFontWeight="600"
         android:fontFamily="@font/lato"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        tools:ignore="HardcodedText,UnusedAttribute" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_6sdp"
-        android:layout_marginLeft="@dimen/_22sdp"
-        android:text="TAX (2%)"
+        android:layout_marginStart="@dimen/_22sdp"
+        android:text="@string/tax_2"
         android:textFontWeight="600"
         android:fontFamily="@font/lato"
         android:textSize="@dimen/_12sdp"
         android:textColor="@color/soft"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:targetApi="p" />
 
     <TextView
         android:id="@+id/textView11"
@@ -116,103 +115,114 @@
         android:text="Total"
         android:textSize="@dimen/_15sdp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        tools:ignore="HardcodedText,RtlHardcoded,UnusedAttribute" />
 
     <TextView
         android:id="@+id/subTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato"
-        android:layout_marginRight="@dimen/_22sdp"
-        android:text="$54.76"
+        android:layout_marginEnd="@dimen/_22sdp"
+        android:text="$ 54.76"
         android:textColor="@color/soft"
         android:textFontWeight="700"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+        app:layout_constraintTop_toTopOf="@+id/textView8"
+        tools:ignore="HardcodedText,UnusedAttribute" />
 
     <TextView
         android:id="@+id/taxRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8sdp"
-        android:layout_marginRight="@dimen/_22sdp"
+        android:layout_marginEnd="@dimen/_22sdp"
         android:fontFamily="@font/lato"
-        android:text="-$1.08"
+        android:text="$ 1.08"
         android:textColor="@color/soft"
         android:textFontWeight="700"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintBottom_toBottomOf="@+id/textView10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:ignore="HardcodedText,UnusedAttribute" />
 
     <TextView
         android:id="@+id/totalPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato"
-        android:layout_marginRight="@dimen/_22sdp"
-        android:text="$53.68"
+        android:layout_marginEnd="@dimen/_22sdp"
+        android:text="$ 53.68"
         android:textColor="@color/dark"
         android:textFontWeight="700"
         android:textSize="@dimen/_15sdp"
         app:layout_constraintBottom_toBottomOf="@+id/textView11"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView11" />
+        app:layout_constraintTop_toTopOf="@+id/textView11"
+        tools:ignore="HardcodedText,UnusedAttribute" />
 
-    <LinearLayout
-        android:id="@+id/promoCode"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_35sdp"
-        android:orientation="horizontal"
-        android:paddingRight="@dimen/_19sdp"
-        android:background="@drawable/promotion_backgoud"
-        android:gravity="center_vertical"
-        android:layout_marginRight="@dimen/_22sdp"
-        android:layout_marginLeft="@dimen/_22sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        app:layout_constraintTop_toBottomOf="@+id/totalPrice"
-        tools:ignore="MissingConstraints" >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato"
-            android:layout_marginLeft="@dimen/_21sdp"
-            android:gravity="fill_vertical"
-            android:layout_gravity="center"
-            android:textFontWeight="400"
-            android:textColor="@color/dark"
-            android:textSize="@dimen/_12sdp"
-            android:text="Apply Promotion Code"/>
+              <LinearLayout
+                  android:id="@+id/promoCode"
+                  android:layout_width="match_parent"
+                  android:layout_height="@dimen/_35sdp"
+                  android:layout_marginTop="@dimen/_15sdp"
+                  android:layout_marginStart="@dimen/_22sdp"
+                  android:layout_marginEnd="@dimen/_21sdp"
+                  android:background="@drawable/promotion_backgoud"
+                  android:gravity="center_vertical"
+                  android:orientation="horizontal"
+                  android:paddingEnd="@dimen/_19sdp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/totalPrice"
+                  tools:ignore="MissingConstraints,RtlSymmetry">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_16sdp"
-            android:layout_marginLeft="@dimen/_45sdp"
-            android:textFontWeight="700"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
-            android:fontFamily="@font/lato"
-            android:text="2 Promos"
-            android:textSize="@dimen/_10sdp"
-            android:textColor="@color/main"/>
-    </LinearLayout>
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:layout_marginStart="@dimen/_21sdp"
+                      android:fontFamily="@font/lato"
+                      android:gravity="fill_vertical"
+                      android:text="@string/apply_promotion_code"
+                      android:textColor="@color/dark"
+                      android:textFontWeight="400"
+                      android:textSize="@dimen/_12sdp"
+                      tools:ignore="UnusedAttribute" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="@dimen/_16sdp"
+                      android:layout_gravity="center_vertical"
+                      android:layout_marginLeft="@dimen/_45sdp"
+                      android:fontFamily="@font/lato"
+                      android:gravity="center"
+                      android:text="@string/_2_promos"
+                      android:textColor="@color/main"
+                      android:textFontWeight="700"
+                      android:textSize="@dimen/_10sdp"
+                      tools:ignore="RtlHardcoded,UnusedAttribute" />
+              </LinearLayout>
+
     <Button
         android:id="@+id/checkoutBtn"
-        android:layout_width="@dimen/_245sdp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/_46sdp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_22sdp"
+        android:layout_marginEnd="@dimen/_21sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
         android:background="@drawable/fill_button_selector"
-        android:text="CHECKOUT"
+        android:text="@string/checkout"
         android:textColor="@drawable/fill_button_text_selector"
         android:textSize="@dimen/_12sdp"
         android:textStyle="bold"
         app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/promoCode" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

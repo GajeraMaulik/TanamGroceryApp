@@ -14,9 +14,6 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var etEmail: EditText
     lateinit var etPassword: EditText
 
-    var isPasswordValid: Boolean = false
-    var isEmailValid: Boolean = false
-    var isUsername:Boolean=false
     private var isVisiblePassword = false
 
     override fun onCreate(savedInstanceState: Bundle?) {

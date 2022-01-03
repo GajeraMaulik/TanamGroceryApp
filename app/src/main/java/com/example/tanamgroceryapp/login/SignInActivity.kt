@@ -7,7 +7,7 @@ import android.text.method.PasswordTransformationMethod
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tanamgroceryapp.R
-import com.example.tanamgroceryapp.categories.HomeActivity
+import com.example.tanamgroceryapp.Home.HomeActivity
 
 
 class SignInActivity() : AppCompatActivity() {
@@ -32,8 +32,8 @@ class SignInActivity() : AppCompatActivity() {
         etPassword.setBackgroundResource(R.drawable.edittext_selector)
 
         btn_signin.setOnClickListener {
-            val userName: String = etUserName.text.toString().trim()
-            val password: String = etPassword.text.toString().trim()
+        //    val userName: String = etUserName.text.toString().trim()
+        //    val password: String = etPassword.text.toString().trim()
             val i= Intent(this, HomeActivity::class.java).apply { putExtra("Username",etUserName.text.toString())}
             startActivity(i)
             /*     if(isValid())
@@ -86,7 +86,7 @@ class SignInActivity() : AppCompatActivity() {
             etPassword.error = resources.getString(R.string.error_invalid_password)
 
         }
-        /*    else if(etUserName.text.toString() "admin"&& etPassword.text.toString()"admin@123")
+        /*else if(etUserName.text.toString() "admin"&& etPassword.text.toString()"admin@123")
             {
                 Toast.makeText(this,"You have Authenticated Successfully",Toast.LENGTH_LONG).show();
                 val i= Intent(this, HomeActivity::class.java).apply { putExtra("Username",etUserName.text.toString())}
@@ -99,8 +99,7 @@ class SignInActivity() : AppCompatActivity() {
             etPassword.error = null
             /* Toast.makeText(this,"You have Authenticated Successfully",Toast.LENGTH_LONG).show();
              val i= Intent(this, HomeActivity::class.java).apply { putExtra("Username",etUserName.text.toString())}
-             startActivity(i)
- */
+             startActivity(i)*/
         }
         return invalid
 

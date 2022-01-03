@@ -1,84 +1,95 @@
 package com.example.tanamgroceryapp.adapter
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tanamgroceryapp.ApplicationInitialize
 import com.example.tanamgroceryapp.Constants
-import com.example.tanamgroceryapp.Data.ShoppingCartData
+import com.example.tanamgroceryapp.Data.CardData
 import com.example.tanamgroceryapp.R
+import com.example.tanamgroceryapp.interfaces.ItemClickListner
 
 
-class ShoppingCartAdapter(private val itemList: MutableList<ShoppingCartData>): RecyclerView.Adapter<ShoppingCartAdapter.MyviewHolder>(){
+class ShoppingCartAdapter(private val cartItemList: MutableList<CardData>, val context: Context, val mItemClickListner: ItemClickListner) :
+
+    RecyclerView.Adapter<ShoppingCartAdapter.MyviewHolder>() {
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyviewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.shoppingcart_item, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_shoppingcart, parent, false)
         return MyviewHolder(view)
     }
 
 
+    override fun onBindViewHolder(holder: MyviewHolder, position: Int) {
+        val data = cartItemList[position]
+        data.itemImage.let { holder.itemImage.setImageResource(it) }
+        holder.productTitle.text = StringBuilder("").append(data.itemName)
+        holder.categoriesTitle.text = StringBuilder("").append(data.categoriesTitle)
+        holder.discountPrice.text = StringBuilder("$").append(data.discountPrice).toString()
+        holder.originalPrice.text = java.lang.StringBuilder("$").append(data.originalPrice).toString()
+        holder.tvQuantity.text = StringBuilder("").append(data.quantity)
+        holder.btnMinus.setOnClickListener { removeCart(holder, data)
+          mItemClickListner.onClickItem(0)}
+        holder.btnAdd.setOnClickListener {
+            addCart(holder, data)
+            mItemClickListner.onClickItem(0)
+        }
 
-    override fun onBindViewHolder(holder: ShoppingCartAdapter.MyviewHolder, position: Int) {
-        val data=itemList[position]
-        data.itemImage?.let { holder.itemImage.setImageResource(it) }
-        holder.productTitle.text=StringBuilder("").append(itemList[position].productTitle)
-        holder.categoriesTitle.text=StringBuilder("").append(itemList[position].categoriesTitle)
-        holder.discountPrice.text= StringBuilder("$").append(itemList[position].discountPrice).toString()
-        holder.txtQuantity.text=StringBuilder("").append(itemList[position].txtQuantity)
-        holder.btnMinus.setOnClickListener { minusCartItem(holder, itemList[position]) }
-        holder.btnAdd.setOnClickListener { addCartItem(holder, itemList[position]) }
+        val value: String =
+            StringBuilder("$").append(cartItemList[position].originalPrice).toString()
+        Constants.setStrike(holder.originalPrice, value)
 
-        val value:String=StringBuilder("$").append(itemList[position].originalPrice).toString()
-        Constants.setStrike( holder.originalPrice,value)
-
-
-    }
-
-
-    private fun addCartItem(holder: ShoppingCartAdapter.MyviewHolder, shoppingCartData: ShoppingCartData) {
-        shoppingCartData.txtQuantity = shoppingCartData.txtQuantity?.plus(1)
-        holder.txtQuantity.text=StringBuilder("").append(shoppingCartData.txtQuantity)
 
     }
 
-    private fun minusCartItem(holder: ShoppingCartAdapter.MyviewHolder, shoppingCartData: ShoppingCartData) {
-        if(shoppingCartData.txtQuantity!! >1) {
-            shoppingCartData.txtQuantity = shoppingCartData.txtQuantity?.minus(1)
-            holder.txtQuantity.text = StringBuilder("").append(shoppingCartData.txtQuantity)
-        }else{
-            itemList.remove(shoppingCartData)
+
+    private fun addCart(holder: MyviewHolder, cardData: CardData) {
+        cardData.quantity = cardData.quantity + 1
+        holder.tvQuantity.text = StringBuilder("").append(cardData.quantity)
+
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun removeCart(holder: MyviewHolder, cardData: CardData) {
+
+        if (cardData.quantity > 1) {
+            cardData.quantity = cardData.quantity - 1
+            holder.tvQuantity.text = StringBuilder("").append(cardData.quantity)
+        } else {
+            Toast.makeText(context, "Remove ${cardData.itemName}", Toast.LENGTH_LONG).show()
+            ApplicationInitialize.mShoppingCart.remove(cardData.id)
+            cartItemList.remove(cardData)
             notifyDataSetChanged()
         }
+
     }
+
 
 
     override fun getItemCount(): Int {
-        return itemList.size
+        return cartItemList.size
     }
 
-    class MyviewHolder(view: View):RecyclerView.ViewHolder(view) {
-        var itemImage:ImageView
-        var productTitle:TextView
-        var categoriesTitle:TextView
-        var discountPrice:TextView
-        var originalPrice:TextView
-        var txtQuantity:TextView
-        var itemQty:LinearLayout
-        var btnAdd:ImageButton
-        var btnMinus:ImageButton
 
 
-        init {
-            itemImage=view.findViewById(R.id.slItemImage)
-            productTitle=view.findViewById(R.id.productTitle)
-            categoriesTitle=view.findViewById(R.id.categoriesTitle)
-            discountPrice=view.findViewById(R.id.discountPrice)
-            originalPrice=view.findViewById(R.id.originalPrice)
-            itemQty=view.findViewById(R.id.itemQty)
-            txtQuantity=view.findViewById(R.id.txtQuantity)
-            btnMinus=view.findViewById(R.id.btnMinus)
-            btnAdd=view.findViewById(R.id.btnAdd)
-        }
+
+    class MyviewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var itemImage: ImageView = view.findViewById(R.id.slItemImage)
+        var productTitle: TextView = view.findViewById(R.id.productTitle)
+        var categoriesTitle: TextView = view.findViewById(R.id.categoriesTitle)
+        var discountPrice: TextView = view.findViewById(R.id.discountPrice)
+        var originalPrice: TextView = view.findViewById(R.id.originalPrice)
+        var tvQuantity: TextView = view.findViewById(R.id.tvQuantity)
+        var itemQty: LinearLayout = view.findViewById(R.id.itemQty)
+        var btnAdd: ImageButton = view.findViewById(R.id.scAddBtn)
+        var btnMinus: ImageButton = view.findViewById(R.id.scMinusBtn)
+
 
     }
 

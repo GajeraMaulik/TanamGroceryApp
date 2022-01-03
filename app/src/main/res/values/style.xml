@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/main</item>
+        <item name="colorPrimaryDark">@color/PrimaryLight</item>
+        <item name="colorAccent">@color/accent</item>
+    </style>
+  <!--  <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <item name="android:actionBarStyle">@style/ThemeActionBar</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        &lt;!&ndash; Support library compatibility &ndash;&gt;
+        <item name="actionBarStyle">@style/ThemeActionBar</item>
+        <item name="windowActionBarOverlay">true</item>
+    </style>-->
+
+    <style name="ThemeActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:background"> @null </item>
+        <!-- Support library compatibility -->
+        <item name="background">@null</item>
+        <item name="android:displayOptions"> showHome|useLogo</item>
+        <item name="displayOptions">showHome|useLogo</item>
+
+    </style>
+
+    <style name="myrating_bar" parent="android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/myrating_bar</item>
+        <item name="android:minHeight">@dimen/_40sdp</item>
+        <item name="android:maxHeight">@dimen/_20sdp</item>
+    </style>
+
+    <style name="Stepper.CardView" parent="CardView">
+        <item name="cardElevation">@dimen/card_elevation_medium</item>
+        <item name="cardCornerRadius">@dimen/card_radius_default</item>
+    </style>
+
+
+
+
+</resources>

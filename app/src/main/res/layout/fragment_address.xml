@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".DetailsFragment">
+
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:layout_marginStart="@dimen/_22sdp"
+        android:text="Address"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints,UnusedAttribute" />
+
+    <EditText
+        android:id="@+id/etFullName"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:autoSizeTextType="uniform"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:layout_marginStart="@dimen/_22sdp"
+        android:layout_marginEnd="@dimen/_22sdp"
+        android:background="@drawable/edittext_shipping"
+        android:focusable="auto"
+        android:fontFamily="@font/lato"
+        android:hint="Type your home address"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:lineHeight="@dimen/_15sdp"
+        android:padding="@dimen/_5sdp"
+        android:paddingStart="@dimen/_15sdp"
+        android:textColor="@color/dark"
+        android:textColorHint="@color/soft"
+        android:textFontWeight="400"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddress"
+        tools:ignore="Autofill,KeyboardInaccessibleWidget,MissingConstraints,RtlSymmetry,UnusedAttribute" />
+
+    <TextView
+        android:id="@+id/tvZipcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_21sdp"
+        android:text="Zip Code"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintTop_toBottomOf="@+id/etFullName"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints,UnusedAttribute" />
+
+
+    <EditText
+        android:id="@+id/etZipcode"
+        android:layout_width="@dimen/_115sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_21sdp"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:autoSizeTextType="uniform"
+        android:background="@drawable/edittext_shipping"
+        android:ems="15"
+        android:focusable="auto"
+        android:fontFamily="@font/lato"
+        android:hint="Enter here"
+        android:imeOptions="actionSearch"
+        android:inputType="textEmailAddress"
+        android:lineHeight="@dimen/_15sdp"
+        android:padding="@dimen/_5sdp"
+        android:paddingStart="@dimen/_15sdp"
+        android:textColor="@color/dark"
+        android:textColorHint="@color/soft"
+        android:textFontWeight="400"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvZipcode"
+        tools:ignore="Autofill,KeyboardInaccessibleWidget,MissingConstraints,RtlSymmetry,UnusedAttribute" />
+
+
+    <TextView
+        android:id="@+id/tvCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_82sdp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins"
+        android:text="City"
+        android:textColor="@color/black"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_14sdp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tvZipcode"
+        app:layout_constraintTop_toBottomOf="@+id/etFullName"
+        tools:ignore="MissingConstraints,UnusedAttribute" />
+
+
+    <EditText
+        android:id="@+id/etCity"
+        android:layout_width="@dimen/_115sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:autoSizeTextType="uniform"
+        android:background="@drawable/edittext_shipping"
+        android:ems="15"
+        android:focusable="auto"
+        android:fontFamily="@font/lato"
+        android:hint="Enter here"
+        android:imeOptions="actionSearch"
+        android:inputType="textEmailAddress"
+        android:lineHeight="@dimen/_15sdp"
+        android:padding="@dimen/_5sdp"
+        android:paddingStart="@dimen/_15sdp"
+        android:textColor="@color/dark"
+        android:textColorHint="@color/soft"
+        android:textFontWeight="400"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="@+id/tvCity"
+        app:layout_constraintTop_toBottomOf="@+id/tvCity"
+        tools:ignore="Autofill,KeyboardInaccessibleWidget,MissingConstraints,RtlSymmetry,UnusedAttribute" />
+
+
+   <TextView
+          android:id="@+id/tvCountry"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/poppins"
+          android:layout_marginTop="@dimen/_15sdp"
+          android:layout_marginStart="@dimen/_21sdp"
+          android:text="Country"
+          android:textStyle="bold"
+          android:textColor="@color/black"
+          android:textFontWeight="500"
+          android:textSize="@dimen/_14sdp"
+          app:layout_constraintTop_toBottomOf="@+id/etZipcode"
+          app:layout_constraintStart_toStartOf="parent"
+          tools:ignore="MissingConstraints,UnusedAttribute" />
+
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:layout_marginStart="@dimen/_22sdp"
+        android:layout_marginEnd="@dimen/_22sdp"
+        android:background="@drawable/edittext_shipping"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCountry" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:layout_marginEnd="@dimen/_24sdp"
+        android:src="@drawable/address_arrow_drop_down"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner"
+        app:layout_constraintEnd_toEndOf="@+id/spinner"
+        app:layout_constraintTop_toTopOf="@+id/spinner" />
+
+
+    <CheckBox
+        android:id="@+id/cbShipping"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_21sdp"
+        android:checked="true"
+        android:fontFamily="@font/poppins"
+        android:text="Save shipping address"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/faNextBtn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_46sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_22sdp"
+        android:layout_marginEnd="@dimen/_22sdp"
+        android:background="@drawable/fill_button_selector"
+        android:elevation="50dp"
+        android:text="@string/screen_next"
+        android:textColor="@drawable/fill_button_text_selector"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintTop_toBottomOf="@+id/cbShipping"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+-->
+</androidx.constraintlayout.widget.ConstraintLayout>

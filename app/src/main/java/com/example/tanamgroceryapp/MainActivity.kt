@@ -16,21 +16,21 @@ import com.google.android.material.tabs.TabLayout
 class MainActivity : AppCompatActivity() {
 
     private var onBoadingViewAdapter: OnBoadingViewAdapter? = null
-    var tabLayout: TabLayout? = null
-    private lateinit var onBoadingViewPager: ViewPager
-
-    var position = 0
     var SharedPreference: SharedPreferences? = null
-
+    private lateinit var onBoadingViewPager: ViewPager
+    var tabLayout: TabLayout? = null
+    var position = 0
     var next: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         if (restorePrefData()) {
             val i = Intent(applicationContext, SignInActivity::class.java)
             startActivity(i)
             finish()
         }
+
         setContentView(R.layout.activity_main)
 
         tabLayout = findViewById(R.id.tab_indicator)
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 
         setOnBoadingViewAdapter(OnBoadingData)
 
-        position = onBoadingViewPager!!.currentItem
+        position = onBoadingViewPager.currentItem
 
         next?.setOnClickListener {
             position++

@@ -31,7 +31,7 @@ class SliderAdapter internal constructor(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SliderViewHolder {
         return SliderViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.slider_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_slider, parent, false)
         )
     }
 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_1sdp">
+
+    <ImageView
+        android:id="@+id/itemIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_27sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_search_fruit"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/itemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:fontFamily="@font/lato"
+        android:text="@string/fresh_fruits"
+        android:textColor="@color/Black"
+        android:textFontWeight="700"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/itemIcon"
+        app:layout_constraintStart_toEndOf="@+id/itemIcon"
+        app:layout_constraintTop_toTopOf="@+id/itemIcon"
+        tools:ignore="UnusedAttribute" />
+
+    <TextView
+        android:id="@+id/qtyItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:fontFamily="@font/lato"
+        android:text="@string/_45_items"
+
+        android:textColor="@color/soft"
+        android:textFontWeight="500"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/itemName"
+        app:layout_constraintEnd_toStartOf="@+id/nextBtn"
+        app:layout_constraintTop_toTopOf="@+id/itemName"
+        tools:ignore="MissingConstraints,UnusedAttribute" />
+
+    <ImageButton
+        android:id="@+id/nextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_28sdp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/qtyItem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/qtyItem"
+        app:srcCompat="@drawable/categories_right_arrow"
+        tools:ignore="ContentDescription,MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>

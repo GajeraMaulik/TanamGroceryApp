@@ -11,7 +11,7 @@
     <color name="shedow">#59087355</color>
     <color name="grey">#59D8EAE5</color>
     <color name="carview">#86C3D7</color>
-    <color name="title">#293041</color>
+    <color name="Black">#293041</color>
     <color name="soft">#7D8FAB</color>
     <color name="grey02">#BFC9DA</color>
     <color name="txtquanutiy">#000000</color>
@@ -20,4 +20,5 @@
     <color name="accent">#C29C1D</color>
     <color name="yellow">#FFA902</color>
     <color name="fav">#FF6464</color>
+    <color name="grey01">#E8EFF3</color>
 </resources>

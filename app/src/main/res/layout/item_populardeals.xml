@@ -3,11 +3,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+<!--    <LinearLayout
+        android:layout_width="@dimen/_77sdp"
+        android:layout_height="@dimen/_18sdp"
+        android:background="#FF4040"
+        android:rotation="50"
+        app:layout_constraintEnd_toEndOf="@+id/pdcardView"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="83dp">
+
+    </LinearLayout>-->
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/pdcardView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_201sdp"
         android:layout_gravity="center_horizontal"
@@ -19,6 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints">
+        
 
 
         <ImageView
@@ -26,13 +38,15 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_108sdp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/pdimage" />
+            app:srcCompat="@drawable/pdimage"
+            tools:ignore="ContentDescription" />
+
 
         <CheckBox
             android:id="@+id/itemFavorite"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:checked="true"
             android:button="@drawable/pd_selector"
@@ -49,13 +63,14 @@
             android:text="Fresh Avocados"
             android:textColor="#303733"
             android:textFontWeight="600"
-            android:textSize="@dimen/_10sdp" />
+            android:textSize="@dimen/_10sdp"
+            tools:ignore="HardcodedText,UnusedAttribute" />
 
         <TextView
             android:id="@+id/itemPrice"
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_18sdp"
-            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_138sdp"
             android:fontFamily="@font/poppins"
             android:gravity="center"
@@ -65,7 +80,8 @@
             android:textColor="#C29C1D"
             android:textFontWeight="500"
             android:textSize="@dimen/_10sdp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            tools:ignore="HardcodedText,UnusedAttribute" />
 
         <ImageView
             android:id="@+id/itemRating"
@@ -73,8 +89,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="@dimen/_142sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            app:srcCompat="@drawable/pd_star_rate_seleted" />
+            android:layout_marginEnd="@dimen/_10sdp"
+            app:srcCompat="@drawable/pd_star_rate_seleted"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/ratingCounter"
@@ -82,14 +99,15 @@
             android:layout_height="@dimen/_6sdp"
             android:layout_gravity="end"
             android:layout_marginTop="@dimen/_145sdp"
-            android:layout_marginRight="@dimen/_21sdp"
+            android:layout_marginEnd="@dimen/_21sdp"
             android:fontFamily="@font/lato"
             android:gravity="center"
-            android:paddingRight="@dimen/_1sdp"
+            android:paddingEnd="@dimen/_1sdp"
             android:text="(243)"
             android:textColor="#7D8FAB"
             android:textFontWeight="400"
-            android:textSize="@dimen/_6sdp" />
+            android:textSize="@dimen/_6sdp"
+            tools:ignore="HardcodedText,RtlSymmetry,UnusedAttribute" />
 
         <Button
             android:id="@+id/itemAdd"
@@ -107,7 +125,8 @@
             android:textAllCaps="false"
             android:textFontWeight="600"
             android:textSize="@dimen/_10sdp"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            tools:ignore="HardcodedText,UnusedAttribute" />
 
 
         <LinearLayout
@@ -130,10 +149,11 @@
                 android:padding="@dimen/_1sdp"
                 android:src="@drawable/ic_pl_minus_icon"
                 android:layout_gravity="center"
-                android:background="@drawable/ic_pl__minus_box" />
+                android:background="@drawable/ic_pl__minus_box"
+                tools:ignore="ContentDescription" />
 
             <TextView
-                android:id="@+id/txtQuantity"
+                android:id="@+id/tvQuantity"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_15sdp"
                 android:layout_gravity="center_vertical"
@@ -156,10 +176,14 @@
                 android:padding="@dimen/_1sdp"
                 android:src="@drawable/ic_pl_add_icon"
                 android:layout_gravity="center"
-                android:background="@drawable/ic_pl_add_box" />
+                android:background="@drawable/ic_pl_add_box"
+                tools:ignore="ContentDescription" />
 
         </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
