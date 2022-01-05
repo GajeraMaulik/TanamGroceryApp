@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -19,14 +21,19 @@ import androidx.viewpager.widget.ViewPager
 import com.example.tanamgroceryapp.Data.CardData
 import com.example.tanamgroceryapp.Data.ImageData
 import com.example.tanamgroceryapp.adapter.ProductDetailsAdapter
-import com.viewpagerindicator.CirclePageIndicator
 import java.util.*
 import kotlin.collections.ArrayList
+import com.google.android.material.tabs.TabLayout
+import com.viewpagerindicator.CirclePageIndicator
+
 
 class ProductDetailsActivity : AppCompatActivity() {
     private lateinit var pdtoolbar: Toolbar
-    private lateinit var productslist: MutableList<CardData>
+   // private lateinit var productslist: MutableList<CardData>
+
     private var viewpager: ViewPager? = null
+
+
 
     var currentPage = 0
     var NUM_PAGES = 0
@@ -38,6 +45,8 @@ class ProductDetailsActivity : AppCompatActivity() {
         setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true)
         setContentView(R.layout.activity_product_details)
 
+        pdtoolbar = findViewById<Toolbar>(R.id.pdToolbar)
+        setSupportActionBar(pdtoolbar)
         val pdbackBtn = findViewById<ImageButton>(R.id.pdbackBtn)
         val pdMinusBtn = findViewById<ImageButton>(R.id.pdMinusBtn)
         val pdAddBtn = findViewById<ImageButton>(R.id.pdAddBtn)
@@ -64,20 +73,12 @@ class ProductDetailsActivity : AppCompatActivity() {
             "Disc. 10%Off"
         )
 
-
-
-        pdtoolbar = findViewById<Toolbar>(R.id.pdToolbar)
-        setSupportActionBar(pdtoolbar)
-
-
         pdbackBtn.setOnClickListener {
             onBackPressed()
             return@setOnClickListener
         }
 
-
-        viewpager = findViewById(R.id.viewPager)
-
+       viewpager=findViewById(R.id.viewPager)
         initImageData()    // call method
 
         if (ApplicationInitialize.mShoppingCart.size > 0) {
@@ -148,6 +149,7 @@ class ProductDetailsActivity : AppCompatActivity() {
              }
          }
     }
+
     private fun setWindowFlag(bits: Int, on: Boolean) {
         val win = window
         val winParams = win.attributes
@@ -190,19 +192,15 @@ class ProductDetailsActivity : AppCompatActivity() {
 
         //Set the pager with an adapter
         viewpager?.adapter = ProductDetailsAdapter(this, imageList)
-
         val indicator: CirclePageIndicator = findViewById<View>(R.id.indicator) as CirclePageIndicator
         indicator.setViewPager(viewpager)
-
         val density = resources.displayMetrics.density
 
         //Set circle indicator radius
-
         indicator.radius = 5 * density
         NUM_PAGES = imageList.size
 
         // Auto start of viewpager
-
         val handler = Handler(Looper.getMainLooper())
         val Update = Runnable {
             if (currentPage == NUM_PAGES) {
@@ -210,18 +208,15 @@ class ProductDetailsActivity : AppCompatActivity() {
             }
             viewpager?.setCurrentItem(currentPage++, true)
         }
-
         val swipeTimer = Timer()
-
         swipeTimer.schedule(object : TimerTask() {
             override fun run() {
                 handler.post(Update)
             }
-        }, 3000, 3000)
+        }, 1000, 1000)
 
         // Pager listener over indicator
-
-        indicator.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        indicator.setOnPageChangeListener(object : OnPageChangeListener {
             override fun onPageSelected(position: Int) {
                 currentPage = position
             }
@@ -229,6 +224,7 @@ class ProductDetailsActivity : AppCompatActivity() {
             override fun onPageScrolled(pos: Int, arg1: Float, arg2: Int) {}
             override fun onPageScrollStateChanged(pos: Int) {}
         })
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -245,3 +241,9 @@ class ProductDetailsActivity : AppCompatActivity() {
     }
 
 }
+
+
+
+
+
+

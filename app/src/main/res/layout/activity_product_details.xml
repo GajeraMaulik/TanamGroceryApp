@@ -76,22 +76,19 @@
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
 
+        <com.viewpagerindicator.CirclePageIndicator
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_75sdp"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:padding="10dp"
+            app:centered="true"
+            app:fillColor="@color/main"
+            app:pageColor="#fff"
+            app:snap="false" />
 
-    <com.viewpagerindicator.CirclePageIndicator
-        android:id="@+id/indicator"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_70sdp"
-        android:padding="@dimen/_7sdp"
-        android:layout_gravity="bottom"
-        app:centered="true"
-        app:fillColor="@color/main"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/slider"
-        app:pageColor="#fff"
-        app:snap="true" />
     </FrameLayout>
 
 

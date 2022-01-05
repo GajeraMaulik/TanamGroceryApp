@@ -48,9 +48,10 @@
             android:layout_height="@dimen/_20sdp"
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_5sdp"
-            android:checked="true"
             android:button="@drawable/pd_selector"
-            app:useMaterialThemeColors="false" />
+            android:checked="true"
+            app:useMaterialThemeColors="false"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/itemName"
@@ -113,20 +114,20 @@
             android:id="@+id/itemAdd"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_28sdp"
-            android:gravity="center_horizontal|top"
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginLeft="@dimen/_8sdp"
             android:layout_marginRight="@dimen/_8sdp"
             android:layout_marginBottom="@dimen/_8sdp"
             android:background="@drawable/cart_button"
             android:fontFamily="@font/lato"
-            android:textStyle="bold"
+            android:gravity="center_horizontal|top"
             android:text="Add to cart"
             android:textAllCaps="false"
             android:textFontWeight="600"
             android:textSize="@dimen/_10sdp"
+            android:textStyle="bold"
             app:backgroundTint="@null"
-            tools:ignore="HardcodedText,UnusedAttribute" />
+            tools:ignore="HardcodedText,UnusedAttribute,TouchTargetSizeCheck" />
 
 
         <LinearLayout
