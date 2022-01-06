@@ -6,8 +6,10 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageButton
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_shipping_address.*
 
 class ShippingAddressActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shipping_address)

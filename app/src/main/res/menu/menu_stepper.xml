@@ -3,15 +3,15 @@
 
     <item
         android:id="@+id/detailsFragment"
-        android:title="Step 1" />
+        android:title="@string/step_1" />
 
     <item
         android:id="@+id/addressFragment"
-        android:title="Step 2" />
+        android:title="@string/step_2" />
 
     <item
         android:id="@+id/paymentFragment"
-        android:title="Step 3" />
+        android:title="@string/step_3" />
 
 
 </menu>

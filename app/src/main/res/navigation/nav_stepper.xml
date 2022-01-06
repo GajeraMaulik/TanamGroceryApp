@@ -10,19 +10,15 @@
         android:name="com.example.tanamgroceryapp.DetailsFragment"
         android:label="Step 1"
         tools:layout="@layout/fragment_details" >
-        <action
-            android:id="@+id/action_detailsFragment_to_addressFragment"
-            app:destination="@id/addressFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/addressFragment"
         android:name="com.example.tanamgroceryapp.AddressFragment"
         android:label="Step 2"
         tools:layout="@layout/fragment_address" >
-        <action
-            android:id="@+id/action_addressFragment_to_paymentFragment"
-            app:destination="@id/paymentFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/paymentFragment"
         android:name="com.example.tanamgroceryapp.PaymentFragment"

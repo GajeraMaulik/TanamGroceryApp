@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShippingAddressActivity">
+    tools:context=".ShippingAddressActivity"
+    tools:ignore="MissingClass">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -46,50 +47,46 @@
 
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardStepper"
-        style="@style/Stepper.CardView"
+    <LinearLayout
+        android:id="@+id/stepperView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_height="@dimen/_86sdp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/saToolbar"
+        tools:ignore="MissingConstraints">
+
+    <params.com.stepview.StatusViewScroller
+        android:id="@+id/stepper"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_86sdp"
+        app:circleColor="@color/white"
+        app:completeDrawable="@drawable/ic_complet_check_circle"
+        app:currentDrawable="@drawable/ic_seleted_check_circle"
+        app:incompleteDrawable="@drawable/ic_unseleted_check_circle"
+        app:circleColorCurrent="@color/white"
+        app:currentCount="2"
+        app:drawLabels="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/saToolbar"
-        tools:ignore="MissingClass">
+        app:layout_constraintTop_toBottomOf="@+id/saToolbar"
+        app:lineColor="@color/main"
+        app:lineColorCurrent="@color/main"
+        app:lineColorIncomplete="@color/grey02"
+        app:lineLength="@dimen/_40sdp"
+        app:lineWidth="@dimen/_1sdp"
+        app:stepCount="3"
+        app:textSizeLabels="@dimen/_15sdp"
+        tools:ignore="MissingConstraints" />
+    </LinearLayout>
 
-        <!--<com.aceinteract.android.stepper.StepperNavigationView
-            android:id="@+id/stepper"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="40dp"
-            app:stepperIconSize="20dp"
-            app:stepperItems="@menu/menu_stepper"
-            app:stepperTextColor="@android:color/black"
-            app:stepperTextSize="12sp"
-            app:stepperType="fleets"
-            app:stepperWidgetColor="@color/" />-->
-      <!--  <com.sonu.libraries.materialstepper.MaterialStepper
-            android:id="@+id/materialStepper"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />-->
-       <!-- <com.stepstone.stepper.StepperLayout
-            android:id="@+id/stepperLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:stepperItems="@menu/menu_stepper"
-            app:stepperType="tab" />-->
-    </androidx.cardview.widget.CardView>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frame_stepper"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_15sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardStepper"
+        app:layout_constraintTop_toBottomOf="@+id/stepperView"
         app:navGraph="@navigation/nav_stepper" />
 </androidx.constraintlayout.widget.ConstraintLayout>

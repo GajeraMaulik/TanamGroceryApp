@@ -77,4 +77,7 @@
     <string name="_8_0"><strike>$8.0</strike></string>
     <string name="tv_emailaddress">Email Address</string>
     <string name="et_name">Enter your Name</string>
+    <string name="step_1">Step 1</string>
+    <string name="step_2">Step 2</string>
+    <string name="step_3">Step 3</string>
 </resources>
