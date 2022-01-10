@@ -11,14 +11,16 @@
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins"
         android:layout_marginStart="@dimen/_22sdp"
+        android:layout_marginTop="@dimen/_17sdp"
+        android:fontFamily="@font/poppins"
         android:text="Full Name"
-        android:textStyle="bold"
         android:textColor="@color/black"
         android:textFontWeight="500"
         android:textSize="@dimen/_14sdp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints,UnusedAttribute" />
 
     <EditText
@@ -26,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:autoSizeTextType="uniform"
-        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:layout_marginStart="@dimen/_22sdp"
         android:layout_marginEnd="@dimen/_22sdp"
         android:background="@drawable/edittext_shipping"
@@ -52,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_17sdp"
         android:layout_marginStart="@dimen/_21sdp"
         android:text="@string/tv_emailaddress"
         android:textStyle="bold"
@@ -69,11 +71,10 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:autoSizeTextType="uniform"
-        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:layout_marginStart="@dimen/_22sdp"
         android:layout_marginEnd="@dimen/_22sdp"
         android:background="@drawable/edittext_shipping"
-        android:ems="15"
         android:focusable="auto"
         android:fontFamily="@font/lato"
         android:hint="Enter your Email"
@@ -95,7 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_17sdp"
         android:layout_marginStart="@dimen/_21sdp"
         android:text="Phone"
         android:textStyle="bold"
@@ -111,7 +112,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:autoSizeTextType="uniform"
-        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:layout_marginStart="@dimen/_22sdp"
         android:layout_marginEnd="@dimen/_22sdp"
         android:background="@drawable/edittext_shipping"
@@ -132,7 +133,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPhone"
         tools:ignore="Autofill,KeyboardInaccessibleWidget,MissingConstraints,RtlSymmetry,UnusedAttribute" />
 
-    <Button
+  <!--  <Button
         android:id="@+id/fdNextBtn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_46sdp"
@@ -150,5 +151,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
-
+-->
 </androidx.constraintlayout.widget.ConstraintLayout>

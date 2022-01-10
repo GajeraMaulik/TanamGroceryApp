@@ -48,7 +48,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/srsearchBar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/srsearchBar"
-            tools:ignore="ContentDescription,MissingConstraints" />
+            tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageButton
             android:id="@+id/searchfilterbtn"
@@ -60,7 +60,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/srsearchBar"
             app:layout_constraintEnd_toEndOf="@+id/srsearchBar"
             app:layout_constraintTop_toTopOf="@+id/srsearchBar"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <LinearLayout
             android:id="@+id/llrecentSearch"
@@ -95,10 +95,11 @@
                 android:id="@+id/clearAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:clickable="true"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_marginStart="@dimen/_120sdp"
+                android:background="@null"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
                 android:text="@string/clear_all"
                 android:textColor="@color/accent"
@@ -106,7 +107,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/recentSearch"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/recentSearch"
-                android:focusable="true" />
+                tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -178,7 +179,7 @@
                 android:background="@android:color/transparent"
                 android:gravity="center"
                 android:src="@drawable/ic_chevron"
-                tools:ignore="ContentDescription,MissingConstraints" />
+                tools:ignore="ContentDescription,MissingConstraints,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView

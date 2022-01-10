@@ -80,4 +80,13 @@
     <string name="step_1">Step 1</string>
     <string name="step_2">Step 2</string>
     <string name="step_3">Step 3</string>
+    <string name="enter_here">Enter here</string>
+    <string name="country">Country</string>
+
+
+    <string-array name="status">
+        <item>Details</item>
+        <item>Address</item>
+        <item>Payment</item>
+    </string-array>
 </resources>

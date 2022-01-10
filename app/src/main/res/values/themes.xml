@@ -22,11 +22,20 @@
     <style name="Theme.TanamGroceryApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.TanamGroceryApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="Stepper.CardView" parent="CardView">
+        <item name="cardElevation">@dimen/card_elevation_medium</item>
+        <item name="cardCornerRadius">@dimen/card_radius_default</item>
+    </style>
     <style name="Divider">
         <item name="android:layout_width">@dimen/_245sdp</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:background">?android:attr/listDivider</item>
     </style>
+
+
+
 
 
 </resources>

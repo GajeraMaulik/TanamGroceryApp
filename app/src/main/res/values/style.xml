@@ -7,14 +7,6 @@
         <item name="colorPrimaryDark">@color/PrimaryLight</item>
         <item name="colorAccent">@color/accent</item>
     </style>
-  <!--  <style name="AppTheme" parent="Theme.AppCompat.Light">
-        <item name="android:actionBarStyle">@style/ThemeActionBar</item>
-        <item name="android:windowActionBarOverlay">true</item>
-        &lt;!&ndash; Support library compatibility &ndash;&gt;
-        <item name="actionBarStyle">@style/ThemeActionBar</item>
-        <item name="windowActionBarOverlay">true</item>
-    </style>-->
-
     <style name="ThemeActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid">
         <item name="android:background"> @null </item>
         <!-- Support library compatibility -->
@@ -29,32 +21,56 @@
         <item name="android:minHeight">@dimen/_40sdp</item>
         <item name="android:maxHeight">@dimen/_20sdp</item>
     </style>
+    <declare-styleable name="StepView">
+        <attr format="reference" name="sv_selectedCircleColor"/>
+        <attr format="color" name="sv_selectedCircleRadius"/>
+        <attr format="color" name="sv_selectedTextColor"/>
+        <attr format="color" name="sv_selectedStepNumberColor"/>
+        <attr format="color" name="sv_doneStepMarkColor"/>
+        <attr format="color" name="sv_doneCircleColor"/>
+        <attr format="color" name="sv_selectedCircleStroke"/>
+        <attr format="color" name="sv_doneCircleRadius"/>
+        <attr format="color" name="sv_doneTextColor"/>
+        <attr format="color" name="sv_nextTextColor"/>
+        <attr format="color" name="sv_nextStepLineColor"/>
+        <attr format="reference" name="sv_doneStepLineColor"/>
+        <attr format="dimension" name="sv_stepPadding"/>
+        <attr format="dimension" name="sv_stepNumberTextSize"/>
+        <attr format="dimension" name="sv_textPadding"/>
+        <attr format="dimension" name="sv_stepLineWidth"/>
+        <attr format="dimension" name="sv_textSize"/>
+        <attr format="color" name="sv_background"/>
+        <attr format="integer" name="sv_animationDuration"/>
+        <attr format="reference" name="sv_stepViewStyle"/>
+        <attr format="enum" name="sv_animationType">
+            <enum name="Line" value="0"/>
+            <enum name="Circle" value="1"/>
+            <enum name="All" value="2"/>
+            <enum name="None" value="3"/>
+        </attr>
+        <attr format="integer" name="sv_stepsNumber"/>
+        <attr format="reference" name="sv_steps"/>
+        <attr format="reference" name="sv_typeface"/>
+        <attr format="boolean" name="sv_nextStepCircleEnabled"/>
+        <attr format="reference" name="sv_nextStepCircleColor"/>
+    </declare-styleable>
 
-    <style name="Stepper.CardView" parent="CardView">
-        <item name="cardElevation">@dimen/card_elevation_medium</item>
-        <item name="cardCornerRadius">@dimen/card_radius_default</item>
-    </style>
-
-    <!--<style name="StepView">
+    <style name="StepView">
         <item name="sv_selectedCircleColor">@color/main</item>
-        <item name="sv_selectedCircleRadius">14dp</item>
-        <item name="sv_stepNumberTextSize">12sp</item>
+        <item name="sv_selectedCircleRadius">@dimen/_12sdp</item>
+        <item name="sv_stepNumberTextSize">@dimen/_12sdp</item>
         <item name="sv_doneStepMarkColor">@color/main</item>
         <item name="sv_doneCircleColor">@color/main</item>
-        <item name="sv_doneCircleRadius">14dp</item>
-        <item name="sv_doneTextColor">#0A3C48</item>
-        <item name="sv_nextTextColor">#0A3C48</item>
-        <item name="sv_nextStepLineColor">@color/main</item>
+        <item name="sv_doneCircleRadius">@dimen/_34sdp</item>
+        <item name="sv_nextStepLineColor">@color/soft</item>
         <item name="sv_doneStepLineColor">@color/main</item>
-        <item name="sv_stepPadding">12dp</item>
-        <item name="sv_textPadding">12dp</item>
+        <item name="sv_stepPadding">@dimen/_12sdp</item>
+        <item name="sv_textPadding">@dimen/_14sdp</item>
         <item name="sv_stepLineWidth">0.5dp</item>
         <item name="sv_animationDuration">200</item>
-        <item name="sv_textSize">14sp</item>
+        <item name="sv_textSize">@dimen/_14sdp</item>
         <item name="sv_animationType">Line</item>
     </style>
--->
-
 
 
 </resources>
