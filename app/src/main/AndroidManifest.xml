@@ -31,7 +31,7 @@
         <activity android:name=".Home.HomeActivity" />
         <activity android:name=".login.SignUpActivity" />
         <activity android:name=".login.SignInActivity" />
-        <activity android:name=".sreens.SreenActivity" />
+        <activity android:name=".Sreens.SreenActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

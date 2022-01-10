@@ -8,13 +8,12 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageButton
 import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tanamgroceryapp.Data.HomeCategoriesData
 import com.example.tanamgroceryapp.Data.ShoppingCartData
 import com.example.tanamgroceryapp.ProductsActivity
 import com.example.tanamgroceryapp.R
-import com.example.tanamgroceryapp.adapter.ProductCategoriesAdapter
+import com.example.tanamgroceryapp.Adapter.ProductCategoriesAdapter
 
 class ProductCategoriesActivity() : AppCompatActivity(),ProductCategoriesAdapter.ClickListener {
     private  lateinit var rvProductCategories: RecyclerView

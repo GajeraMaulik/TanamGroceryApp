@@ -1,4 +1,4 @@
-package com.example.tanamgroceryapp.fragments
+package com.example.tanamgroceryapp.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

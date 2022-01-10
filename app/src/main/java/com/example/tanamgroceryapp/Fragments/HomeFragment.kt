@@ -1,6 +1,5 @@
-package com.example.tanamgroceryapp.fragments
+package com.example.tanamgroceryapp.Fragments
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -18,10 +17,10 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.tanamgroceryapp.Data.CardData
 import com.example.tanamgroceryapp.R
 import com.example.tanamgroceryapp.Data.SliderData
-import com.example.tanamgroceryapp.adapter.HomeCategoriesAdapter
-import com.example.tanamgroceryapp.adapter.SliderAdapter
+import com.example.tanamgroceryapp.Adapter.HomeCategoriesAdapter
+import com.example.tanamgroceryapp.Adapter.SliderAdapter
 import com.example.tanamgroceryapp.Data.HomeCategoriesData
-import com.example.tanamgroceryapp.adapter.PopularDealsAdapter
+import com.example.tanamgroceryapp.Adapter.PopularDealsAdapter
 import com.example.tanamgroceryapp.Home.ProductCategoriesActivity
 import com.example.tanamgroceryapp.ProductsActivity
 import kotlin.math.abs

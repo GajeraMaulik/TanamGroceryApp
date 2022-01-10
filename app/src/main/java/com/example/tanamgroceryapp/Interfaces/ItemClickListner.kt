@@ -1,4 +1,4 @@
-package com.example.tanamgroceryapp.interfaces
+package com.example.tanamgroceryapp.Interfaces
 
 interface ItemClickListner {
     fun onClickItem(pos: Int)

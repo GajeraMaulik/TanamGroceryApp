@@ -83,10 +83,9 @@
     <string name="enter_here">Enter here</string>
     <string name="country">Country</string>
 
-
-    <string-array name="status">
-        <item>Details</item>
-        <item>Address</item>
-        <item>Payment</item>
-    </string-array>
+    <string-array name="steps">
+            <item>Details</item>
+            <item>Address</item>
+            <item>Payment</item>
+        </string-array>
 </resources>

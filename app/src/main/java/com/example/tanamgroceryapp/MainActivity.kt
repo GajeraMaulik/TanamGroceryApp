@@ -9,7 +9,7 @@ import android.util.Log
 import android.widget.Button
 import androidx.viewpager.widget.ViewPager
 import com.example.tanamgroceryapp.Data.OnBoadingData
-import com.example.tanamgroceryapp.adapter.OnBoadingViewAdapter
+import com.example.tanamgroceryapp.Adapter.OnBoadingViewAdapter
 import com.example.tanamgroceryapp.login.SignInActivity
 import com.google.android.material.tabs.TabLayout
 

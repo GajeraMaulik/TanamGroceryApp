@@ -1,4 +1,4 @@
-package com.example.tanamgroceryapp.adapter
+package com.example.tanamgroceryapp.Adapter
 
 import android.content.Context
 import android.util.Log
@@ -124,27 +124,6 @@ class PopularDealsAdapter(private val popularDealsList: MutableList<CardData>) :
 
     }
 
- /*   private fun total(holder: MyviewHolder){
-        var subtotal=0.0
-        var total=0.0
-        val tax = 1.08
-        val quantity=0
-        val discountPrice: Double=0.0
-
-        for (i in popularDealsList){
-            subtotal += quantity * discountPrice
-            total += tax + subtotal
-        }
-
-          //  holder.subtotal.text=subtotal.toString()
-
-
-       // holder.total.text=total.toString()
-
-
-
-    }*/
-
     override fun getItemCount(): Int {
         return popularDealsList.size
     }
@@ -160,9 +139,6 @@ class PopularDealsAdapter(private val popularDealsList: MutableList<CardData>) :
         var itemFavorite: CheckBox = view.findViewById(R.id.itemFavorite)
         var btnAdd: ImageButton = view.findViewById(R.id.btnAdd)
         var btnMinus: ImageButton = view.findViewById(R.id.btnMinus)
-     //  var subtotal:TextView=view.findViewById(R.id.subTotal)
-
-      // var total:TextView=view.findViewById(R.id.totalPrice)
 
 
     }

@@ -1,17 +1,14 @@
 package com.example.tanamgroceryapp
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.example.tanamgroceryapp.Data.CardData
-import com.example.tanamgroceryapp.Data.HomeCategoriesData
-import com.example.tanamgroceryapp.adapter.ProductsAdapter
+import com.example.tanamgroceryapp.Adapter.ProductsAdapter
 import com.example.tanamgroceryapp.databinding.ActivityProductsBinding
 
 class ProductsActivity : AppCompatActivity(), ProductsAdapter.ClickListener {

@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import com.example.tanamgroceryapp.R
 import com.example.tanamgroceryapp.SearchResultsActivity
 import com.example.tanamgroceryapp.ShoppingCartActivity
-import com.example.tanamgroceryapp.fragments.FavFragment
-import com.example.tanamgroceryapp.fragments.HomeFragment
+import com.example.tanamgroceryapp.Fragments.FavFragment
+import com.example.tanamgroceryapp.Fragments.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {

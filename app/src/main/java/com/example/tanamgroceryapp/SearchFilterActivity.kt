@@ -5,7 +5,7 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tanamgroceryapp.Data.HomeCategoriesData
-import com.example.tanamgroceryapp.adapter.SearchfilterAdapter
+import com.example.tanamgroceryapp.Adapter.SearchfilterAdapter
 
 class SearchFilterActivity : AppCompatActivity() {
     private lateinit var rvsearchCategories: RecyclerView

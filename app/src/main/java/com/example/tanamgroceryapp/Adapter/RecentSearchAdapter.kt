@@ -1,10 +1,8 @@
-package com.example.tanamgroceryapp.adapter
+package com.example.tanamgroceryapp.Adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.os.persistableBundleOf
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tanamgroceryapp.Data.RecentSearchData
 import com.example.tanamgroceryapp.R

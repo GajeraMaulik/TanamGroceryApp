@@ -1,4 +1,4 @@
-package com.example.tanamgroceryapp.adapter
+package com.example.tanamgroceryapp.Adapter
 
 import android.content.Context
 import android.util.Log

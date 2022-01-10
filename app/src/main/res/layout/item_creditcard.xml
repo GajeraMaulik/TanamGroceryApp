@@ -1,157 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".PaymentFragment">
+    android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvCodBtn"
-                android:layout_width="@dimen/_72sdp"
-                android:layout_height="@dimen/_85sdp"
-                android:layout_marginStart="@dimen/_22sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:background="@drawable/ic_sl_btn_unseleted_box"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="@dimen/_12sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_12sdp" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-
-                        android:src="@drawable/ic_save_money_unseleted" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/_9sdp"
-                        android:fontFamily="@font/poppins"
-                        android:gravity="center"
-                        android:lineHeight="@dimen/_11sdp"
-                        android:text="Cash On\nDelivery"
-                        android:textColor="@color/dark"
-                        android:textSize="@dimen/_9sdp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvCreditCardBtn"
-                android:layout_width="@dimen/_72sdp"
-                android:layout_height="@dimen/_85sdp"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:background="@drawable/ic_sl_btn_unseleted_box"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="@dimen/_12sdp"
-                app:layout_constraintStart_toEndOf="@+id/cvCodBtn"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_13sdp" />
-
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_credit_card_unselected" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/_9sdp"
-                        android:fontFamily="@font/poppins"
-                        android:gravity="center"
-                        android:lineHeight="@dimen/_11sdp"
-                        android:text="Credit \nCard"
-                        android:textColor="@color/dark"
-                        android:textSize="@dimen/_9sdp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvPaipalBtn"
-                android:layout_width="@dimen/_72sdp"
-                android:layout_height="@dimen/_85sdp"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_22sdp"
-                android:background="@drawable/ic_sl_btn_unseleted_box"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="@dimen/_12sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cvCreditCardBtn"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_12sdp" />
-
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_paypal_unselected" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/_9sdp"
-                        android:fontFamily="@font/poppins"
-                        android:gravity="center"
-                        android:lineHeight="@dimen/_11sdp"
-                        android:text="Paipal \nMethod"
-                        android:textColor="@color/dark"
-                        android:textSize="@dimen/_9sdp" />
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvCreditCard"
@@ -160,10 +25,11 @@
                 android:layout_marginStart="@dimen/_22sdp"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_22sdp"
+                android:backgroundTint="@drawable/ic_credit_background"
                 app:cardCornerRadius="@dimen/_15sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cvCreditCardBtn"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints">
 
                 <TextView
@@ -253,6 +119,7 @@
                 android:layout_marginStart="@dimen/_22sdp"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_22sdp"
+                android:autoSizeTextType="uniform"
                 android:background="@drawable/edittext_shipping"
                 android:focusable="auto"
                 android:fontFamily="@font/lato"
@@ -282,7 +149,7 @@
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etHolderName" />
+                app:layout_constraintTop_toBottomOf="@+id/etHolderName"/>
 
             <EditText
                 android:id="@+id/etCardno"
@@ -307,7 +174,7 @@
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCardno" />
+                app:layout_constraintTop_toBottomOf="@+id/tvCardno"/>
 
             <TextView
                 android:id="@+id/tvMonth"
@@ -322,7 +189,7 @@
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etCardno" />
+                app:layout_constraintTop_toBottomOf="@+id/etCardno"/>
 
             <EditText
                 android:id="@+id/etMonth"
@@ -345,7 +212,7 @@
                 android:textFontWeight="400"
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvMonth" />
+                app:layout_constraintTop_toBottomOf="@+id/tvMonth"/>
 
             <TextView
                 android:id="@+id/tvCvv"
@@ -360,7 +227,7 @@
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/etMonth"
-                app:layout_constraintTop_toBottomOf="@+id/etCardno" />
+                app:layout_constraintTop_toBottomOf="@+id/etCardno"/>
 
             <EditText
                 android:id="@+id/etCvv"
@@ -383,7 +250,7 @@
                 android:textFontWeight="400"
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintStart_toEndOf="@+id/etMonth"
-                app:layout_constraintTop_toBottomOf="@+id/tvCvv" />
+                app:layout_constraintTop_toBottomOf="@+id/tvCvv"/>
 
             <TextView
                 android:id="@+id/tvCountry"
@@ -398,7 +265,7 @@
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etMonth" />
+                app:layout_constraintTop_toBottomOf="@+id/etMonth"/>
 
             <Spinner
                 android:id="@+id/spinner"
@@ -436,7 +303,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner" />
+                app:layout_constraintTop_toBottomOf="@+id/spinner"/>
 
             <Button
                 android:id="@+id/btnPayment"
@@ -456,11 +323,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cbPayment" />
+                app:layout_constraintTop_toBottomOf="@+id/cbPayment"/>
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.core.widget.NestedScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-

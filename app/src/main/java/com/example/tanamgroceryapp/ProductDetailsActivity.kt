@@ -20,10 +20,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
 import com.example.tanamgroceryapp.Data.CardData
 import com.example.tanamgroceryapp.Data.ImageData
-import com.example.tanamgroceryapp.adapter.ProductDetailsAdapter
+import com.example.tanamgroceryapp.Adapter.ProductDetailsAdapter
 import java.util.*
 import kotlin.collections.ArrayList
-import com.google.android.material.tabs.TabLayout
 import com.viewpagerindicator.CirclePageIndicator
 
 

@@ -1,14 +1,8 @@
-package com.example.tanamgroceryapp.sreens
+package com.example.tanamgroceryapp.Sreens
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.example.tanamgroceryapp.R
-import com.google.android.material.tabs.TabLayout
 
 class SreenActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

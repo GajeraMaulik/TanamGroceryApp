@@ -1,4 +1,4 @@
-package com.example.tanamgroceryapp.adapter
+package com.example.tanamgroceryapp.Adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,7 +11,7 @@ import com.example.tanamgroceryapp.ApplicationInitialize
 import com.example.tanamgroceryapp.Constants
 import com.example.tanamgroceryapp.Data.CardData
 import com.example.tanamgroceryapp.R
-import com.example.tanamgroceryapp.interfaces.ItemClickListner
+import com.example.tanamgroceryapp.Interfaces.ItemClickListner
 
 
 class ShoppingCartAdapter(private val cartItemList: MutableList<CardData>, val context: Context, val mItemClickListner: ItemClickListner) :

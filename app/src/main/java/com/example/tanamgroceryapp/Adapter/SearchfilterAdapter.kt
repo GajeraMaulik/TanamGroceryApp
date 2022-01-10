@@ -1,4 +1,4 @@
-package com.example.tanamgroceryapp.adapter
+package com.example.tanamgroceryapp.Adapter
 
 import android.view.LayoutInflater
 import android.view.View

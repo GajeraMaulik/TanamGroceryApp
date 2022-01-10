@@ -1,10 +1,8 @@
 package com.example.tanamgroceryapp
 
-import android.graphics.Color
-import android.os.Build
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.method.Touch.scrollTo
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -12,14 +10,14 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.tanamgroceryapp.fragments.AddressFragment
-import com.example.tanamgroceryapp.fragments.DetailsFragment
-import com.example.tanamgroceryapp.fragments.PaymentFragment
+import com.example.tanamgroceryapp.Fragments.AddressFragment
+import com.example.tanamgroceryapp.Fragments.DetailsFragment
+import com.example.tanamgroceryapp.Fragments.PaymentFragment
 import kotlinx.android.synthetic.main.activity_shipping_address.*
 import com.shuhart.stepview.StepView
 
 class ShippingAddressActivity : AppCompatActivity(){
-    val fragment:Fragment = Fragment()
+    val fragment: Fragment = Fragment()
     lateinit var stepview:StepView
     private var isFragmentLoader = true
     private val manager= supportFragmentManager
@@ -58,6 +56,7 @@ class ShippingAddressActivity : AppCompatActivity(){
         }
 
     }
+    @SuppressLint("ResourceAsColor")
     fun SetupSteper(){
         stepview.state
          // You should specify only stepsNumber or steps array of strings.

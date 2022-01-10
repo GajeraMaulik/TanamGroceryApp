@@ -3,15 +3,10 @@ package com.example.tanamgroceryapp
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Adapter
-import android.widget.EditText
-import android.widget.SearchView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import com.example.tanamgroceryapp.Data.RecentSearchData
-import com.example.tanamgroceryapp.adapter.PopularDealsAdapter
-import com.example.tanamgroceryapp.adapter.RecentSearchAdapter
+import com.example.tanamgroceryapp.Adapter.RecentSearchAdapter
 import com.example.tanamgroceryapp.databinding.ActivitySearchResultsBinding
 
 class SearchResultsActivity : AppCompatActivity(){

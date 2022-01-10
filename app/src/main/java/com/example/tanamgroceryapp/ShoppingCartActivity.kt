@@ -13,8 +13,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tanamgroceryapp.Data.CardData
-import com.example.tanamgroceryapp.adapter.ShoppingCartAdapter
-import com.example.tanamgroceryapp.interfaces.ItemClickListner
+import com.example.tanamgroceryapp.Adapter.ShoppingCartAdapter
+import com.example.tanamgroceryapp.Interfaces.ItemClickListner
 import com.google.gson.Gson
 
 class ShoppingCartActivity : AppCompatActivity(), ItemClickListner {
