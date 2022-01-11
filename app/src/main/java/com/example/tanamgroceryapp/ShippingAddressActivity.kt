@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -15,6 +16,7 @@ import com.example.tanamgroceryapp.Fragments.DetailsFragment
 import com.example.tanamgroceryapp.Fragments.PaymentFragment
 import kotlinx.android.synthetic.main.activity_shipping_address.*
 import com.shuhart.stepview.StepView
+import kotlinx.android.synthetic.main.fragment_payment.*
 
 class ShippingAddressActivity : AppCompatActivity(){
     val fragment: Fragment = Fragment()
@@ -56,6 +58,7 @@ class ShippingAddressActivity : AppCompatActivity(){
         }
 
     }
+
     @SuppressLint("ResourceAsColor")
     fun SetupSteper(){
         stepview.state

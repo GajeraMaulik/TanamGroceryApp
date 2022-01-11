@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -107,7 +108,6 @@
         app:sv_doneStepMarkColor="@color/white"
         app:sv_doneCircleColor="@color/main"
         app:sv_nextCircleColor="@color/soft"
-        app:sv_selectedCircleColor="@drawable/sele"
         app:sv_animationType="Line"
         app:layout_constraintTop_toBottomOf="@+id/saToolbar"
         app:layout_constraintStart_toStartOf="parent"

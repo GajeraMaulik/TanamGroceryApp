@@ -1,50 +1,100 @@
 package com.example.tanamgroceryapp.Fragments
 
+import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil.setContentView
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.cardview.widget.CardView
+import com.example.tanamgroceryapp.Adapter.ProductsAdapter
+import com.example.tanamgroceryapp.Interfaces.ItemClickListner
 import com.example.tanamgroceryapp.R
 import kotlinx.android.synthetic.main.fragment_payment.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class PaymentFragment : Fragment(){
+    private lateinit var paymetMethods:LinearLayout
+    private  lateinit var cvCodBtn:CardView
+    private  lateinit var codIcon:ImageView
+    private  lateinit var cvCreditCardBtn:CardView
+    private  lateinit var cdIcon:ImageView
+    private  lateinit var cvPaipalBtn:CardView
+    private  lateinit var pmIcon:ImageView
+    private  lateinit var creditCardView:LinearLayout
 
-class PaymentFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    val selected = 1
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?=inflater.inflate(R.layout.fragment_payment, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        cvCodBtn=view.findViewById(R.id.cvCodBtn)
+        cvCreditCardBtn=view.findViewById(R.id.cvCreditCardBtn)
+        cvPaipalBtn=view.findViewById(R.id.cvPaipalBtn)
+        creditCardView=view.findViewById(R.id.creditCardView)
+        paymetMethods=view.findViewById(R.id.paymetMethods)
+        codIcon=view.findViewById(R.id.codIcon)
+        cdIcon=view.findViewById(R.id.cdIcon)
+        pmIcon=view.findViewById(R.id.pmIcon)
+
+        cvCodBtn.setOnClickListener {
+            Log.d("card","cod")
+            selectedItem(1)
+        }
+        cvCreditCardBtn.setOnClickListener {
+            Log.d("card","Creditcard")
+            selectedItem(2)
+        }
+        cvPaipalBtn.setOnClickListener {
+            Log.d("card","Paipal")
+            selectedItem(3)
         }
 
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_payment, container, false)
-    }
+    @SuppressLint("ResourceAsColor")
+    fun selectedItem(selected: Int) {
+        when (selected) {
+            1 -> {
+                cvCodBtn.setBackgroundResource(R.drawable.payment_selector)
+               cvCreditCardBtn.setBackgroundResource(R.drawable.ic_credit_card_unselected)
+                cvPaipalBtn.setBackgroundResource(R.drawable.ic_paypal_unselected)
 
-    companion object {
+                creditCardView.visibility=View.INVISIBLE
 
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PaymentFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
             }
+            2 -> {
+                //cvCodBtn.setBackgroundResource(R.drawable.ic_save_money_unseleted)
+                //cvCreditCardBtn.setBackgroundResource(R.drawable.payment_selector)
+                //cvPaipalBtn.setBackgroundResource(R.drawable.ic_paypal_unselected)
+
+                creditCardView.visibility=View.VISIBLE
+
+            }
+            3 -> {
+                //cvCodBtn.setBackgroundResource(R.drawable.ic_save_money_unseleted)
+                //cvCreditCardBtn.setBackgroundResource(R.drawable.ic_credit_card_unselected)
+              //  cvPaipalBtn.setBackgroundResource(R.drawable.payment_selector)
+
+                creditCardView.visibility=View.INVISIBLE
+            }
+        }
+
     }
+
+
+
 }
+
+private fun ImageView.setImageDrawable(icSaveMoneySeleted: Int) {
+
+}
+

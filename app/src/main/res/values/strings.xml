@@ -88,4 +88,18 @@
             <item>Address</item>
             <item>Payment</item>
         </string-array>
+    <string-array name="countryName">
+        <item>Choose your country</item>
+        <item>China</item>
+        <item>India</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>Pakistan</item>
+        <item>Brazil</item>
+        <item>Nigeria</item>
+        <item>Bangladesh</item>
+        <item>Russia</item>
+        <item>Mexico</item>
+        <item>Japan</item>
+    </string-array>
 </resources>

@@ -3,6 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/address_arrow_drop_down.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/bakery.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/button_selector.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/button_text_selector.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/button_unseleted.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/cart.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/cart_button.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/categories_right_arrow.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/chicken.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/custom_backgroud.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/custom_backgroud_edittext.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/custom_spinner.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/cutom_spinner.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/dairy.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/edittext_selector.xml" value="0.22412280701754386" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/edittext_shipping.xml" value="0.22412280701754386" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/ic_check_unseleted_circle.xml" value="0.22412280701754386" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/ic_complet_check_circle.xml" value="0.22412280701754386" />
@@ -10,12 +25,16 @@
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/ic_credit_card_selected.xml" value="0.22412280701754386" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/ic_credit_card_unselected.xml" value="0.22412280701754386" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/ic_done_check_circle.xml" value="0.12192982456140351" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/ic_paypal_selected.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/ic_paypal_unselected.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/ic_pd_delivery.xml" value="0.22412280701754386" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/ic_save_money_unseleted.xml" value="0.1206140350877193" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/ic_seleted_check_circle.xml" value="0.22412280701754386" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/ic_sl_btn_selector.xml" value="0.12192982456140351" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/ic_sl_btn_unseleted_box.xml" value="0.22412280701754386" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/ic_unseleted_check_circle.xml" value="0.12192982456140351" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/payment_selector.xml" value="0.22412280701754386" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/paymetmethod_selector.xml" value="0.12192982456140351" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/activity_main.xml" value="0.10701754385964912" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/activity_product_categories.xml" value="0.25" />
@@ -30,7 +49,7 @@
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/fragment_details.xml" value="0.264" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/fragment_fav.xml" value="0.264" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/fragment_home.xml" value="0.10394736842105264" />
-        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/fragment_payment.xml" value="0.2932692307692308" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/fragment_payment.xml" value="0.264" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/item_creditcard.xml" value="0.27601809954751133" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/item_home_categories.xml" value="0.10394736842105264" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/item_imageslider.xml" value="0.21052631578947367" />
