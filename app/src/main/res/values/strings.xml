@@ -82,6 +82,25 @@
     <string name="step_3">Step 3</string>
     <string name="enter_here">Enter here</string>
     <string name="country">Country</string>
+    <string name="enter_your_holder_name">Enter your Holder Name</string>
+    <string name="card_number">Card Number</string>
+    <string name="enter_your_card_number">Enter your Card Number</string>
+    <string name="month_year">Month/Year</string>
+    <string name="cvv">CVV</string>
+    <string name="save_this_card">Save this card</string>
+    <string name="make_payment">MAKE PAYMENT</string>
+    <string name="cash_on_ndelivery">Cash On\nDelivery</string>
+    <string name="todo">TODO</string>
+    <string name="credit_ncard">Credit \nCard</string>
+    <string name="paipal_nmethod">Paipal \nMethod</string>
+    <string name="a_bank">A Bank</string>
+    <string name="card_no">**** **** **** ****</string>
+    <string name="card_holder">CARD HOLDER</string>
+    <string name="cardholder_name">Louis Anderson</string>
+    <string name="valid_thru">VALID THRU</string>
+    <string name="months_year">09/11</string>
+    <string name="card_holder_name">Card Holder Name</string>
+    <string name="holder_name">Holder Name</string>
 
     <string-array name="steps">
             <item>Details</item>

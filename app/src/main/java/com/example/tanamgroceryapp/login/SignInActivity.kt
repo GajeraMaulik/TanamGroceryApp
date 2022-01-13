@@ -1,6 +1,7 @@
 package com.example.tanamgroceryapp.login
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -14,7 +15,7 @@ class SignInActivity() : AppCompatActivity() {
 
     lateinit var etUserName: EditText
     lateinit var etPassword: EditText
-
+    lateinit var sp:SharedPreferences
     private var isVisiblePassword = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +29,8 @@ class SignInActivity() : AppCompatActivity() {
         val btn_signin: Button = findViewById(R.id.signinBtn)
         val btn_signup: Button = findViewById(R.id.btn_signup)
 
+        sp=getSharedPreferences("signin", MODE_PRIVATE)
+
         etUserName.setBackgroundResource(R.drawable.edittext_selector)
         etPassword.setBackgroundResource(R.drawable.edittext_selector)
 
@@ -36,8 +39,9 @@ class SignInActivity() : AppCompatActivity() {
         //    val password: String = etPassword.text.toString().trim()
             val i= Intent(this, HomeActivity::class.java).apply { putExtra("Username",etUserName.text.toString())}
             startActivity(i)
-            /*     if(isValid())
+          /*       if(isValid())
                  {
+
                      Toast.makeText(this,"Login Successfully",Toast.LENGTH_LONG).show();
                      val i= Intent(this, HomeActivity::class.java).apply { putExtra("Username",etUserName.text.toString())}
                      startActivity(i)
@@ -74,12 +78,14 @@ class SignInActivity() : AppCompatActivity() {
         val userName: String = etUserName.text.toString().trim()
         val password: String = etPassword.text.toString().trim()
 
-        if (userName == "") {
+        if (userName.isEmpty()) {
             invalid = false
             Toast.makeText(applicationContext, "Enter your Username", Toast.LENGTH_SHORT).show()
-        }else if (password == "") {
+            etUserName.requestFocus()
+        }else if (password.isEmpty()) {
             invalid = false
             Toast.makeText(applicationContext, "Enter your Password", Toast.LENGTH_SHORT).show()
+            etPassword.requestFocus()
             //  etPassword.error = resources.getString(R.string.password_error)
         } else if (password.length <= 7) {
             invalid = false

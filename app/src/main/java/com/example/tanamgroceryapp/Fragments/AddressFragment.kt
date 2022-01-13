@@ -1,60 +1,59 @@
 package com.example.tanamgroceryapp.Fragments
 
 import android.os.Bundle
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.Toast
 import com.example.tanamgroceryapp.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AddressFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AddressFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private  lateinit var eAddress: EditText
+    private  lateinit var eZipcode: EditText
+    private  lateinit var eCity:EditText
+    private  lateinit var spinner:Spinner
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_address, container, false)
+    ): View?=inflater.inflate(R.layout.fragment_address, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        eAddress=view.findViewById(R.id.etAddress)
+        eZipcode=view.findViewById(R.id.etZipcode)
+        eCity=view.findViewById(R.id.etCity)
+        isValid()
+    }
+    private fun isValid():Boolean{
+        var invalid = true
+        val address : String = eAddress.text.toString().trim()
+        val zipcode: String =eZipcode.text.toString().trim()
+        val city : CharSequence =eCity.text.trim()
+        //  val spinner: View = vSpinner[0]
+        if (address.isEmpty()){
+            invalid = false
+            Toast.makeText(context, "Enter your Address", Toast.LENGTH_SHORT).show()
+            eAddress.requestFocus()
+        } else if (zipcode.isEmpty()){
+            invalid=false
+            Toast.makeText(context, "Invalid Zipcode", Toast.LENGTH_SHORT).show()
+            eZipcode.requestFocus()
+        }else if (city.isEmpty()){
+            eCity.error="Please enter a valid value"
+            eCity.requestFocus()
+        }
+        else{
+            invalid = true
+            eAddress.error=null
+            eZipcode.error=null
+            eCity.error=null
+        }
+        return invalid
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddressFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddressFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

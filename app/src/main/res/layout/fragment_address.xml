@@ -24,7 +24,7 @@
         tools:ignore="MissingConstraints,UnusedAttribute" />
 
     <EditText
-        android:id="@+id/etFullName"
+        android:id="@+id/etAddress"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:autoSizeTextType="uniform"
@@ -35,7 +35,6 @@
         android:focusable="auto"
         android:fontFamily="@font/lato"
         android:hint="Type your home address"
-        android:imeOptions="actionSearch"
         android:inputType="textPostalAddress"
         android:lineHeight="@dimen/_15sdp"
         android:padding="@dimen/_5sdp"
@@ -61,7 +60,7 @@
         android:textColor="@color/black"
         android:textFontWeight="500"
         android:textSize="@dimen/_14sdp"
-        app:layout_constraintTop_toBottomOf="@+id/etFullName"
+        app:layout_constraintTop_toBottomOf="@+id/etAddress"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints,UnusedAttribute" />
 
@@ -78,7 +77,6 @@
         android:focusable="auto"
         android:fontFamily="@font/lato"
         android:hint="Enter here"
-        android:imeOptions="actionSearch"
         android:inputType="numberDecimal"
         android:lineHeight="@dimen/_15sdp"
         android:padding="@dimen/_5sdp"
@@ -105,7 +103,7 @@
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/tvZipcode"
-        app:layout_constraintTop_toBottomOf="@+id/etFullName"
+        app:layout_constraintTop_toBottomOf="@+id/etAddress"
         tools:ignore="MissingConstraints,UnusedAttribute" />
 
 
@@ -116,11 +114,10 @@
         android:layout_marginTop="@dimen/_15sdp"
         android:autoSizeTextType="uniform"
         android:background="@drawable/edittext_shipping"
-        android:ems="15"
+        android:ems="10"
         android:focusable="auto"
         android:fontFamily="@font/lato"
         android:hint="Enter here"
-        android:imeOptions="actionSearch"
         android:inputType="textAutoCorrect"
         android:lineHeight="@dimen/_15sdp"
         android:padding="@dimen/_5sdp"

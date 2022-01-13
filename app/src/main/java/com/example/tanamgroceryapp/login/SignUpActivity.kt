@@ -74,17 +74,19 @@ class SignUpActivity : AppCompatActivity() {
 
 
 
-        if (userName == "") {
+        if (userName.isEmpty()) {
             invalid = false
             Toast.makeText(applicationContext, "Enter your Username", Toast.LENGTH_SHORT).show()
+            etUserName.requestFocus()
         } else if (userName.length <= 8) {
             invalid = false
             etUserName.error ="Please enter a minimum 8 characters"
 
         }
-        else if (email== ""){
+        else if (email.isEmpty()){
             invalid=false
             Toast.makeText(applicationContext, "Enter your Email", Toast.LENGTH_SHORT).show()
+            etEmail.requestFocus()
             //  etEmail.setError(getResources().getString(R.string.email_error));
         }
         else if (!Patterns.EMAIL_ADDRESS.matcher(etEmail.text.toString()).matches()) {
@@ -92,9 +94,10 @@ class SignUpActivity : AppCompatActivity() {
             etEmail.error = resources.getString(R.string.error_invalid_email);
 
         }
-        else if (password == "") {
+        else if (password.isEmpty()) {
             invalid = false
             Toast.makeText(applicationContext, "Enter your Password", Toast.LENGTH_SHORT).show()
+            etPassword.requestFocus()
             //  etPassword.error = resources.getString(R.string.password_error)
         }
         else if (password.length <= 8){

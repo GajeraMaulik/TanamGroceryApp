@@ -39,6 +39,7 @@ class ShippingAddressActivity : AppCompatActivity(){
         }
 
         ShowDetailsFragment()
+
         SetupSteper()
 
         fdNextBtn.setOnClickListener {

@@ -4,8 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".PaymentFragment">
+
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScroll"
@@ -19,8 +20,8 @@
             <LinearLayout
                 android:id="@+id/paymetMethods"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_110sdp"
-                android:padding="@dimen/_10sdp"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_15sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -31,8 +32,8 @@
                     android:layout_width="@dimen/_72sdp"
                     android:layout_height="@dimen/_86sdp"
                     android:layout_marginStart="@dimen/_22sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@drawable/payment_selector"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_gravity="center_horizontal"
                     android:clickable="true"
                     app:cardCornerRadius="@dimen/_12sdp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +54,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
 
-                            android:src="@drawable/ic_save_money_unseleted" />
+                            android:src="@drawable/ic_save_money_unseleted"
+                            android:contentDescription="@string/todo" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -63,7 +65,7 @@
                             android:fontFamily="@font/poppins"
                             android:gravity="center"
                             android:lineHeight="@dimen/_11sdp"
-                            android:text="Cash On\nDelivery"
+                            android:text="@string/cash_on_ndelivery"
                             android:textColor="@color/dark"
                             android:textSize="@dimen/_9sdp"
                             tools:ignore="UnusedAttribute" />
@@ -77,8 +79,8 @@
                     android:layout_width="@dimen/_72sdp"
                     android:layout_height="@dimen/_86sdp"
                     android:layout_marginStart="@dimen/_15sdp"
-                    android:background="@drawable/payment_selector"
-                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_gravity="center_horizontal"
                     android:clickable="true"
                     android:focusable="true"
                     app:cardCornerRadius="@dimen/_12sdp"
@@ -89,14 +91,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        tools:ignore="UseCompoundDrawables">
 
                         <ImageView
                             android:id="@+id/cdIcon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_credit_card_unselected" />
+                            android:src="@drawable/ic_credit_card_unselected"
+                            android:contentDescription="@string/todo" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -106,9 +110,10 @@
                             android:fontFamily="@font/poppins"
                             android:gravity="center"
                             android:lineHeight="@dimen/_11sdp"
-                            android:text="Credit \nCard"
+                            android:text="@string/credit_ncard"
                             android:textColor="@color/dark"
-                            android:textSize="@dimen/_9sdp" />
+                            android:textSize="@dimen/_9sdp"
+                            tools:targetApi="p" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -117,8 +122,8 @@
                     android:layout_width="@dimen/_72sdp"
                     android:layout_height="@dimen/_86sdp"
                     android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@drawable/payment_selector"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginEnd="@dimen/_22sdp"
                     android:clickable="true"
                     android:focusable="true"
@@ -131,7 +136,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        tools:ignore="UseCompoundDrawables">
 
 
 
@@ -140,7 +146,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_paypal_unselected" />
+                            android:src="@drawable/ic_paypal_unselected"
+                            tools:ignore="ContentDescription" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -150,9 +157,10 @@
                             android:fontFamily="@font/poppins"
                             android:gravity="center"
                             android:lineHeight="@dimen/_11sdp"
-                            android:text="Paipal \nMethod"
+                            android:text="@string/paipal_nmethod"
                             android:textColor="@color/dark"
-                            android:textSize="@dimen/_9sdp" />
+                            android:textSize="@dimen/_9sdp"
+                            tools:targetApi="p" />
 
                     </LinearLayout>
 
@@ -160,20 +168,24 @@
 
             </LinearLayout>
 
+
             <LinearLayout
                 android:id="@+id/creditCardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/paymetMethods">
+                app:layout_constraintTop_toBottomOf="@+id/paymetMethods"
+                tools:ignore="MissingConstraints">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvCreditCard"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_163sdp"
                 android:layout_marginStart="@dimen/_22sdp"
-                android:layout_marginTop="@dimen/_12sdp"
+                android:background="@drawable/creditcar_dbackground"
+                android:backgroundTint="#319CD8"
+                android:backgroundTintMode="multiply"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_22sdp"
                 app:cardCornerRadius="@dimen/_15sdp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -187,19 +199,24 @@
                     android:layout_marginStart="@dimen/_19sdp"
                     android:layout_marginTop="@dimen/_28sdp"
                     android:fontFamily="@font/poppins"
-                    android:text="A Bank"
+                    android:text="@string/a_bank"
+                    android:textColor="@color/white"
                     android:textFontWeight="500"
-                    android:textSize="@dimen/_10sdp" />
+                    android:textSize="@dimen/_10sdp"
+                    tools:ignore="UnusedAttribute" />
 
                 <TextView
                     android:id="@+id/tvCardNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_19sdp"
+                    android:lineSpacingMultiplier="100"
+                    android:password="true"
                     android:layout_marginTop="@dimen/_58sdp"
-                    android:autoSizeTextType="uniform"
-                    android:text="**** **** **** ****"
-                    android:textSize="@dimen/_25sdp" />
+                    android:textColor="@color/white"
+                    android:text=""
+                    android:textSize="@dimen/_25sdp"
+                    tools:ignore="TextViewEdits,UnusedAttribute" />
 
                 <TextView
                     android:id="@+id/tvHolderLabel"
@@ -208,20 +225,26 @@
                     android:layout_marginStart="@dimen/_19sdp"
                     android:layout_marginTop="@dimen/_115sdp"
                     android:fontFamily="@font/poppins"
-                    android:text="CARD HOLDER"
+                    android:textColor="@color/white"
+                    android:text="@string/card_holder"
                     android:textFontWeight="400"
-                    android:textSize="@dimen/_10sdp" />
+                    android:textSize="@dimen/_10sdp"
+                    tools:ignore="UnusedAttribute" />
 
                 <TextView
                     android:id="@+id/tvHolderName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_19sdp"
+                    android:hint="@string/holder_name"
                     android:layout_marginTop="@dimen/_134sdp"
-                    android:fontFamily="@font/poppins"
-                    android:text="Louis Anderson"
+                    android:fontFamily="@font/lato"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:text=""
                     android:textFontWeight="600"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_13sdp"
+                    tools:ignore="UnusedAttribute" />
 
                 <TextView
                     android:id="@+id/tvValid"
@@ -230,18 +253,33 @@
                     android:layout_gravity="end"
                     android:layout_marginTop="@dimen/_115sdp"
                     android:layout_marginEnd="@dimen/_11sdp"
+                    android:textColor="@color/white"
                     android:fontFamily="@font/poppins"
-                    android:text="VALID THRU"
-                    android:textFontWeight="400" />
+                    android:text="@string/valid_thru"
+                    android:textFontWeight="400"
+                    tools:ignore="UnusedAttribute" />
 
                 <TextView
                     android:id="@+id/tvDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
+                    android:fontFamily="@font/lato"
+                    android:textFontWeight="600"
                     android:layout_marginTop="@dimen/_139sdp"
-                    android:layout_marginEnd="@dimen/_11sdp"
-                    android:text="09/11" />
+                    android:layout_marginEnd="@dimen/_17sdp"
+                    android:textColor="@color/white"
+                    android:text=""
+                    tools:ignore="UnusedAttribute" />
+
+                <ImageView
+                    android:id="@+id/logoCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_18sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:layout_gravity="end"
+                    android:src="@drawable/creditcard_logo" />
 
             </androidx.cardview.widget.CardView>
 
@@ -252,13 +290,14 @@
                 android:layout_marginStart="@dimen/_22sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:fontFamily="@font/poppins"
-                android:text="Card Holder Name"
+                android:text="@string/card_holder_name"
                 android:textColor="@color/black"
                 android:textFontWeight="500"
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cvCreditCard" />
+                app:layout_constraintTop_toBottomOf="@+id/cvCreditCard"
+                tools:ignore="UnusedAttribute" />
 
             <EditText
                 android:id="@+id/etHolderName"
@@ -267,21 +306,26 @@
                 android:layout_marginStart="@dimen/_22sdp"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_22sdp"
-                android:background="@drawable/edittext_selector"
-                android:focusable="auto"
-                android:fontFamily="@font/lato"
-                android:hint="Enter your Holder Name"
+                android:ems="25"
+                android:maxLength="25"
                 android:inputType="text"
+                android:text=""
+                android:background="@drawable/edittext_selector"
+                android:fontFamily="@font/lato"
+                android:hint="@string/enter_your_holder_name"
                 android:lineHeight="@dimen/_15sdp"
                 android:padding="@dimen/_5sdp"
                 android:paddingStart="@dimen/_15sdp"
                 android:textColor="@color/dark"
                 android:textColorHint="@color/soft"
                 android:textFontWeight="400"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCardHolderName" />
+                app:layout_constraintTop_toBottomOf="@+id/tvCardHolderName"
+                tools:targetApi="p"
+                tools:ignore="Autofill,RtlSymmetry" />
 
             <TextView
                 android:id="@+id/tvCardno"
@@ -290,13 +334,14 @@
                 android:layout_marginStart="@dimen/_22sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:fontFamily="@font/poppins"
-                android:text="Card Number"
+                android:text="@string/card_number"
                 android:textColor="@color/black"
                 android:textFontWeight="500"
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etHolderName" />
+                app:layout_constraintTop_toBottomOf="@+id/etHolderName"
+                tools:targetApi="p" />
 
             <EditText
                 android:id="@+id/etCardno"
@@ -305,11 +350,12 @@
                 android:layout_marginStart="@dimen/_22sdp"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_22sdp"
-                android:autoSizeTextType="uniform"
+                android:ems="15"
+                android:maxLength="15"
                 android:background="@drawable/edittext_selector"
                 android:focusable="auto"
                 android:fontFamily="@font/lato"
-                android:hint="Enter your Card Number"
+                android:hint="@string/enter_your_card_number"
                 android:inputType="number"
                 android:lineHeight="@dimen/_15sdp"
                 android:padding="@dimen/_5sdp"
@@ -320,7 +366,10 @@
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCardno" />
+                app:layout_constraintTop_toBottomOf="@+id/tvCardno"
+                tools:targetApi="p"
+                tools:ignore="RtlSymmetry"
+                android:importantForAutofill="no" />
 
     <LinearLayout
       android:layout_width="match_parent"
@@ -337,16 +386,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
-                android:text="Month/Year"
+                android:text="@string/month_year"
                 android:textColor="@color/black"
                 android:textFontWeight="500"
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etCardno" />
+                app:layout_constraintTop_toBottomOf="@+id/etCardno"
+                tools:targetApi="p" />
 
             <EditText
-                android:id="@+id/etMonth"
+                android:id="@+id/etDate"
                 android:layout_width="@dimen/_115sdp"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_8sdp"
@@ -355,8 +405,8 @@
                 android:ems="15"
                 android:focusable="auto"
                 android:fontFamily="@font/lato"
-                android:hint="Enter here"
-                android:inputType="numberSigned"
+                android:hint="@string/enter_here"
+                android:inputType="date"
                 android:lineHeight="@dimen/_15sdp"
                 android:padding="@dimen/_5sdp"
                 android:paddingStart="@dimen/_15sdp"
@@ -366,7 +416,8 @@
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvMonth"
-                tools:ignore="RtlHardcoded,UnusedAttribute" />
+                tools:ignore="RtlHardcoded,RtlSymmetry,UnusedAttribute"
+                android:importantForAutofill="no" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -380,7 +431,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
-                android:text="CVV"
+                android:text="@string/cvv"
                 android:textColor="@color/black"
                 android:textFontWeight="500"
                 android:textSize="@dimen/_14sdp"
@@ -397,7 +448,7 @@
                 android:gravity="left|center_vertical"
                 android:autoSizeTextType="uniform"
                 android:background="@drawable/edittext_selector"
-                android:ems="5"
+                android:ems="3"
                 android:focusable="auto"
                 android:fontFamily="@font/lato"
                 android:hint="@string/enter_here"
@@ -411,7 +462,8 @@
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintStart_toEndOf="@+id/etMonth"
                 app:layout_constraintTop_toBottomOf="@+id/tvCvv"
-                tools:ignore="RtlHardcoded,RtlSymmetry,UnusedAttribute" />
+                tools:ignore="RtlHardcoded,RtlSymmetry,UnusedAttribute"
+                android:importantForAutofill="no" />
                 </LinearLayout>
     </LinearLayout>
 
@@ -428,7 +480,8 @@
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etMonth" />
+                app:layout_constraintTop_toBottomOf="@+id/etMonth"
+                tools:targetApi="p" />
 
             <Spinner
                 android:id="@+id/spinner"
@@ -453,7 +506,7 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:checked="true"
                 android:fontFamily="@font/poppins"
-                android:text="Save this card"
+                android:text="@string/save_this_card"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
@@ -470,7 +523,7 @@
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:background="@drawable/fill_button_selector"
                 android:elevation="50dp"
-                android:text="MAKE PAYMENT"
+                android:text="@string/make_payment"
                 android:textColor="@drawable/fill_button_text_selector"
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"

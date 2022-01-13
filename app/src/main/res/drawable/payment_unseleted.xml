@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_enabled="true"
-        android:state_selected="false">
+        android:state_focused="true"
+        android:state_selected="true">
         <shape android:padding="10dp" android:shape="rectangle">
             <solid android:color="@color/white"/>
             <stroke android:width="@dimen/_2sdp" android:color="@color/main" />
             <corners android:radius="@dimen/_10sdp" />
         </shape>
     </item>
-    <item android:state_enabled="false" android:state_selected="true">
+    <item android:state_enabled="false">
         <shape android:padding="10dp" android:shape="rectangle">
             <solid android:color="@color/white" />
             <stroke android:width="@dimen/_2sdp" android:color="@color/white"/>
