@@ -9,10 +9,11 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.databinding.adapters.AutoCompleteTextViewBindingAdapter
 import com.example.tanamgroceryapp.R
 
 
-class AddressFragment : Fragment() {
+class AddressFragment(): Fragment() {
     private  lateinit var eAddress: EditText
     private  lateinit var eZipcode: EditText
     private  lateinit var eCity:EditText

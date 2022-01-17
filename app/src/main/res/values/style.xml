@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
@@ -34,7 +34,9 @@
         <attr format="color" name="sv_doneCircleColor"/>
         <attr format="reference" name="sv_stepViewStyle"/>
         <attr format="color" name="sv_nextCircleColor"/>
-        <attr format="reference" name="sv_selectedCircleColor"/>
+        <attr format="color" name="sv_selectedCircleColor"/>
+        <attr format="reference" name="sv_selectedStepNumberColor"/>
+        <attr format="dimension" name="sv_stepPadding"/>
 
         <attr format="enum" name="sv_animationType">
             <enum name="Line" value="0"/>
@@ -44,14 +46,10 @@
         </attr>
 
 
-
-
         <attr format="dimension" name="sv_selectedCircleRadius"/>
-        <attr format="color" name="sv_selectedStepNumberColor"/>
         <attr format="dimension" name="sv_stepNumberTextSize"/>
         <attr format="reference" name="sv_selectedMarkDrawable"/>
         <attr format="dimension" name="sv_doneCircleRadius"/>
-        <attr format="dimension" name="sv_stepPadding"/>
         <attr format="dimension" name="sv_textPadding"/>
         <attr format="dimension" name="sv_textSize"/>
         <attr format="color" name="sv_background"/>
@@ -64,31 +62,26 @@
     </declare-styleable>
 
     <style name="StepView">
+
+        <item name="sv_doneTextColor">@color/stepview_text_done</item>
+        <item name="sv_selectedTextColor">@color/stepview_text_selected</item>
+        <item name="sv_nextTextColor">@color/stepview_text_next</item>
+        <item name="sv_doneStepLineColor">@color/stepview_line_done</item>>
+        <item name="sv_nextStepLineColor">@color/stepview_line_next</item>
+        <item name="sv_doneStepMarkColor">@color/white</item>
+        <item name="sv_doneCircleColor">@color/main</item>
+        <item name="sv_nextCircleColor">@color/grey02</item>
         <item name="sv_selectedCircleColor">@color/main</item>
         <item name="sv_selectedCircleRadius">14dp</item>
-        <item name="sv_doneCircleColor">@color/main</item>
         <item name="sv_doneCircleRadius">14dp</item>
         <item name="sv_nextStepCircleColor">@color/grey02</item>
+        <item name="sv_nextStepCircleEnabled">true</item>
 
-        <item name="sv_doneTextColor">@color/tcstepper</item>
-        <item name="sv_selectedTextColor">@color/tcstepper</item>
-        <item name="sv_nextTextColor">@color/soft</item>
         <item name="sv_textPadding">@dimen/_12sdp</item>
-        <item name="sv_textSize">@dimen/_14sdp</item>
+        <item name="sv_textSize">@dimen/_12sdp</item>
 
-        <item name="sv_doneStepMarkColor">@color/white</item>
-        <item name="sv_nextCircleColor">@color/grey02</item>
-
-
-        <item name="sv_stepNumberTextSize">12sp</item>
-
-
-        <item name="sv_nextStepLineColor">@color/stepview_line_next</item>
-        <item name="sv_doneStepLineColor">@color/stepview_line_done</item>
-        <item name="sv_stepPadding">12dp</item>
-        <item name="sv_stepLineWidth">0.5dp</item>
-
-        <item name="sv_animationDuration">200</item>
+        <item name="sv_stepPadding">1dp</item>
+        <item name="sv_stepLineWidth">2dp</item>
         <item name="sv_animationType">Line</item>
     </style>
 

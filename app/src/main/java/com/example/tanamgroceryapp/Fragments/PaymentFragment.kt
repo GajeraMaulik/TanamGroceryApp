@@ -1,15 +1,20 @@
 package com.example.tanamgroceryapp.Fragments
 
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.Rect
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.annotation.RequiresPermission
 import androidx.cardview.widget.CardView
 import androidx.core.view.get
 import com.example.tanamgroceryapp.R
@@ -62,6 +67,11 @@ class PaymentFragment : Fragment() {
         ecvv=view.findViewById(R.id.etCvv)
         vSpinner=view.findViewById(R.id.spinner)
         btnPayment=view.findViewById(R.id.btnPayment)
+
+
+
+        vSpinner.dropDownVerticalOffset
+
 
 
         selectedItem(2)
@@ -144,6 +154,7 @@ class PaymentFragment : Fragment() {
     }
 
     private  fun onTextChanged(){
+
         eHolderName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
@@ -164,6 +175,7 @@ class PaymentFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 tCardNo.text = s
+                tCardNo.transformationMethod.getTransformation(AsteriskPasswordTransformationMethod().PasswordCharSequence("*"),view)
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -191,7 +203,7 @@ class PaymentFragment : Fragment() {
                 cvCodBtn.setBackgroundResource(R.drawable.payment_seleted)
                 cvCreditCardBtn.setBackgroundResource(R.drawable.payment_unseleted)
                 cvPaipalBtn.setBackgroundResource(R.drawable.payment_unseleted)
-                codIcon.setColorFilter(R.color.main)
+                codIcon.setColorFilter(Color.parseColor("#027335"))
                 cdIcon.clearColorFilter()
                 pmIcon.clearColorFilter()
                 creditCardView.visibility = View.INVISIBLE
@@ -202,7 +214,7 @@ class PaymentFragment : Fragment() {
                 cvCodBtn.setBackgroundResource(R.drawable.payment_unseleted)
                 cvCreditCardBtn.setBackgroundResource(R.drawable.payment_seleted)
                 cvPaipalBtn.setBackgroundResource(R.drawable.payment_unseleted)
-                cdIcon.setColorFilter(R.color.main)
+                cdIcon.setColorFilter(Color.parseColor("#027335"))
                 codIcon.clearColorFilter()
                 pmIcon.clearColorFilter()
                 creditCardView.visibility = View.VISIBLE
@@ -214,7 +226,7 @@ class PaymentFragment : Fragment() {
                 cvCodBtn.setBackgroundResource(R.drawable.payment_unseleted)
                 cvCreditCardBtn.setBackgroundResource(R.drawable.payment_unseleted)
                 cvPaipalBtn.setBackgroundResource(R.drawable.payment_seleted)
-                pmIcon.setColorFilter(R.color.main)
+                pmIcon.setColorFilter(Color.parseColor("#027335"))
                 cdIcon.clearColorFilter()
                 codIcon.clearColorFilter()
                 creditCardView.visibility = View.INVISIBLE
@@ -223,7 +235,26 @@ class PaymentFragment : Fragment() {
             }
 
         }
+    }
 
+    class AsteriskPasswordTransformationMethod : PasswordTransformationMethod() {
+
+        override fun getTransformation(source: CharSequence, view: View): CharSequence {
+            return PasswordCharSequence(source)
+        }
+
+        inner class PasswordCharSequence (private val source: CharSequence) : CharSequence {
+
+            override val length: Int
+                get() = source.length
+
+            override fun get(index: Int): Char = '*'
+
+            override fun subSequence(startIndex: Int, endIndex: Int): CharSequence {
+                return source.subSequence(startIndex, endIndex)
+            }
+
+        }
 
     }
 }

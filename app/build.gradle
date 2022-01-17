@@ -81,10 +81,15 @@ dependencies {
 
 
     // stepview
-    implementation 'com.params.stepview:stepview:1.0.2'
+    //implementation 'com.params.stepview:stepview:1.0.2'
 
+   // implementation 'com.github.baoyachi:StepView:1.9'
 
    implementation 'com.shuhart.stepview:stepview:1.5.1'
+
+
+      //  implementation 'com.github.vinaygopinath:StepView:2.0.1'
+
     //implementation 'com.github.acefalobi:android-stepper:0.3.0'
 
 

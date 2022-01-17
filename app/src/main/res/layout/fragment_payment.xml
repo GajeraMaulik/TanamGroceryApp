@@ -32,7 +32,7 @@
                     android:layout_width="@dimen/_72sdp"
                     android:layout_height="@dimen/_86sdp"
                     android:layout_marginStart="@dimen/_22sdp"
-                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
                     android:layout_gravity="center_horizontal"
                     android:clickable="true"
                     app:cardCornerRadius="@dimen/_12sdp"
@@ -79,7 +79,7 @@
                     android:layout_width="@dimen/_72sdp"
                     android:layout_height="@dimen/_86sdp"
                     android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
                     android:layout_gravity="center_horizontal"
                     android:clickable="true"
                     android:focusable="true"
@@ -122,7 +122,7 @@
                     android:layout_width="@dimen/_72sdp"
                     android:layout_height="@dimen/_86sdp"
                     android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginEnd="@dimen/_22sdp"
                     android:clickable="true"
@@ -177,113 +177,116 @@
                 app:layout_constraintTop_toBottomOf="@+id/paymetMethods"
                 tools:ignore="MissingConstraints">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvCreditCard"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_163sdp"
-                android:layout_marginStart="@dimen/_22sdp"
-                android:background="@drawable/creditcar_dbackground"
-                android:backgroundTint="#319CD8"
-                android:backgroundTintMode="multiply"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_22sdp"
-                app:cardCornerRadius="@dimen/_15sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="MissingConstraints">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvCreditCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_163sdp"
+                    android:layout_marginStart="@dimen/_22sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_22sdp"
+                    android:background="@drawable/creditcar_dbackground"
+                    android:backgroundTint="#319CD8"
+                    android:backgroundTintMode="multiply"
+                    app:cardCornerRadius="@dimen/_15sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints">
+
+                    <TextView
+                        android:id="@+id/tvBankName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_19sdp"
+                        android:layout_marginTop="@dimen/_28sdp"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/a_bank"
+                        android:textColor="@color/white"
+                        android:textFontWeight="500"
+                        android:textSize="@dimen/_10sdp"
+                        tools:ignore="UnusedAttribute" />
+
+                    <TextView
+                        android:id="@+id/tvCardNo"
+                        android:layout_width="@dimen/_188sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginStart="@dimen/_19sdp"
+                        android:layout_marginTop="@dimen/_58sdp"
+                        android:inputType="textPassword"
+                        android:password="true"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_20sdp"
+                        android:fontFamily="@font/poppins"
+                        android:textFontWeight="700"
+                        tools:targetApi="p"
+                        tools:ignore="Deprecated,TextViewEdits" />
+
+                    <TextView
+                        android:id="@+id/tvHolderLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_19sdp"
+                        android:layout_marginTop="@dimen/_115sdp"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/card_holder"
+                        android:textColor="@color/white"
+                        android:textFontWeight="400"
+                        android:textSize="@dimen/_10sdp"
+                        tools:ignore="UnusedAttribute" />
+
+                    <TextView
+                        android:id="@+id/tvHolderName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_19sdp"
+                        android:layout_marginTop="@dimen/_134sdp"
+                        android:fontFamily="@font/lato"
+                        android:hint=""
+                        android:text=""
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/soft"
+                        android:textFontWeight="600"
+                        android:textSize="@dimen/_13sdp"
+                        tools:ignore="UnusedAttribute" />
+
+                    <TextView
+                        android:id="@+id/tvValid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="@dimen/_115sdp"
+                        android:layout_marginEnd="@dimen/_11sdp"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/valid_thru"
+                        android:textColor="@color/white"
+                        android:textFontWeight="400"
+                        tools:ignore="UnusedAttribute" />
+
+                    <TextView
+                        android:id="@+id/tvDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="@dimen/_139sdp"
+                        android:layout_marginEnd="@dimen/_17sdp"
+                        android:fontFamily="@font/lato"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textFontWeight="600"
+                        tools:ignore="UnusedAttribute" />
+
+                    <ImageView
+                        android:id="@+id/logoCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="@dimen/_18sdp"
+                        android:layout_marginEnd="@dimen/_19sdp"
+                        android:src="@drawable/creditcard_logo" />
+
+                </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/tvBankName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_19sdp"
-                    android:layout_marginTop="@dimen/_28sdp"
-                    android:fontFamily="@font/poppins"
-                    android:text="@string/a_bank"
-                    android:textColor="@color/white"
-                    android:textFontWeight="500"
-                    android:textSize="@dimen/_10sdp"
-                    tools:ignore="UnusedAttribute" />
-
-                <TextView
-                    android:id="@+id/tvCardNo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_19sdp"
-                    android:lineSpacingMultiplier="100"
-                    android:password="true"
-                    android:layout_marginTop="@dimen/_58sdp"
-                    android:textColor="@color/white"
-                    android:text=""
-                    android:textSize="@dimen/_25sdp"
-                    tools:ignore="TextViewEdits,UnusedAttribute" />
-
-                <TextView
-                    android:id="@+id/tvHolderLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_19sdp"
-                    android:layout_marginTop="@dimen/_115sdp"
-                    android:fontFamily="@font/poppins"
-                    android:textColor="@color/white"
-                    android:text="@string/card_holder"
-                    android:textFontWeight="400"
-                    android:textSize="@dimen/_10sdp"
-                    tools:ignore="UnusedAttribute" />
-
-                <TextView
-                    android:id="@+id/tvHolderName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_19sdp"
-                    android:hint="@string/holder_name"
-                    android:layout_marginTop="@dimen/_134sdp"
-                    android:fontFamily="@font/lato"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:text=""
-                    android:textFontWeight="600"
-                    android:textSize="@dimen/_13sdp"
-                    tools:ignore="UnusedAttribute" />
-
-                <TextView
-                    android:id="@+id/tvValid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="@dimen/_115sdp"
-                    android:layout_marginEnd="@dimen/_11sdp"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/poppins"
-                    android:text="@string/valid_thru"
-                    android:textFontWeight="400"
-                    tools:ignore="UnusedAttribute" />
-
-                <TextView
-                    android:id="@+id/tvDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:fontFamily="@font/lato"
-                    android:textFontWeight="600"
-                    android:layout_marginTop="@dimen/_139sdp"
-                    android:layout_marginEnd="@dimen/_17sdp"
-                    android:textColor="@color/white"
-                    android:text=""
-                    tools:ignore="UnusedAttribute" />
-
-                <ImageView
-                    android:id="@+id/logoCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_18sdp"
-                    android:layout_marginEnd="@dimen/_19sdp"
-                    android:layout_gravity="end"
-                    android:src="@drawable/creditcard_logo" />
-
-            </androidx.cardview.widget.CardView>
-
-            <TextView
                 android:id="@+id/tvCardHolderName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
