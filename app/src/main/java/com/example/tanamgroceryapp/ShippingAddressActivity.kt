@@ -1,16 +1,21 @@
 package com.example.tanamgroceryapp
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.constraintlayout.motion.widget.KeyPosition
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 
 import com.example.tanamgroceryapp.Fragments.AddressFragment
 import com.example.tanamgroceryapp.Fragments.DetailsFragment
@@ -25,6 +30,14 @@ class ShippingAddressActivity : AppCompatActivity(){
     val fragment: Fragment = Fragment()
     lateinit var stepview: StepView
     private var isFragmentLoader = true
+    private lateinit var eFullName: EditText
+    private lateinit var eEmail: EditText
+    private lateinit var ePhone: EditText
+    private lateinit var eAddress: EditText
+    private lateinit var eZipcode: EditText
+    private lateinit var eCity: EditText
+
+    private lateinit var spinner: Spinner
     private val manager= supportFragmentManager
     private var mCurrentStepIndex: Int = 0
    // private var mCurrentStepState =Step.State.NOT_COMPLETED
@@ -39,14 +52,23 @@ class ShippingAddressActivity : AppCompatActivity(){
         val sabackBtn = findViewById<ImageButton>(R.id.saBackBtn)
         stepview=findViewById(R.id.stepView)
 
+    /*    eFullName=findViewById<EditText>(R.id.etFullName)
+        eEmail=findViewById<EditText>(R.id.etEmail)
+        ePhone=findViewById<EditText>(R.id.etPhone)
+        eAddress=findViewById<EditText>(R.id.etAddress)
+        eZipcode=findViewById<EditText>(R.id.etZipcode)
+        eCity =findViewById<EditText>(R.id.etCity)
 
 
+*/
 
         sabackBtn.setOnClickListener {
             onBackPressed()
             Log.d("maulik","back")
-            if (fdNextBtn.visibility == View.INVISIBLE ){
-                fdNextBtn.visibility=View.VISIBLE
+            if (nextBtn.visibility == View.INVISIBLE ){
+                nextBtn.visibility=View.VISIBLE
+
+
             }else{
                 return@setOnClickListener
 
@@ -55,31 +77,28 @@ class ShippingAddressActivity : AppCompatActivity(){
 
 
         selectedItem(1)
-        DetailsFragment()
-        fdNextBtn.setOnClickListener {
-            if (isFragmentLoader){
-                Log.d("maulik","address")
-                selectedItem(2)
-                AddressFragment()
-                return@setOnClickListener
+        nextBtn.setOnClickListener {
 
+            if (isFragmentLoader ){
+                Log.d("maulik","address")
+
+                selectedItem(2)
             }
-            else if(!isFragmentLoader){
+            else if(!isFragmentLoader ){
                 Log.d("maulik","payment")
-                fdNextBtn.visibility = View.INVISIBLE
+                nextBtn.visibility = View.INVISIBLE
                     selectedItem(3)
-                PaymentFragment()
                 return@setOnClickListener
 
             }
             else{
                 selectedItem(1)
-                DetailsFragment()
             }
         }
         SetupSteper()
     }
-    fun SetupSteper(){
+
+    private fun SetupSteper(){
         stepview.state
             // You should specify only stepsNumber or steps array of strings.
             // In case you specify both steps array is chosen.
@@ -121,6 +140,79 @@ class ShippingAddressActivity : AppCompatActivity(){
 
     }*/
 
+    private fun isvalid(selected: Int): Boolean {
+        when(selected){
+            1-> {
+
+
+                var invalid = true
+                    val fullname : String = eFullName.text.toString().trim()
+                    val email: String =eEmail.text.toString().trim()
+                    val phone : CharSequence =ePhone.text.trim()
+                    //  val spinner: View = vSpinner[0]
+                    if (fullname.isEmpty() ){
+                        invalid = false
+                        Toast.makeText(this, "Enter your Name", Toast.LENGTH_SHORT).show()
+                        eFullName.requestFocus()
+                    }   else if (email.isEmpty()){
+                        invalid=false
+                        Toast.makeText(this, "Enter your Email", Toast.LENGTH_SHORT).show()
+                        eEmail.requestFocus()
+                        //  etEmail.setError(getResources().getString(R.string.email_error));
+                    }
+                    else if (!Patterns.EMAIL_ADDRESS.matcher(eEmail.text.toString()).matches()) {
+                        invalid=false
+                        eEmail.error = resources.getString(R.string.error_invalid_email);
+                        eEmail.requestFocus()
+
+                    }else if (phone.isEmpty()){
+                        invalid=false
+                        Toast.makeText(this, "Enter Your Number", Toast.LENGTH_SHORT).show()
+                        ePhone.requestFocus()
+                    }else if (phone.length <= 10){
+                        ePhone.error="Please enter a valid Number"
+                        ePhone.requestFocus()
+                    }
+                    else{
+                        invalid = true
+                        eFullName.error=null
+                        eEmail.error=null
+                        ePhone.error=null
+                    }
+                    return invalid
+                }
+            2 ->{
+
+                var invalid = true
+                val address: String = eAddress.text.toString().trim()
+                val zipcode: String = eZipcode.text.toString().trim()
+                val city: CharSequence = eCity.text.trim()
+                //  val spinner: View = vSpinner[0]
+                if (address.isEmpty()) {
+                    invalid = false
+                    Toast.makeText(this, "Enter your Address", Toast.LENGTH_SHORT).show()
+                    eAddress.requestFocus()
+                } else if (zipcode.isEmpty()) {
+                    invalid = false
+                    Toast.makeText(this, "Invalid Zipcode", Toast.LENGTH_SHORT).show()
+                    eZipcode.requestFocus()
+                } else if (city.isEmpty()) {
+                    eCity.error = "Please Enter Your City"
+                    eCity.requestFocus()
+                } else {
+                    invalid = true
+                    eAddress.error = null
+                    eZipcode.error = null
+                    eCity.error = null
+                }
+                return invalid
+            }
+        }
+        return true
+    }
+
+
+    @SuppressLint("ResourceType")
     private fun selectedItem(selected: Int): Boolean {
         when (selected) {
             1 -> {
@@ -133,6 +225,8 @@ class ShippingAddressActivity : AppCompatActivity(){
                 transation.commit()
                 stepview.go(0,true)
                 isFragmentLoader = true
+
+
 
                 /*    stepview.setStepState(Step.State.CURRENT, mCurrentStepIndex)
                     mCurrentStepIndex++

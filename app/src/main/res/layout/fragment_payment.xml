@@ -487,9 +487,10 @@
                 tools:targetApi="p" />
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/fpSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
+                android:entries="@array/countryName"
                 android:layout_marginStart="@dimen/_22sdp"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_22sdp"

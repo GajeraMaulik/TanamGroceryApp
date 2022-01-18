@@ -1,14 +1,18 @@
 package com.example.tanamgroceryapp.Fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.Rect
+import android.icu.text.SelectFormat
 import android.os.Bundle
 import android.text.Editable
+import android.text.Selection
 import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
+import android.util.MonthDisplayHelper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,8 +21,10 @@ import android.widget.*
 import androidx.annotation.RequiresPermission
 import androidx.cardview.widget.CardView
 import androidx.core.view.get
+import androidx.navigation.fragment.findNavController
 import com.example.tanamgroceryapp.R
 import kotlinx.android.synthetic.main.fragment_payment.*
+import java.util.*
 import kotlin.math.log
 
 class PaymentFragment : Fragment() {
@@ -37,9 +43,10 @@ class PaymentFragment : Fragment() {
     private  lateinit var eDate:EditText
     private  lateinit var tDate:TextView
     private  lateinit var ecvv:EditText
-    private  lateinit var vSpinner:Spinner
+    private  lateinit var vspinner:Spinner
     private  lateinit var btnPayment:Button
 
+    val items= arrayOf("Choose your country","India","Japan","China")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,15 +72,31 @@ class PaymentFragment : Fragment() {
          eDate = view.findViewById<EditText>(R.id.etDate)
          tDate = view.findViewById<TextView>(R.id.tvDate)
         ecvv=view.findViewById(R.id.etCvv)
-        vSpinner=view.findViewById(R.id.spinner)
+        vspinner=view.findViewById(R.id.fpSpinner)
         btnPayment=view.findViewById(R.id.btnPayment)
 
 
+    /*    val adapter= context?.let { ArrayAdapter<String>(it,android.R.layout.simple_list_item_1,items) }
+            vSpinner.adapter=adapter*/
+        vspinner.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long
+            ) {
+                if (adapterView?.getItemAtPosition(position)?.equals("Choose your country") == true)
+                {
 
-        vSpinner.dropDownVerticalOffset
+                }
+                else
+                {
+                    val items:String=adapterView?.getItemAtPosition(position).toString()
+                    Toast.makeText(context,"You seleted $items",Toast.LENGTH_LONG).show()
 
+                }
+            }
 
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
 
+        }
         selectedItem(2)
 
         cvCodBtn.setOnClickListener {
@@ -101,7 +124,6 @@ class PaymentFragment : Fragment() {
                 Toast.makeText(context,"Information Invalid",Toast.LENGTH_LONG).show();
             }*/
         }
-        vSpinner.dropDownVerticalOffset
 
     }
 
@@ -109,9 +131,10 @@ class PaymentFragment : Fragment() {
         var invalid = true
         val holdername : String = eHolderName.text.toString().trim()
         val cardno: String =eCardno.text.toString()
-        val date : CharSequence = eDate.text.toString().trim()
+        val date : String = eDate.text.toString()
         val cvv: CharSequence =ecvv.text.toString().trim()
-      //  val spinner: View = vSpinner[0]
+        val seletedItem:Int=vspinner.selectedItemPosition
+        val actualPosition:String = vspinner.getItemAtPosition(seletedItem) as String
         if (holdername.isEmpty()){
             invalid = false
             Log.d("maulik", "name")
@@ -127,14 +150,14 @@ class PaymentFragment : Fragment() {
         else if (cardno.length <= 11){
             invalid = false
             Log.d("maulik", "lenge")
-            eCardno.error="Plsese Enter valid Number"
+            eCardno.error="Please Enter valid Number"
             eCardno.requestFocus()
 
         }
         else if (date.isEmpty()){
             invalid=false
             Log.d("maulik", "date")
-            Toast.makeText(context, "Invalid Date", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Invalid Month/Year", Toast.LENGTH_SHORT).show()
             eDate.requestFocus()
         }
         else if (cvv.isEmpty()){
@@ -143,12 +166,20 @@ class PaymentFragment : Fragment() {
             Toast.makeText(context, "Invalid Cvv", Toast.LENGTH_SHORT).show()
             ecvv.requestFocus()
         }
+        else if (actualPosition.isEmpty()){
+            invalid=false
+            vspinner.requestFocus()
+            Log.d("maulik", "spinner")
+            Toast.makeText(context, "Please Seleted City", Toast.LENGTH_SHORT).show()
+
+        }
         else{
             invalid = true
             eHolderName.error=null
             eCardno.error=null
             eDate.error=null
             ecvv.error=null
+            vspinner.prompt=null
         }
         return invalid
     }
@@ -175,9 +206,8 @@ class PaymentFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 tCardNo.text = s
-                tCardNo.transformationMethod.getTransformation(AsteriskPasswordTransformationMethod().PasswordCharSequence("*"),view)
+                tCardNo.transformationMethod.getTransformation(AsteriskPasswordTransformationMethod().toString(),view)
             }
-
             override fun afterTextChanged(s: Editable?) {
             }
         })

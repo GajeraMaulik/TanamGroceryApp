@@ -48,7 +48,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/srsearchBar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/srsearchBar"
-            tools:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            tools:ignore="ContentDescription,MissingConstraints,NotSibling,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageButton
             android:id="@+id/searchfilterbtn"
@@ -61,7 +61,15 @@
             app:layout_constraintEnd_toEndOf="@+id/srsearchBar"
             app:layout_constraintTop_toTopOf="@+id/srsearchBar"
             tools:ignore="ContentDescription,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+  <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_62sdp">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <LinearLayout
             android:id="@+id/llrecentSearch"
             android:layout_width="wrap_content"
@@ -75,7 +83,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/srsearchBar"
-            tools:ignore="MissingConstraints,UnknownIdInLayout">
+            tools:ignore="MissingConstraints,NotSibling,UnknownIdInLayout">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -156,34 +164,25 @@
                 android:textFontWeight="700"
                 android:textSize="@dimen/_14sdp"
                 tools:ignore="UnusedAttribute" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <Spinner
+                android:layout_width="@dimen/_80sdp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|end"
-                android:layout_marginStart="@dimen/_90sdp"
-                android:fontFamily="@font/lato"
-                android:gravity="center_vertical"
-                android:text="@string/newest"
-                android:textColor="@color/main"
-                android:textFontWeight="500"
-                android:textSize="@dimen/_12sdp"
-                tools:ignore="UnusedAttribute" />
-
-            <ImageButton
-                android:id="@+id/Btn"
-                android:layout_width="@dimen/_9sdp"
-                android:layout_height="@dimen/_15sdp"
+                android:entries="@array/search"
+                android:background="@drawable/search_spinner"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:background="@android:color/transparent"
+                android:fontFamily="@font/lato"
                 android:gravity="center"
-                android:src="@drawable/ic_chevron"
-                tools:ignore="ContentDescription,MissingConstraints,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                android:textSize="@dimen/_5sdp"
+                tools:ignore="UnusedAttribute" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvsearchResult"
+            android:id="@+id/rvSearchlist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_15sdp"
@@ -191,7 +190,21 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@+id/categoriesView"
             tools:layout_editor_absoluteX="159dp" />
+        <TextView
+            android:id="@+id/no_search_results_found_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_results_found"
+            android:textAppearance="?attr/textAppearanceHeadline4"
+            android:visibility="invisible"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="@id/rvSearchlist"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rvSearchlist" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

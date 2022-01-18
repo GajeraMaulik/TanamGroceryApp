@@ -101,12 +101,17 @@
     <string name="months_year">09/11</string>
     <string name="card_holder_name">Card Holder Name</string>
     <string name="holder_name">Holder Name</string>
+    <string name="no_results_found">No Results Found</string>
 
     <string-array name="steps">
             <item>Details</item>
             <item>Address</item>
             <item>Payment</item>
         </string-array>
+    <string-array name="search">
+        <item>Newest</item>
+        <item>Oldest</item>
+    </string-array>
     <string-array name="countryName">
         <item>Choose your country</item>
         <item>China</item>
