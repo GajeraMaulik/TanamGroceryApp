@@ -94,6 +94,7 @@ class HomeFragment : Fragment(),HomeCategoriesAdapter.ClickListener{
 
         homeCategoriesList.add(
             HomeCategoriesData(
+                1,
                 R.drawable.fruits,
                 "Fruits",
                 "45 Items",
@@ -102,6 +103,7 @@ class HomeFragment : Fragment(),HomeCategoriesAdapter.ClickListener{
         )
         homeCategoriesList.add(
             HomeCategoriesData(
+                2,
                 R.drawable.vegetables,
                 "Vrgetables",
                 "45 Items",
@@ -110,6 +112,7 @@ class HomeFragment : Fragment(),HomeCategoriesAdapter.ClickListener{
         )
         homeCategoriesList.add(
             HomeCategoriesData(
+                3,
                 R.drawable.bakery,
                 "Bakery",
                 "45 Items",
@@ -118,6 +121,7 @@ class HomeFragment : Fragment(),HomeCategoriesAdapter.ClickListener{
         )
         homeCategoriesList.add(
             HomeCategoriesData(
+                4,
                 R.drawable.dairy,
                 "Dairy",
                 "45 Items",
@@ -126,6 +130,7 @@ class HomeFragment : Fragment(),HomeCategoriesAdapter.ClickListener{
         )
         homeCategoriesList.add(
             HomeCategoriesData(
+                5,
                 R.drawable.mushroom,
                 "Mushroom",
                 "45 Items",
@@ -134,6 +139,7 @@ class HomeFragment : Fragment(),HomeCategoriesAdapter.ClickListener{
         )
         homeCategoriesList.add(
             HomeCategoriesData(
+                6,
                 R.drawable.fish,
                 "Fish",
                 "45 Items",
@@ -142,6 +148,7 @@ class HomeFragment : Fragment(),HomeCategoriesAdapter.ClickListener{
         )
         homeCategoriesList.add(
             HomeCategoriesData(
+                7,
                 R.drawable.pizzas,
                 "Pizzas",
                 "45 Items",
@@ -150,6 +157,7 @@ class HomeFragment : Fragment(),HomeCategoriesAdapter.ClickListener{
         )
         homeCategoriesList.add(
             HomeCategoriesData(
+                8,
                 R.drawable.chicken,
                 "Chicken",
                 "45 Items",

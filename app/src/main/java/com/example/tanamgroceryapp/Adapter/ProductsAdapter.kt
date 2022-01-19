@@ -147,6 +147,7 @@ class ProductsAdapter(private val productslist: MutableList<CardData>,var clickL
     }
     interface ClickListener{
         fun clickedItem(cardData: CardData)
+        fun notifyDataSetChanged()
     }
 }
 

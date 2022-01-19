@@ -16,7 +16,7 @@ import com.google.android.material.tabs.TabLayout
 class MainActivity : AppCompatActivity() {
 
     private var onBoadingViewAdapter: OnBoadingViewAdapter? = null
-    var SharedPreference: SharedPreferences? = null
+    var sharedPreference: SharedPreferences? = null
     private lateinit var onBoadingViewPager: ViewPager
     var tabLayout: TabLayout? = null
     var position = 0
@@ -102,15 +102,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun savePrefData() {
-        SharedPreference = applicationContext.getSharedPreferences("pref", Context.MODE_PRIVATE)
-        val editor: SharedPreferences.Editor = SharedPreference!!.edit()
+        sharedPreference = applicationContext.getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sharedPreference!!.edit()
         editor.putBoolean("isFirstTimerun", true)
         editor.apply()
     }
 
     private fun restorePrefData(): Boolean {
-        SharedPreference = applicationContext.getSharedPreferences("pref", Context.MODE_PRIVATE)
-        return SharedPreference!!.getBoolean("isFirstTimerun", false)
+        sharedPreference = applicationContext.getSharedPreferences("pref", Context.MODE_PRIVATE)
+        return sharedPreference!!.getBoolean("isFirstTimerun", false)
     }
 }
 

@@ -31,8 +31,6 @@ class ProductsActivity : AppCompatActivity(), ProductsAdapter.ClickListener {
         }
 
     }
-
-
     override fun onResume() {
         super.onResume()
         getData()
@@ -251,6 +249,10 @@ class ProductsActivity : AppCompatActivity(), ProductsAdapter.ClickListener {
             else ->
                 Toast.makeText(this, "No Action", Toast.LENGTH_LONG).show()
         }
+    }
+
+    override fun notifyDataSetChanged() {
+
     }
 
 }

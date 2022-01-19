@@ -25,7 +25,8 @@
             android:focusable="auto"
             android:fontFamily="@font/lato"
             android:hint="@string/search_bar_hint"
-            android:inputType="text"
+            android:inputType="textAutoCorrect"
+
             android:lineHeight="@dimen/_15sdp"
             android:padding="@dimen/_5sdp"
             android:paddingStart="@dimen/_10sdp"
@@ -65,7 +66,7 @@
         android:id="@+id/nestedScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_62sdp">
+        android:layout_marginTop="@dimen/_65sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -76,7 +77,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/_24sdp"
-            android:layout_marginTop="@dimen/_26sdp"
             android:layout_marginEnd="@dimen/_22sdp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -105,9 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_marginStart="@dimen/_120sdp"
-                android:background="@null"
                 android:clickable="true"
-                android:focusable="true"
                 android:gravity="center"
                 android:text="@string/clear_all"
                 android:textColor="@color/accent"
@@ -115,11 +113,11 @@
                 app:layout_constraintBottom_toBottomOf="@+id/recentSearch"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/recentSearch"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:focusable="true" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvreacentSearch"
+            android:id="@+id/rvReacentSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
@@ -131,7 +129,7 @@
             android:layout_width="match_parent"
             android:layout_height="6dp"
             android:layout_marginTop="@dimen/_10sdp"
-            app:layout_constraintTop_toBottomOf="@+id/rvreacentSearch"
+            app:layout_constraintTop_toBottomOf="@+id/rvReacentSearch"
             android:src="@drawable/ic_searchresult_separator"/>
 
 

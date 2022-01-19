@@ -11,7 +11,7 @@ import com.example.tanamgroceryapp.Data.HomeCategoriesData
 import com.example.tanamgroceryapp.R
 
 
-class SearchfilterAdapter(private val categorieslist:MutableList<HomeCategoriesData>): RecyclerView.Adapter<SearchfilterAdapter.MyViewHolder>() {
+class SearchfilterAdapter(private val categorieslist:MutableList<HomeCategoriesData>,var clickListener: HomeCategoriesAdapter.ClickListener): RecyclerView.Adapter<SearchfilterAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchfilterAdapter.MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_searchcategories, parent, false)
         return SearchfilterAdapter.MyViewHolder(view)
@@ -21,7 +21,9 @@ class SearchfilterAdapter(private val categorieslist:MutableList<HomeCategoriesD
         holder.catIcon.setImageResource(categorieslist[position].catIcon)
         holder.catName.text=categorieslist[position].catName
         holder.catItems.text=categorieslist[position].catItems.toString()
-
+        holder.catbtn.setOnClickListener {
+            clickListener.clickedItem(categorieslist[position])
+        }
     }
 
     override fun getItemCount(): Int {
@@ -37,6 +39,9 @@ class SearchfilterAdapter(private val categorieslist:MutableList<HomeCategoriesD
         val catItems: TextView =view.findViewById(R.id.qtyItem)
         val catbtn:ImageButton=view.findViewById(R.id.nextBtn)
 
+    }
+    interface ClickListener{
+        fun clickedItem(homeCategoriesData: HomeCategoriesData)
     }
 }
 

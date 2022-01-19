@@ -3,6 +3,7 @@ package com.example.tanamgroceryapp.Adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tanamgroceryapp.Data.RecentSearchData
 import com.example.tanamgroceryapp.R
@@ -23,6 +24,7 @@ class RecentSearchAdapter(
 
         mContext = parent.context
         return ViewHolder(binding,recentlist)
+
     }
 
     override fun getItemCount(): Int = recentlist.size
@@ -49,4 +51,5 @@ class RecentSearchAdapter(
         notifyDataSetChanged()
 
     }
+
 }
