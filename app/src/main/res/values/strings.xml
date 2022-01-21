@@ -102,6 +102,10 @@
     <string name="card_holder_name">Card Holder Name</string>
     <string name="holder_name">Holder Name</string>
     <string name="no_results_found">No Results Found</string>
+    <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="phone">Phone</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="full_name">Full Name</string>
 
     <string-array name="steps">
             <item>Details</item>

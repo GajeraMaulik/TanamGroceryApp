@@ -3,12 +3,14 @@ package com.example.tanamgroceryapp.Fragments
 import android.content.Context
 import android.opengl.ETC1.isValid
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.view.isNotEmpty
 import androidx.databinding.adapters.AutoCompleteTextViewBindingAdapter
 import com.example.tanamgroceryapp.R
 import com.example.tanamgroceryapp.ShippingAddressActivity
@@ -16,9 +18,9 @@ import com.example.tanamgroceryapp.ShippingAddressActivity
 
 class AddressFragment(): Fragment() {
     private lateinit var eAddress: EditText
-    private lateinit var eZipcode: EditText
-    private lateinit var eCity: EditText
-    private lateinit var vspinner: Spinner
+     lateinit var eZipcode: EditText
+     lateinit var eCity: EditText
+     lateinit var vspinner: Spinner
     val items= arrayOf("Choose your country","India","Japan","China")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,5 +58,46 @@ class AddressFragment(): Fragment() {
 
         }
 
+         fun isvalid():Boolean{
+             var invalid = true
+             val address:String = eAddress.editableText.toString().trim()
+             val zipcode: String = eZipcode.editableText.toString().trim()
+             val city:String= eCity.editableText.toString().trim()
+             if (address.isEmpty()) {
+                 invalid = false
+                 Log.d("maulik", "address")
+                 Toast.makeText(context, "Enter your Address", Toast.LENGTH_SHORT).show()
+                 eAddress.requestFocus()
+             }else if (address.length >= 15){
+                 invalid = false
+                 Log.d("maulik", "address l")
+                 eAddress.error = "Address to much length"
 
+             }
+             else if (zipcode.isEmpty()) {
+                 invalid = false
+                 Log.d("maulik", "code")
+                 eZipcode.error = "Invalid Zipcode"
+                 Toast.makeText(context, "Invalid Zipcode", Toast.LENGTH_SHORT).show()
+                 eZipcode.requestFocus()
+             } else if (city.isEmpty()) {
+                 invalid = false
+                 Log.d("maulik", "city")
+                 eCity.error = "Please Enter Your City"
+                 eCity.requestFocus()
+             }else if (vspinner.selectedItem.toString().trim() == "Choose your country"){
+                 invalid = false
+                 Log.d("maulik", "spinner")
+                 Toast.makeText(context, "Please Select Country", Toast.LENGTH_SHORT).show();
+                 vspinner.requestFocus()
+
+             }
+             else {
+                 invalid = true
+                 eAddress.error = null
+                 eZipcode.error = null
+                 eCity.error = null
+             }
+             return invalid
+         }
     }

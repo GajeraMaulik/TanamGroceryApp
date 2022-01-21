@@ -2,6 +2,8 @@ package com.example.tanamgroceryapp.Fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.Rect
@@ -23,11 +25,20 @@ import androidx.cardview.widget.CardView
 import androidx.core.view.get
 import androidx.navigation.fragment.findNavController
 import com.example.tanamgroceryapp.R
+import com.example.tanamgroceryapp.ShippingAddressActivity
+import com.shuhart.stepview.StepView
 import kotlinx.android.synthetic.main.fragment_payment.*
 import java.util.*
 import kotlin.math.log
+import android.preference.PreferenceManager
+import com.example.tanamgroceryapp.login.SignInActivity
+import java.io.DataOutputStream
+import java.io.IOException
+
 
 class PaymentFragment : Fragment() {
+    lateinit var stepview: StepView
+    private var shippingAddressActivity = ShippingAddressActivity()
        private lateinit var paymetMethods:LinearLayout
     private  lateinit var cvCodBtn:CardView
     private  lateinit var codIcon:ImageView
@@ -44,7 +55,9 @@ class PaymentFragment : Fragment() {
     private  lateinit var tDate:TextView
     private  lateinit var ecvv:EditText
     private  lateinit var vspinner:Spinner
+    private  lateinit var cPayment:CheckBox
     private  lateinit var btnPayment:Button
+    private  lateinit var sharedPreferences:SharedPreferences
 
     val items= arrayOf("Choose your country","India","Japan","China")
 
@@ -74,10 +87,18 @@ class PaymentFragment : Fragment() {
         ecvv=view.findViewById(R.id.etCvv)
         vspinner=view.findViewById(R.id.fpSpinner)
         btnPayment=view.findViewById(R.id.btnPayment)
+        cPayment=view.findViewById(R.id.cbPayment)
 
+        val checked:Boolean= cPayment.isChecked
 
-    /*    val adapter= context?.let { ArrayAdapter<String>(it,android.R.layout.simple_list_item_1,items) }
-            vSpinner.adapter=adapter*/
+        when(view.id){
+            R.id.cbPayment -> {
+                if (checked){
+                    restorePrefData()
+                }
+            }
+        }
+
         vspinner.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long
             ) {
@@ -118,12 +139,54 @@ class PaymentFragment : Fragment() {
             if(isValid())
             {
                 Log.d("maulik", "Payment Successfully")
-                Toast.makeText(context,"Payment Successfully",Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"Payment Successfully",Toast.LENGTH_LONG).show()
+                savePrefData()
             }
    /*         else{
                 Toast.makeText(context,"Information Invalid",Toast.LENGTH_LONG).show();
             }*/
         }
+        isValid()
+        restorePrefData()
+    }
+
+
+
+    private fun savePrefData(){
+        val name:String = eHolderName.text.toString()
+        val no:String = eCardno.text.toString()
+        val date:String =eDate.text.toString()
+        val cvv:CharSequence=ecvv.text.toString()
+        val spinner: CharSequence =vspinner.prompt
+
+        sharedPreferences = context?.getSharedPreferences("pref", Context.MODE_PRIVATE)!!
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.putString("str",name)
+        editor.putString("no",no)
+        editor.putString("date",date)
+        editor.putString("cvv", cvv.toString())
+        editor.putString("spinner", spinner.toString())
+        editor.apply()
+        eHolderName.setText(name)
+        eCardno.setText(no)
+        eDate.setText(date)
+        ecvv.setText(cvv)
+        vspinner.prompt
+
+    }
+    private fun restorePrefData(): Boolean {
+        sharedPreferences = context?.getSharedPreferences("pref", Context.MODE_PRIVATE)!!
+        val name : String? = sharedPreferences.getString("str",null)
+        val no:String? = sharedPreferences.getString("no",null)
+        val date:String? =sharedPreferences.getString("date",null)
+        val cvv:CharSequence? = sharedPreferences.getString("cvv",null)
+        val spinner: CharSequence? =sharedPreferences.getString("spinner",null)
+        eHolderName.setText(name)
+        eCardno.setText(no)
+        eDate.setText(date)
+        ecvv.setText(cvv)
+        vspinner.prompt
+        return true
 
     }
 
@@ -133,18 +196,19 @@ class PaymentFragment : Fragment() {
         val cardno: String =eCardno.text.toString()
         val date : String = eDate.text.toString()
         val cvv: CharSequence =ecvv.text.toString().trim()
-        val seletedItem:Int=vspinner.selectedItemPosition
-        val actualPosition:String = vspinner.getItemAtPosition(seletedItem) as String
+
         if (holdername.isEmpty()){
             invalid = false
             Log.d("maulik", "name")
             Toast.makeText(context, "Enter your Card Holder Name", Toast.LENGTH_SHORT).show()
+            eHolderName.error= "Enter your Card Holder Name"
             eHolderName.requestFocus()
         }
         else if(cardno.isEmpty()){
             invalid =false
             Log.d("maulik", "no")
             Toast.makeText(context, "Enter your Card Number", Toast.LENGTH_SHORT).show()
+            eCardno.error="Enter your Card Number"
             eCardno.requestFocus()
         }
         else if (cardno.length <= 11){
@@ -158,19 +222,22 @@ class PaymentFragment : Fragment() {
             invalid=false
             Log.d("maulik", "date")
             Toast.makeText(context, "Invalid Month/Year", Toast.LENGTH_SHORT).show()
+            eDate.error="Invalid Month/Year"
             eDate.requestFocus()
+
         }
         else if (cvv.isEmpty()){
             invalid=false
             Log.d("maulik", "cvv")
-            Toast.makeText(context, "Invalid Cvv", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Enter Cvv", Toast.LENGTH_SHORT).show()
+            ecvv.error = "Enter Cvv"
             ecvv.requestFocus()
         }
-        else if (actualPosition.isEmpty()){
-            invalid=false
-            vspinner.requestFocus()
+        else if (vspinner.selectedItem.toString().trim() == "Choose your country"){
+            invalid = false
             Log.d("maulik", "spinner")
-            Toast.makeText(context, "Please Seleted City", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Please Select Country", Toast.LENGTH_SHORT).show();
+            vspinner.requestFocus()
 
         }
         else{
@@ -179,7 +246,6 @@ class PaymentFragment : Fragment() {
             eCardno.error=null
             eDate.error=null
             ecvv.error=null
-            vspinner.prompt=null
         }
         return invalid
     }

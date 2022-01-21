@@ -25,8 +25,7 @@
             android:focusable="auto"
             android:fontFamily="@font/lato"
             android:hint="@string/search_bar_hint"
-            android:inputType="textAutoCorrect"
-
+            android:inputType="textAutoComplete"
             android:lineHeight="@dimen/_15sdp"
             android:padding="@dimen/_5sdp"
             android:paddingStart="@dimen/_10sdp"

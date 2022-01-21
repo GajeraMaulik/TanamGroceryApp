@@ -41,7 +41,7 @@ class SignUpActivity : AppCompatActivity() {
         btn_register.setOnClickListener {
             if (isValid()) {
                 startActivity(Intent(this, SignInActivity::class.java))
-                Toast.makeText(this, "Register " + etUserName.getText().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Register " + etUserName.getText().toString(), Toast.LENGTH_SHORT).show()
                 finish()
 
             }
@@ -69,8 +69,6 @@ class SignUpActivity : AppCompatActivity() {
         val email : String=etEmail.text.toString().trim()
         val password: String = etPassword.text.toString().trim()
 
-        // Password should contain at least one number
-        val passwordPattern = "^(?=.*[0-9])"+"(?=.*[a-z])"+"(?=.*[A-Z])"+"(?=.*[@#$%^&+=])"+"(?=\\S+$).{4,}$";
 
 
 
@@ -91,7 +89,7 @@ class SignUpActivity : AppCompatActivity() {
         }
         else if (!Patterns.EMAIL_ADDRESS.matcher(etEmail.text.toString()).matches()) {
             invalid=false
-            etEmail.error = resources.getString(R.string.error_invalid_email);
+            etEmail.error = resources.getString(R.string.error_invalid_email)
 
         }
         else if (password.isEmpty()) {

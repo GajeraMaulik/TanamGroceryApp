@@ -50,6 +50,7 @@
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/activity_product_categories.xml" value="0.25" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/activity_product_details.xml" value="0.264" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/activity_products.xml" value="0.25" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/activity_search_filter.xml" value="0.10701754385964912" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/activity_search_results.xml" value="0.18074074074074073" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/activity_shipping_address.xml" value="0.37799043062200954" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/activity_shopping_cart.xml" value="0.4" />
@@ -59,7 +60,7 @@
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/fragment_details.xml" value="0.264" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/fragment_fav.xml" value="0.264" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/fragment_home.xml" value="0.10394736842105264" />
-        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/fragment_payment.xml" value="0.4" />
+        <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/fragment_payment.xml" value="0.2747747747747748" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/item_creditcard.xml" value="0.27601809954751133" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/item_home_categories.xml" value="0.10394736842105264" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/layout/item_imageslider.xml" value="0.21052631578947367" />
