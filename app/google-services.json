@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "470849578506",
+    "project_id": "tanamgroceryapp",
+    "storage_bucket": "tanamgroceryapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470849578506:android:46ecf800eab1b6d17ca1f3",
+        "android_client_info": {
+          "package_name": "com.example.tanamgroceryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470849578506-c4icg5tut1ieboo6gt4sp95o98le8c9t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxXBmji7jVACfjhuWpqyaTZL3_ZbHVszg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470849578506-c4icg5tut1ieboo6gt4sp95o98le8c9t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
