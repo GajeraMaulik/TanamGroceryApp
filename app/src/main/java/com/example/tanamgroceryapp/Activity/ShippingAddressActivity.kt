@@ -1,25 +1,19 @@
-package com.example.tanamgroceryapp
+package com.example.tanamgroceryapp.Activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.util.Patterns
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.Spinner
 import android.widget.Toast
-import androidx.constraintlayout.motion.widget.KeyPosition
-import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 
 import com.example.tanamgroceryapp.Fragments.AddressFragment
 import com.example.tanamgroceryapp.Fragments.DetailsFragment
 import com.example.tanamgroceryapp.Fragments.PaymentFragment
+import com.example.tanamgroceryapp.R
 import com.shuhart.stepview.StepView
 
 import kotlinx.android.synthetic.main.activity_product_details.*

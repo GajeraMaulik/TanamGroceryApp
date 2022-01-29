@@ -1,4 +1,4 @@
-package com.example.tanamgroceryapp
+package com.example.tanamgroceryapp.Activity
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,7 @@ import android.widget.Button
 import androidx.viewpager.widget.ViewPager
 import com.example.tanamgroceryapp.Data.OnBoadingData
 import com.example.tanamgroceryapp.Adapter.OnBoadingViewAdapter
-import com.example.tanamgroceryapp.login.SignInActivity
+import com.example.tanamgroceryapp.R
 import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
@@ -41,21 +41,21 @@ class MainActivity : AppCompatActivity() {
                 OnBoadingData(
                         "Welcome to Tanam!\n Grocery Applications",
                         "Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor\n incididunt ut labore",
-                        R.drawable.group
+                    R.drawable.group
                 )
         )
         OnBoadingData.add(
                 OnBoadingData(
                         "Welcome to Tanam!\nGrocery Applications",
                         "Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor\n incididunt ut labore",
-                        R.drawable.group
+                    R.drawable.group
                 )
         )
         OnBoadingData.add(
                 OnBoadingData(
                         "Best Quality Grocery \n at your doorstep!",
                         "Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor\n incididunt ut labore",
-                        R.drawable.sreen3
+                    R.drawable.sreen3
                 )
         )
 

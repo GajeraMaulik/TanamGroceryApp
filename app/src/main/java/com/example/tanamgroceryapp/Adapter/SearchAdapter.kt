@@ -11,7 +11,7 @@ import com.example.tanamgroceryapp.ApplicationInitialize
 import com.example.tanamgroceryapp.Constants
 import com.example.tanamgroceryapp.Data.CardData
 import com.example.tanamgroceryapp.R
-import com.example.tanamgroceryapp.SearchResultsActivity
+import com.example.tanamgroceryapp.Activity.SearchResultsActivity
 import com.example.tanamgroceryapp.databinding.ItemProductsBinding
 
  class SearchAdapter(private val productslist: MutableList<CardData>, var clickListener: SearchResultsActivity): RecyclerView.Adapter<SearchAdapter.ViewHolder>() {

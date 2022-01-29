@@ -1,39 +1,22 @@
 package com.example.tanamgroceryapp.Fragments
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.Rect
-import android.icu.text.SelectFormat
 import android.os.Bundle
 import android.text.Editable
-import android.text.Selection
 import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
-import android.util.MonthDisplayHelper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.annotation.RequiresPermission
 import androidx.cardview.widget.CardView
-import androidx.core.view.get
-import androidx.navigation.fragment.findNavController
 import com.example.tanamgroceryapp.R
-import com.example.tanamgroceryapp.ShippingAddressActivity
+import com.example.tanamgroceryapp.Activity.ShippingAddressActivity
 import com.shuhart.stepview.StepView
-import kotlinx.android.synthetic.main.fragment_payment.*
-import java.util.*
-import kotlin.math.log
-import android.preference.PreferenceManager
-import com.example.tanamgroceryapp.login.SignInActivity
-import java.io.DataOutputStream
-import java.io.IOException
 
 
 class PaymentFragment : Fragment() {
@@ -89,15 +72,8 @@ class PaymentFragment : Fragment() {
         btnPayment=view.findViewById(R.id.btnPayment)
         cPayment=view.findViewById(R.id.cbPayment)
 
-        val checked:Boolean= cPayment.isChecked
 
-        when(view.id){
-            R.id.cbPayment -> {
-                if (checked){
-                    restorePrefData()
-                }
-            }
-        }
+
 
         vspinner.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long
@@ -140,14 +116,15 @@ class PaymentFragment : Fragment() {
             {
                 Log.d("maulik", "Payment Successfully")
                 Toast.makeText(context,"Payment Successfully",Toast.LENGTH_LONG).show()
-                savePrefData()
             }
    /*         else{
                 Toast.makeText(context,"Information Invalid",Toast.LENGTH_LONG).show();
             }*/
         }
         isValid()
-        restorePrefData()
+      //  restorePrefData()
+        //savePrefData()
+
     }
 
 
@@ -157,7 +134,7 @@ class PaymentFragment : Fragment() {
         val no:String = eCardno.text.toString()
         val date:String =eDate.text.toString()
         val cvv:CharSequence=ecvv.text.toString()
-        val spinner: CharSequence =vspinner.prompt
+        val spinner: CharSequence =vspinner.selectedItem.toString()
 
         sharedPreferences = context?.getSharedPreferences("pref", Context.MODE_PRIVATE)!!
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
@@ -171,7 +148,7 @@ class PaymentFragment : Fragment() {
         eCardno.setText(no)
         eDate.setText(date)
         ecvv.setText(cvv)
-        vspinner.prompt
+       // vspinner.setPromptId(1)
 
     }
     private fun restorePrefData(): Boolean {
@@ -185,7 +162,7 @@ class PaymentFragment : Fragment() {
         eCardno.setText(no)
         eDate.setText(date)
         ecvv.setText(cvv)
-        vspinner.prompt
+        (vspinner.selectedItem.toString().trim()  == "$spinner")
         return true
 
     }
@@ -238,7 +215,6 @@ class PaymentFragment : Fragment() {
             Log.d("maulik", "spinner")
             Toast.makeText(context, "Please Select Country", Toast.LENGTH_SHORT).show();
             vspinner.requestFocus()
-
         }
         else{
             invalid = true

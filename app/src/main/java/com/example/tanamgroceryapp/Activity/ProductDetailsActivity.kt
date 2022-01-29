@@ -1,4 +1,4 @@
-package com.example.tanamgroceryapp
+package com.example.tanamgroceryapp.Activity
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +21,8 @@ import androidx.viewpager.widget.ViewPager
 import com.example.tanamgroceryapp.Data.CardData
 import com.example.tanamgroceryapp.Data.ImageData
 import com.example.tanamgroceryapp.Adapter.ProductDetailsAdapter
+import com.example.tanamgroceryapp.ApplicationInitialize
+import com.example.tanamgroceryapp.R
 import java.util.*
 import kotlin.collections.ArrayList
 import com.viewpagerindicator.CirclePageIndicator

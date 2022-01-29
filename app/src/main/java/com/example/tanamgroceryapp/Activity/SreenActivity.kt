@@ -1,4 +1,4 @@
-package com.example.tanamgroceryapp.Sreens
+package com.example.tanamgroceryapp.Activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -1,4 +1,4 @@
-package com.example.tanamgroceryapp
+package com.example.tanamgroceryapp.Activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -14,7 +14,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tanamgroceryapp.Data.CardData
 import com.example.tanamgroceryapp.Adapter.ShoppingCartAdapter
+import com.example.tanamgroceryapp.ApplicationInitialize
+import com.example.tanamgroceryapp.Constants
 import com.example.tanamgroceryapp.Interfaces.ItemClickListner
+import com.example.tanamgroceryapp.R
 import com.google.gson.Gson
 
 class ShoppingCartActivity : AppCompatActivity(), ItemClickListner {
@@ -106,8 +109,8 @@ class ShoppingCartActivity : AppCompatActivity(), ItemClickListner {
 
             }
         }
-        tvSubTotal.text = getString(R.string.dollar)+ " " +  Constants.roundPoint(subTotal,2)
-        tvTotalPrice.text = getString(R.string.dollar)+ " " + Constants.roundPoint(totalPrice,2)
+        tvSubTotal.text = getString(R.string.dollar)+ " " + Constants.roundPoint(subTotal, 2)
+        tvTotalPrice.text = getString(R.string.dollar)+ " " + Constants.roundPoint(totalPrice, 2)
 
     }
 

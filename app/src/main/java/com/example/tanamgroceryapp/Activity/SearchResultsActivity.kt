@@ -1,43 +1,117 @@
-package com.example.tanamgroceryapp
+package com.example.tanamgroceryapp.Activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
-import com.example.tanamgroceryapp.Data.CardData
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import com.example.tanamgroceryapp.Adapter.ProductsAdapter
-import com.example.tanamgroceryapp.databinding.ActivityProductsBinding
+import com.example.tanamgroceryapp.Adapter.RecentSearchAdapter
+import com.example.tanamgroceryapp.Data.RecentSearchData
+import com.example.tanamgroceryapp.Adapter.SearchAdapter
+import com.example.tanamgroceryapp.Data.CardData
+import com.example.tanamgroceryapp.R
+import com.example.tanamgroceryapp.databinding.ActivitySearchResultsBinding
+import kotlinx.android.synthetic.main.activity_search_results.*
+import java.util.*
+import kotlin.collections.ArrayList
 
-class ProductsActivity : AppCompatActivity(), ProductsAdapter.ClickListener {
+class SearchResultsActivity : AppCompatActivity(),ProductsAdapter.ClickListener{
+   private var sharedPreference: SharedPreferences? = null
 
-
-    private lateinit var binding: ActivityProductsBinding
+    private var recentlist: MutableList<RecentSearchData> = ArrayList()
+    private var productslist: MutableList<CardData> = ArrayList()
+    private  lateinit var searchAdapter:SearchAdapter
+    private  lateinit var recentSearchAdapter: RecentSearchAdapter
+    private  lateinit var binding: ActivitySearchResultsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityProductsBinding.inflate(layoutInflater)
+        binding = ActivitySearchResultsBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        setSupportActionBar(binding.pToolbar)
 
-        binding.pbackBtn.setOnClickListener {
-            Log.d("maulik", "m")
-            onBackPressed()
-            return@setOnClickListener
+
+        binding.clearAll.setOnClickListener {
+            Log.d("maulik", "ClearAll")
+            if (recentlist.isNotEmpty()) {
+                recentlist.clear()
+            }
         }
 
+        binding.srsearchBar.doOnTextChanged { text, _, _, _ ->
+            val query= text.toString().toLowerCase(Locale.getDefault())
+
+            filterWithQuery(query)
+
+             // savePrefData(recentlist) for (currentItem in productslist) {
+            for (currentItem in productslist)
+                if (currentItem.itemName.length > 5) {
+
+                    if (currentItem.itemName.toLowerCase(Locale.getDefault()).contains(query) && recentlist.isNullOrEmpty()) {
+                        recentlist.add(
+                            RecentSearchData(
+                                R.drawable.ic_recentsearch_time,
+                                query,
+                                R.drawable.ic_recentsearch_close
+                            )
+                        )
+                        notifyDataSetChanged()
+
+                    }
+                }
+            }
+        recentSearchAdapter = RecentSearchAdapter(recentlist)
+        binding.rvReacentSearch.adapter = recentSearchAdapter
+
+
+
+
+        /* recentlist.add(
+             RecentSearchData(
+                 R.drawable.ic_recentsearch_time,"Tomatoes",R.drawable.ic_recentsearch_close
+             )
+         )
+         recentlist.add(
+             RecentSearchData(
+                 R.drawable.ic_recentsearch_time,"Local Fresh Spinach",R.drawable.ic_recentsearch_close
+             )
+         )
+         recentlist.add(
+             RecentSearchData(
+                 R.drawable.ic_recentsearch_time,"Frehs Orange",R.drawable.ic_recentsearch_close
+             )
+         )
+
+ */
+
+        binding.closeBtn.setOnClickListener {
+            onBackPressed()
+            return@setOnClickListener
+
+        }
+
+        binding.searchfilterbtn.setOnClickListener {
+            val intent = Intent(this, SearchFilterActivity::class.java)
+            startActivity(intent)
+        }
+
+        getData()
+        attachAdapter(productslist)
     }
-    override fun onResume() {
+
+
+ /*   override fun onResume() {
         super.onResume()
         getData()
     }
+*/
 
     private fun getData() {
-        val productslist: MutableList<CardData> = ArrayList()
         productslist.add(
             CardData(
                 7,
@@ -174,29 +248,64 @@ class ProductsActivity : AppCompatActivity(), ProductsAdapter.ClickListener {
                 "Disc. 10%Off"
             )
         )
-        binding.rvProducts.adapter = ProductsAdapter(productslist, this)
+        rvSearchlist.adapter = ProductsAdapter(productslist, this)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_products, menu)
-        return true
+    private fun attachAdapter( productslist: MutableList<CardData>) {
+        searchAdapter = SearchAdapter(productslist, this)
+        binding.rvSearchlist.adapter = searchAdapter
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.filter -> {
-                startActivity(Intent(this, SearchFilterActivity::class.java))
-            }
-            R.id.pItem1 -> Toast.makeText(this, "Item 1 seleted", Toast.LENGTH_LONG).show()
-            R.id.pItem2 -> Toast.makeText(this, "Item 2 seleted", Toast.LENGTH_LONG).show()
+    private fun filterWithQuery(query: String) {
+        if (query.isNotEmpty()) {
+            val filteredList: MutableList<CardData> = onFilterChanged(query)
+            attachAdapter(filteredList)
+            toggleRecyclerView(filteredList)
+        } else if (query.isEmpty()) {
+            attachAdapter(productslist)
         }
-        return super.onOptionsItemSelected(item)
+    }
+    private fun onFilterChanged(filterQuery: String): MutableList<CardData> {
+        val filteredList = ArrayList<CardData>()
+        for (currentItem in productslist) {
+            if (currentItem.itemName.toLowerCase(Locale.getDefault()).contains(filterQuery)) {
+                filteredList.add(currentItem)
+            }
+        }
+        return filteredList
     }
 
+/*
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == SPEECH_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            val spokenText: String? =
+                data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).let { results ->
+                    results?.get(0)
+                }
+            // Do something with spokenText
+            srSearchBar.setText(spokenText)
+        }
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+*/
+
+
+    private fun toggleRecyclerView( productslist: MutableList<CardData> ) {
+        if (productslist.isEmpty()) {
+            binding.rvReacentSearch.visibility = View.INVISIBLE
+            binding.noSearchResultsFoundText.visibility = View.VISIBLE
+        } else {
+            binding.rvReacentSearch.visibility = View.VISIBLE
+            binding.noSearchResultsFoundText.visibility = View.INVISIBLE
+        }
+    }
+
+/*
+    companion object {
+        const val SPEECH_REQUEST_CODE = 0
+    }*/
 
     override fun clickedItem(cardData: CardData) {
-        Log.d("TAG", "maulik" + cardData.id);
-
         when (cardData.id) {
             7 ->
                 startActivity(
@@ -254,5 +363,4 @@ class ProductsActivity : AppCompatActivity(), ProductsAdapter.ClickListener {
     override fun notifyDataSetChanged() {
 
     }
-
 }

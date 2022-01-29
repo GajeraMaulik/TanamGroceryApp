@@ -33,8 +33,7 @@ class ProductsAdapter(private val productslist: MutableList<CardData>,var clickL
 
     override fun getItemCount(): Int = productslist.size
 
-    inner class ViewHolder(val binding: ItemProductsBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(val binding: ItemProductsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(model: CardData, position: Int) {
 
             binding.pItemImage.setImageResource(model.itemImage)
@@ -46,6 +45,11 @@ class ProductsAdapter(private val productslist: MutableList<CardData>,var clickL
             binding.favItem.isChecked = model.itemRating
             binding.tvQuantity.text = model.quantity.toString()
             binding.pItemView.getViewById(R.id.pItemView)
+            binding.btnAdd.setOnClickListener { addCart(binding,model) }
+            binding.btnMinus.setOnClickListener { removeCart(binding,model) }
+
+            val value: String = StringBuilder("$").append(binding.pOriginalPrice).toString()
+            Constants.setStrike(binding.pOriginalPrice, value)
 
             if (ApplicationInitialize.mShoppingCart.size > 0) {
                 val getSingleData = ApplicationInitialize.mShoppingCart[model.id]
@@ -63,7 +67,6 @@ class ProductsAdapter(private val productslist: MutableList<CardData>,var clickL
                 binding.tvQuantity.text = StringBuilder("").append(model.quantity)
             }
 
-
             binding.pCartBtn.setOnClickListener {
                 binding.pCartBtn.visibility = View.INVISIBLE
 
@@ -71,18 +74,10 @@ class ProductsAdapter(private val productslist: MutableList<CardData>,var clickL
                 Toast.makeText(mContext, "Add To Cart ${model.itemName} ", Toast.LENGTH_LONG).show()
                 addCart(binding,model)
             }
-            val value: String = StringBuilder("$").append(binding.pOriginalPrice).toString()
-            Constants.setStrike(binding.pOriginalPrice, value)
-
-            binding.btnAdd.setOnClickListener { addCart(binding,model) }
-
-            binding.btnMinus.setOnClickListener { removeCart(binding,model) }
 
             binding.pItemView.setOnClickListener {
                 clickListener.clickedItem(model)
             }
-
-
         }
 
         private fun addCart(binding: ItemProductsBinding,cardData: CardData) {
@@ -144,7 +139,9 @@ class ProductsAdapter(private val productslist: MutableList<CardData>,var clickL
             }
 
         }
+
     }
+
     interface ClickListener{
         fun clickedItem(cardData: CardData)
         fun notifyDataSetChanged()

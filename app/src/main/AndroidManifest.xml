@@ -14,26 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TanamGroceryApp"
-        tools:ignore="MissingClass">
+        tools:ignore="MissingClass"
+        android:fullBackupContent="@xml/backup_descriptor">
         <activity
-            android:name=".ShippingAddressActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ProductDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ProductsActivity"
-            android:exported="false" />
-        <activity android:name=".SearchFilterActivity" />
-        <activity android:name=".SearchResultsActivity" />
-        <activity android:name=".Home.ProductCategoriesActivity" />
-        <activity android:name=".ShoppingCartActivity" />
-        <activity android:name=".Home.HomeActivity" />
-        <activity android:name=".login.SignUpActivity" />
-        <activity android:name=".login.SignInActivity" />
-        <activity android:name=".Sreens.SreenActivity" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,6 +25,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Activity.ShippingAddressActivity" />
+        <activity android:name=".Activity.ProductDetailsActivity" />
+        <activity android:name=".Activity.ProductsActivity"/>
+        <activity android:name=".Activity.SearchFilterActivity" />
+        <activity android:name=".Activity.SearchResultsActivity" />
+        <activity android:name=".Activity.ProductCategoriesActivity" />
+        <activity android:name=".Activity.ShoppingCartActivity" />
+        <activity android:name=".Activity.HomeActivity" />
+        <activity android:name=".Activity.SignUpActivity" />
+        <activity android:name=".Activity.SignInActivity" />
+        <activity android:name=".Activity.SreenActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

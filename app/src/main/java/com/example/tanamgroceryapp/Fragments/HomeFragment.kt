@@ -21,8 +21,8 @@ import com.example.tanamgroceryapp.Adapter.HomeCategoriesAdapter
 import com.example.tanamgroceryapp.Adapter.SliderAdapter
 import com.example.tanamgroceryapp.Data.HomeCategoriesData
 import com.example.tanamgroceryapp.Adapter.PopularDealsAdapter
-import com.example.tanamgroceryapp.Home.ProductCategoriesActivity
-import com.example.tanamgroceryapp.ProductsActivity
+import com.example.tanamgroceryapp.Activity.ProductCategoriesActivity
+import com.example.tanamgroceryapp.Activity.ProductsActivity
 import kotlin.math.abs
 
 class HomeFragment : Fragment(),HomeCategoriesAdapter.ClickListener{
@@ -229,7 +229,7 @@ class HomeFragment : Fragment(),HomeCategoriesAdapter.ClickListener{
 
         when(homeCategoriesData.catName){
             "Fruits" ->
-                startActivity(Intent(context,ProductsActivity::class.java))
+                startActivity(Intent(context, ProductsActivity::class.java))
             else ->
                 Toast.makeText(context,"No Action",Toast.LENGTH_LONG).show()
         }
