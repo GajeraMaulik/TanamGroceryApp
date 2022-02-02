@@ -8,6 +8,10 @@ class UserProfile {
     constructor(userName: String){
         this.userName = userName
     }
+    constructor(userName: String,password: String){
+        this.userName = userName
+        this.password = password
+    }
     constructor(userName:String,email:String,password:String){
         this.userName = userName
         this.email = email

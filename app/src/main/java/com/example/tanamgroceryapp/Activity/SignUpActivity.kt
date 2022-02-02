@@ -2,65 +2,73 @@ package com.example.tanamgroceryapp.Activity
 
 import android.app.ProgressDialog
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.service.controls.ControlsProviderService.TAG
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.util.Log
+import android.util.Log.d
 import android.util.Patterns
 import android.widget.*
+import androidx.annotation.RequiresApi
 import com.example.tanamgroceryapp.Data.UserProfile
 import com.example.tanamgroceryapp.R
+import com.example.tanamgroceryapp.databinding.ActivitySignInBinding
+import com.example.tanamgroceryapp.databinding.ActivitySignUpBinding
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.activity_sign_up.etPassword
+import kotlinx.android.synthetic.main.activity_sign_up.ivEye
+import kotlinx.android.synthetic.main.fragment_details.*
+import kotlinx.android.synthetic.main.fragment_details.etEmail
+import java.util.Calendar.getInstance
 
-class SignUpActivity : AppCompatActivity() {
-    lateinit var etUserName: EditText
-    lateinit var etEmail: EditText
-    lateinit var etPassword: EditText
-    lateinit var userName: String
-    lateinit var email : String
-    lateinit var password: String
-    lateinit var user :String
+open class SignUpActivity : AppCompatActivity() {
 
-    private var isVisiblePassword = false
-    private  var firebaseAuth : FirebaseAuth? = null
+    private lateinit var firebaseAuth : FirebaseAuth
     private  var prg : ProgressDialog? = null
+    private lateinit var binding : ActivitySignUpBinding
+    lateinit var userName :String
+    lateinit var email: String
+    lateinit var password : String
+    private var firebaseDatabase: FirebaseDatabase? = null
+    private var databaseReference :DatabaseReference? = null
+    var user:FirebaseUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
-        val ivEye = findViewById<ImageView>(R.id.ivEye)
-        etUserName = findViewById<EditText>(R.id.eduser)
-        etEmail=findViewById<EditText>(R.id.edMail)
-        etPassword = findViewById<EditText>(R.id.etPassword)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-
-        val btn_signin: Button =findViewById(R.id.btn_signin)
-        val btn_register:Button=findViewById(R.id.btn_register)
-
-        etEmail.setBackgroundResource(R.drawable.edittext_selector)
-        etUserName.setBackgroundResource(R.drawable.edittext_selector)
-        etPassword.setBackgroundResource(R.drawable.edittext_selector)
+        binding.etEmail.setBackgroundResource(R.drawable.edittext_selector)
+        binding.etUserName.setBackgroundResource(R.drawable.edittext_selector)
+        binding.etPassword.setBackgroundResource(R.drawable.edittext_selector)
 
         firebaseAuth = FirebaseAuth.getInstance()
         prg = ProgressDialog(this)
-        user= firebaseAuth?.currentUser.toString()
 
-        btn_signin.setOnClickListener {
+        binding.signinBtn.setOnClickListener {
             startActivity(Intent(this, SignInActivity::class.java))
             finish()
-            //  setValidation()
-        }
-        btn_register.setOnClickListener {
-           if (isValid()) {
-               startActivity(Intent(this, SignInActivity::class.java))
-           }else{
-               return@setOnClickListener
-           }
         }
 
-        ivEye.setOnClickListener {
+        binding.registerBtn.setOnClickListener {
+            isValid()
+        }
+
+        var isVisiblePassword = false
+
+        binding.ivEye.setOnClickListener {
             if (!isVisiblePassword) {
                 etPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 ivEye.setImageResource(R.drawable.ic_visibility_on_eye)
@@ -75,13 +83,15 @@ class SignUpActivity : AppCompatActivity() {
         }
 
     }
+
     private fun isValid(): Boolean {
         var invalid = true
          userName = etUserName.text.toString().trim()
-        email= etEmail.text.toString().trim()
-        password = etPassword.text.toString().trim()
+         email = etEmail.text.toString().trim()
+         password  = etPassword.text.toString().trim()
         prg?.setMessage("Please wait...")
         prg?.show()
+
         if (userName.isEmpty()) {
             invalid = false
             Toast.makeText(applicationContext, "Enter your Username", Toast.LENGTH_SHORT).show()
@@ -100,7 +110,7 @@ class SignUpActivity : AppCompatActivity() {
             prg?.dismiss()
             //  etEmail.setError(getResources().getString(R.string.email_error));
         }
-        else if (!Patterns.EMAIL_ADDRESS.matcher(etEmail.text.toString()).matches()) {
+        else if (!Patterns.EMAIL_ADDRESS.matcher(etEmail.text.toString()).matches() ) {
             invalid=false
             etEmail.error = resources.getString(R.string.error_invalid_email)
             etEmail.requestFocus()
@@ -123,7 +133,7 @@ class SignUpActivity : AppCompatActivity() {
         }
         else if (!checkString(password)){
             invalid=false
-            etPassword.error="Password must be One Upercase Letter or number"
+            etPassword.error="Password must contain at least 8 characters;must contain alphanumeric;must contain One Capital alphabet."
             etPassword.requestFocus()
             prg?.dismiss()
 
@@ -133,25 +143,43 @@ class SignUpActivity : AppCompatActivity() {
             etUserName.error = null
             etEmail.error =null
             etPassword.error= null
-            firebaseAuth!!.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task ->
-                if (task.isSuccessful ){
-                    prg?.dismiss()
-                    checkEmail()
-                    Senddata()
-                    Toast.makeText(this, "Successful " + etUserName.text.toString(), Toast.LENGTH_SHORT).show()
-           /*         startActivity(Intent(this, SignInActivity::class.java))
-                    finish()*/
+            firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener  { task ->
 
-                }else{
-                    prg?.dismiss()
-                    Toast.makeText(this,"Error Occur",Toast.LENGTH_LONG).show()
+                if (task.isSuccessful ) {
+                        prg?.dismiss()
+                    user =firebaseAuth.currentUser
+                    user!!.sendEmailVerification().addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                firebaseAuth.fetchSignInMethodsForEmail(etEmail.text.toString()).addOnCompleteListener { task ->
+                                    if (task.isSuccessful){
+                                        VerifyEmail()
+                                        Toast.makeText(this, "${task.exception?.message}" + etUserName.text.toString(), Toast.LENGTH_LONG).show()
+                                        finish()
+                                        startActivity(Intent(this,SignInActivity::class.java ))
+                                        Senddata()
+                                        Log.d("TAG","Successfully Registration")
+                                        Log.d("TAG","Email verified")
+                                    }else{
+                                        Log.d("TAG","Email Exits")
+                                        // startActivity(Intent(this, SignUpActivity::class.java))
+                                        Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
+                                    }
+                                }
+
+                            }else{
+                                Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()
+                            }
+                        }
+                } else {
+                        prg?.dismiss()
+                    Log.d("TAG","Email Exits")
+                    Toast.makeText(this,task.exception?.message, Toast.LENGTH_LONG).show()
                 }
             }
-
         }
         return invalid
-
     }
+
     private fun checkString(str: String): Boolean {
         var ch: Char
         var capitalFlag = false
@@ -171,30 +199,34 @@ class SignUpActivity : AppCompatActivity() {
         return false
     }
 
-    fun  checkEmail(){
-        val firebaseUser : FirebaseUser? = firebaseAuth?.currentUser
+     fun  VerifyEmail(){
+        val firebaseUser : FirebaseUser? = firebaseAuth.currentUser
         firebaseUser?.sendEmailVerification()?.addOnCompleteListener { task ->
-            if (task.isSuccessful){
-                Toast.makeText(this,"Verification mail sent ",Toast.LENGTH_LONG).show()
-              //  firebaseAuth?.signOut()
+            if (!task.isComplete){
+                Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()
                 finish()
-            //    startActivity(Intent(this,SignInActivity::class.java))
+                Senddata()
+                startActivity(Intent(this,SignInActivity::class.java ))
 
             }else{
-                Toast.makeText(this,"Error Occur ",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()
+
             }
         }
     }
 
-    private  fun Senddata(){
-        val firebaseDatabase = FirebaseDatabase.getInstance()
-          val myRefernce = firebaseDatabase.getReference(firebaseAuth?.uid.toString())
-          val userProfile = UserProfile(userName,email,password)
-          myRefernce.setValue(userProfile)
+      fun Senddata(){
+          val currentuser = firebaseAuth.currentUser
+          firebaseDatabase = FirebaseDatabase.getInstance()
+          databaseReference = firebaseDatabase?.reference!!.child("profile")
+          val myRefernce = databaseReference?.child(currentuser?.uid!!)
+         val userProfile = UserProfile(userName,email,password)
+          myRefernce?.child("userName")?.setValue(binding.etUserName.text.toString())
+          myRefernce?.child("email ")?.setValue(binding.etEmail.text.toString())
+          myRefernce?.child("password ")?.setValue(binding.etPassword.text.toString())
+
+         Log.d("TAG","senddata")
     }
-
-
-
 }
 
 

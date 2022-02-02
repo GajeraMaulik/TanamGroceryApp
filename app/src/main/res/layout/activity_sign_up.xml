@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main"
@@ -71,7 +72,7 @@
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tvTitel"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_28sdp"
             android:layout_marginTop="@dimen/_21sdp"
@@ -84,7 +85,7 @@
             android:textColor="#293041"
             android:textSize="@dimen/_20sdp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView5"
+            app:layout_constraintBottom_toTopOf="@+id/tvSubtitel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="700"
             app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +93,7 @@
             app:lineHeight="@dimen/_30sdp" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tvSubtitel"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_17sdp"
             android:layout_marginStart="@dimen/_22sdp"
@@ -102,13 +103,13 @@
             android:text="@string/signup_lorem_ipsum_dolor_sit_amet"
             android:textColor="#7D8FAB"
             android:textSize="@dimen/_10sdp"
-            app:layout_constraintBottom_toTopOf="@+id/eduser"
+            app:layout_constraintBottom_toTopOf="@+id/etUserName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:lineHeight="22sp" />
 
         <EditText
-            android:id="@+id/eduser"
+            android:id="@+id/etUserName"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_46sdp"
             android:layout_marginStart="@dimen/_22sdp"
@@ -120,18 +121,18 @@
             android:ems="10"
             android:fontFamily="@font/lato"
             android:hint="Username"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:paddingStart="@dimen/_13sdp"
             android:textColor=" #293041"
             android:textColorHint="#617D8FAB"
             android:textSize="@dimen/_15sdp"
-            app:layout_constraintBottom_toTopOf="@+id/edMail"
+            app:layout_constraintBottom_toTopOf="@+id/etEmail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="Autofill,HardcodedText,RtlSymmetry" />
 
         <EditText
-            android:id="@+id/edMail"
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_46sdp"
             android:layout_marginStart="@dimen/_22sdp"
@@ -172,7 +173,7 @@
             android:textColorHint="#617D8FAB"
             android:textSize="@dimen/_15sdp"
             android:visibility="visible"
-            app:layout_constraintBottom_toTopOf="@+id/btn_register"
+            app:layout_constraintBottom_toTopOf="@+id/registerBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="Autofill" />
@@ -192,7 +193,7 @@
             tools:ignore="ContentDescription,RtlSymmetry" />
 
         <Button
-            android:id="@+id/btn_register"
+            android:id="@+id/registerBtn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_46sdp"
             android:layout_marginStart="@dimen/_22sdp"
@@ -226,6 +227,7 @@
             app:layout_constraintStart_toStartOf="@+id/btn_register"
             app:layout_constraintTop_toTopOf="@+id/btn_register" />
 -->
+
         <CheckBox
             android:id="@+id/checkBox"
             android:layout_width="match_parent"
@@ -258,12 +260,12 @@
             android:text="@string/signup_label"
             android:textColor="#7D8FAB"
             android:textSize="@dimen/_10sdp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_signin"
+            app:layout_constraintBottom_toTopOf="@+id/signinBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/btn_signin"
+            android:id="@+id/signinBtn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_46sdp"
             android:layout_marginBottom="@dimen/_20sdp"
@@ -287,3 +289,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
