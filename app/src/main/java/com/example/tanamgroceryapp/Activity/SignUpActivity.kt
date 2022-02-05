@@ -213,7 +213,7 @@ open class SignUpActivity : AppCompatActivity() {
                  Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()
                  task.exception?.message?.let { d("TAG", it) }
                  //     startActivity(Intent(this,SignInActivity::class.java ))
-                 finish()
+                // finish()
 
              }else{
                  Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()
