@@ -1,5 +1,6 @@
 package com.example.tanamgroceryapp.Activity
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -30,12 +31,13 @@ class HomeActivity : AppCompatActivity() {
      val TAG= "HomeActivity"
 
     private var homeFragment = HomeFragment()
-    private  var firebaseAuth : FirebaseAuth? = null
-    private var firebaseDatabase : FirebaseDatabase? = null
-    private var user:FirebaseUser? = null
+    private lateinit var firebaseAuth : FirebaseAuth
+    private lateinit var databaseReference : DatabaseReference
+    private lateinit var  user : UserProfile
     private lateinit var binding: ActivityHomeBinding
-    private  var  userprofile : UserProfile? = null
-    var databaseReference : DatabaseReference? = null
+    private  lateinit var uid:String
+
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -47,32 +49,20 @@ class HomeActivity : AppCompatActivity() {
 
         setCurrentFragment(homeFragment)
 
-
-        binding.userName.text = intent.getStringExtra("UserName").toString()
-
         firebaseAuth = FirebaseAuth.getInstance()
-        firebaseDatabase = FirebaseDatabase.getInstance()
-        databaseReference = firebaseDatabase?.reference!!.child("profile")
+        uid = firebaseAuth.currentUser?.uid.toString()
+        databaseReference = FirebaseDatabase.getInstance().getReference("profile")
+
 
         binding.userName.setOnClickListener{
-            firebaseAuth?.signOut()
+            firebaseAuth.signOut()
+            checkUser()
             Toast.makeText(this,"singOut ${etUser?.text}",Toast.LENGTH_LONG).show()
-            startActivity(Intent(this@HomeActivity, SignInActivity::class.java))
-            finish()
+
+
         }
-        val user = firebaseAuth?.currentUser
-        val myRefernce = firebaseDatabase?.getReference(user?.uid!!)
-            myRefernce?.addValueEventListener(object : ValueEventListener{
-                override fun onDataChange(p0: DataSnapshot) {
-                    binding.userName.text = p0.child("userName").value.toString()
 
-                }
 
-                override fun onCancelled(p0: DatabaseError) {
-                        Toast.makeText(this@HomeActivity,p0.code,Toast.LENGTH_LONG).show()
-                }
-
-            })
         //   val favFragment=FavFragment()
 
         binding.cartBtn.setOnClickListener {
@@ -95,18 +85,31 @@ class HomeActivity : AppCompatActivity() {
         }
 
     }
+    private  fun checkUser(){
+        val user: FirebaseUser? = firebaseAuth.currentUser
+        val username = this.intent.getStringExtra("Username")
+
+        if (user != null){
+            databaseReference.child("User").addListenerForSingleValueEvent(object :ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    binding.userName.text = username
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+
+            })
+        }else{
+            startActivity(Intent(this,SignInActivity::class.java))
+            finish()
+        }
+    }
+
 
 
     private fun setCurrentFragment(fragment: Fragment) = supportFragmentManager.beginTransaction().apply {
         replace(R.id.fl_wrapper, fragment)
         commit()
     }
-  /*  override fun  onStart(){
-        super.onStart()
-        user= firebaseAuth?.currentUser
-        if (user == null){
-            startActivity(Intent(this, SignInActivity::class.java))
-            finish()
-        }
-    }*/
+
 }

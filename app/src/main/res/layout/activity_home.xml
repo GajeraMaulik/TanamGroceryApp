@@ -40,7 +40,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded,UnusedAttribute" />
 
-            <Button
+            <TextView
                 android:id="@+id/userName"
                 android:layout_width="@dimen/_94sdp"
                 android:layout_height="@dimen/_28sdp"
@@ -51,7 +51,7 @@
                 android:textAlignment="gravity"
                 android:textColor="@color/black"
                 android:textFontWeight="900"
-                android:textSize="@dimen/_5sdp"
+                android:textSize="@dimen/_15sdp"
                 android:singleLine="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

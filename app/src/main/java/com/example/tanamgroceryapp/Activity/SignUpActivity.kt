@@ -22,8 +22,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.activity_sign_up.etPassword
@@ -37,12 +37,13 @@ open class SignUpActivity : AppCompatActivity() {
     private lateinit var firebaseAuth : FirebaseAuth
     private  var prg : ProgressDialog? = null
     private lateinit var binding : ActivitySignUpBinding
-    lateinit var userName :String
-    lateinit var email: String
-    lateinit var password : String
-    private var firebaseDatabase: FirebaseDatabase? = null
-    private var databaseReference :DatabaseReference? = null
+    private lateinit var username : String
+    private lateinit var email: String
+    private lateinit var password : String
+    private lateinit var databaseReference :DatabaseReference
+    private  lateinit var firebaseDatabase : FirebaseDatabase
     var user:FirebaseUser? = null
+    lateinit var userprofile : UserProfile
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,11 +51,12 @@ open class SignUpActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.etEmail.setBackgroundResource(R.drawable.edittext_selector)
+        binding.etEmailUp.setBackgroundResource(R.drawable.edittext_selector)
         binding.etUserName.setBackgroundResource(R.drawable.edittext_selector)
         binding.etPassword.setBackgroundResource(R.drawable.edittext_selector)
 
         firebaseAuth = FirebaseAuth.getInstance()
+
         prg = ProgressDialog(this)
 
         binding.signinBtn.setOnClickListener {
@@ -63,7 +65,7 @@ open class SignUpActivity : AppCompatActivity() {
         }
 
         binding.registerBtn.setOnClickListener {
-            isValid()
+         isValid()
         }
 
         var isVisiblePassword = false
@@ -86,34 +88,35 @@ open class SignUpActivity : AppCompatActivity() {
 
     private fun isValid(): Boolean {
         var invalid = true
-         userName = etUserName.text.toString().trim()
-         email = etEmail.text.toString().trim()
-         password  = etPassword.text.toString().trim()
+          username = etUserName.text.toString().trim()
+          email  = etEmailUp.text.toString().trim()
+          password = etPassword.text.toString().trim()
         prg?.setMessage("Please wait...")
         prg?.show()
 
-        if (userName.isEmpty()) {
+        if (username.isEmpty()) {
             invalid = false
             Toast.makeText(applicationContext, "Enter your Username", Toast.LENGTH_SHORT).show()
             etUserName.requestFocus()
             prg?.dismiss()
-        } else if (userName.length <= 8) {
+        } else if (username.length <= 8) {
             invalid = false
             prg?.dismiss()
             etUserName.error ="Please enter a minimum 8 characters"
+            etUserName.requestFocus()
 
         }
         else if (email.isEmpty()){
             invalid=false
             Toast.makeText(applicationContext, "Enter your Email", Toast.LENGTH_SHORT).show()
-            etEmail.requestFocus()
+            etEmailUp.requestFocus()
             prg?.dismiss()
             //  etEmail.setError(getResources().getString(R.string.email_error));
         }
-        else if (!Patterns.EMAIL_ADDRESS.matcher(etEmail.text.toString()).matches() ) {
+        else if (!Patterns.EMAIL_ADDRESS.matcher(etEmailUp.text.toString()).matches() ) {
             invalid=false
-            etEmail.error = resources.getString(R.string.error_invalid_email)
-            etEmail.requestFocus()
+            etEmailUp.error = resources.getString(R.string.error_invalid_email)
+            etEmailUp.requestFocus()
             prg?.dismiss()
 
         }
@@ -141,7 +144,7 @@ open class SignUpActivity : AppCompatActivity() {
         else {
             invalid = true
             etUserName.error = null
-            etEmail.error =null
+            etEmailUp.error =null
             etPassword.error= null
             firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener  { task ->
 
@@ -150,15 +153,18 @@ open class SignUpActivity : AppCompatActivity() {
                     user =firebaseAuth.currentUser
                     user!!.sendEmailVerification().addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                firebaseAuth.fetchSignInMethodsForEmail(etEmail.text.toString()).addOnCompleteListener { task ->
+                                firebaseAuth.fetchSignInMethodsForEmail(etEmailUp.text.toString()).addOnCompleteListener { task ->
                                     if (task.isSuccessful){
+                                            Senddata()
                                         VerifyEmail()
-                                        Toast.makeText(this, "${task.exception?.message}" + etUserName.text.toString(), Toast.LENGTH_LONG).show()
-                                        finish()
-                                        startActivity(Intent(this,SignInActivity::class.java ))
-                                        Senddata()
-                                        Log.d("TAG","Successfully Registration")
-                                        Log.d("TAG","Email verified")
+
+                                        Toast.makeText(this, "${task.exception?.message}" + username, Toast.LENGTH_LONG).show()
+                                            Log.d("TAG","Successfully Registration")
+
+
+                                          //  Log.d("TAG","Email not valid")
+                                            //Toast.makeText(this, "${task.exception?.message}" + username, Toast.LENGTH_LONG).show()
+
                                     }else{
                                         Log.d("TAG","Email Exits")
                                         // startActivity(Intent(this, SignUpActivity::class.java))
@@ -167,6 +173,7 @@ open class SignUpActivity : AppCompatActivity() {
                                 }
 
                             }else{
+
                                 Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()
                             }
                         }
@@ -199,35 +206,80 @@ open class SignUpActivity : AppCompatActivity() {
         return false
     }
 
-     fun  VerifyEmail(){
+     fun  VerifyEmail(): Boolean{
         val firebaseUser : FirebaseUser? = firebaseAuth.currentUser
-        firebaseUser?.sendEmailVerification()?.addOnCompleteListener { task ->
-            if (!task.isComplete){
-                Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()
-                finish()
-                Senddata()
-                startActivity(Intent(this,SignInActivity::class.java ))
+         firebaseUser?.sendEmailVerification()?.addOnCompleteListener { task ->
+             if (task.isSuccessful){
+                 Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()
+                 task.exception?.message?.let { d("TAG", it) }
+                 //     startActivity(Intent(this,SignInActivity::class.java ))
+                 finish()
 
-            }else{
-                Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()
+             }else{
+                 Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()
 
-            }
-        }
-    }
+             }
+         }
+        return true
+     }
+
 
       fun Senddata(){
-          val currentuser = firebaseAuth.currentUser
-          firebaseDatabase = FirebaseDatabase.getInstance()
-          databaseReference = firebaseDatabase?.reference!!.child("profile")
-          val myRefernce = databaseReference?.child(currentuser?.uid!!)
-         val userProfile = UserProfile(userName,email,password)
-          myRefernce?.child("userName")?.setValue(binding.etUserName.text.toString())
-          myRefernce?.child("email ")?.setValue(binding.etEmail.text.toString())
-          myRefernce?.child("password ")?.setValue(binding.etPassword.text.toString())
+           userprofile = UserProfile(username,email,password)
+            databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://tanamgroceryapp-default-rtdb.firebaseio.com/")
+          databaseReference.child("Users").addListenerForSingleValueEvent(object : ValueEventListener{
+              override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.hasChild(username)){
+                        Toast.makeText(this@SignUpActivity,"User already Exits", Toast.LENGTH_LONG).show()
+                        etUserName.requestFocus()
+                        d("TAG","User already Exits")
+                        prg?.dismiss()
+                    }else if (snapshot.hasChild("Email").equals(user)){
+                        Toast.makeText(this@SignUpActivity,"Email already Exits", Toast.LENGTH_LONG).show()
+                        prg?.dismiss()
+                    }
+                    else{
 
-         Log.d("TAG","senddata")
+                        databaseReference.child("Users").child(username).child("Username").setValue(username)
+                        databaseReference.child("Users").child(username).child("Email").setValue(email)
+                        databaseReference.child("Users").child(username).child("Password").setValue(password)
+                        Toast.makeText(this@SignUpActivity,"User Successfully Registration", Toast.LENGTH_LONG).show()
+                        prg?.dismiss()
+
+                        d("TAG", "email: $email\nusername: $username")
+                       d("TAG","senddate")
+                    }
+              }
+              override fun onCancelled(error: DatabaseError) {
+              }
+
+          })
+
+
+          /* username = etUserName.text.toString().trim()
+           email = etEmailUp.text.toString().trim()
+           password   = etPassword.text.toString().trim()
+          firebaseDatabase = FirebaseDatabase.getInstance()
+          databaseReference = firebaseDatabase.reference.child("Users")
+          val User = UserProfile(username,email,password)
+          databaseReference.child(username).setValue(User).addOnSuccessListener {
+              binding.etUserName.text.clear()
+              binding.etEmailUp.text.clear()
+              binding.etPassword.text.clear()
+
+          }.addOnFailureListener {
+              Toast.makeText(this,"Failed",Toast.LENGTH_LONG).show()
+
+          }*/
+        /*  userprofile.setusername(etUserName.text.toString())
+          userprofile.setemail(etEmailUp.text.toString())
+          userprofile.setpassword(etPassword.text.toString())
+
+          databaseReference.child(userprofile.getusername()!!).setValue(userprofile)
+*/
     }
 }
+
 
 
 

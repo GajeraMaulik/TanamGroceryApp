@@ -126,13 +126,13 @@
             android:textColor=" #293041"
             android:textColorHint="#617D8FAB"
             android:textSize="@dimen/_15sdp"
-            app:layout_constraintBottom_toTopOf="@+id/etEmail"
+            app:layout_constraintBottom_toTopOf="@+id/etEmailUp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="Autofill,HardcodedText,RtlSymmetry" />
 
         <EditText
-            android:id="@+id/etEmail"
+            android:id="@+id/etEmailUp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_46sdp"
             android:layout_marginStart="@dimen/_22sdp"

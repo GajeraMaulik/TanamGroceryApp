@@ -52,7 +52,7 @@
     <string name="more">more1</string>
     <string name="sign_up">CREATE AN ACCOUNT</string>
     <string name="signin_text">Don’t have an account?</string>
-    <string name="username_hint">Email</string>
+    <string name="username_hint">Username</string>
     <string name="signin_label">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</string>
     <string name="signin_welcome_back">Welcome back</string>
     <string name="subtitel">Grocery App</string>
