@@ -42,36 +42,41 @@
 
             <TextView
                 android:id="@+id/userName"
-                android:layout_width="@dimen/_94sdp"
-                android:layout_height="@dimen/_28sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
                 android:backgroundTint="@color/white"
                 android:layout_marginStart="@dimen/_22sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:fontFamily="@font/poppins"
                 android:textAlignment="gravity"
-                android:textColor="@color/black"
-                android:textFontWeight="900"
-                android:textSize="@dimen/_15sdp"
+                android:textColor="@color/Black"
+                android:capitalize="words"
+                android:inputType="textCapWords"
+                android:textFontWeight="700"
+                android:textSize="@dimen/_20sdp"
                 android:singleLine="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="HardcodedText"
+                tools:ignore="HardcodedText,TextViewEdits"
                 tools:targetApi="p"/>
 
 
+
             <LinearLayout
-                android:id="@+id/itemsAdd"
+                android:id="@+id/notificationView"
                 android:layout_width="@dimen/_66sdp"
                 android:layout_height="@dimen/_28sdp"
                 android:layout_gravity="center_vertical|end|top"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_22sdp"
+                android:clickable="true"
                 android:background="@drawable/notification_bakgound"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="@+id/user"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView3"
-                tools:ignore="MissingConstraints">
+                tools:ignore="MissingConstraints"
+                android:focusable="true">
 
 
                 <TextView
@@ -107,8 +112,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/user"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView3"
-                tools:ignore="ContentDescription,MissingConstraints" />
+                app:layout_constraintTop_toTopOf="@+id/textView3" />
 
 
 

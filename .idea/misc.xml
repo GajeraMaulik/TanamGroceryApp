@@ -88,6 +88,12 @@
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/menu/menu_shippingaddress.xml" value="0.10833333333333334" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/menu/menu_shoppingcart.xml" value="0.21052631578947367" />
         <entry key="..\:/Users/91886/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/menu/menu_stepper.xml" value="0.10833333333333334" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/tanamgroceryapp/app/src/main/res/drawable/ic_user_logo.xml" value="0.1845" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/tanamgroceryapp/app/src/main/res/layout/activity_home.xml" value="0.2421875" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/tanamgroceryapp/app/src/main/res/layout/activity_main.xml" value="0.20677083333333332" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/tanamgroceryapp/app/src/main/res/layout/activity_sign_in.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/tanamgroceryapp/app/src/main/res/layout/activity_sign_up.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/tanamgroceryapp/app/src/main/res/menu/menu_bottomnav.xml" value="0.18177083333333333" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/button_selector.xml" value="0.312280701754386" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/button_text_selector.xml" value="0.312280701754386" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/tanamgroceryapp2/app/src/main/res/drawable/button_unseleted.xml" value="0.312280701754386" />
@@ -204,7 +210,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

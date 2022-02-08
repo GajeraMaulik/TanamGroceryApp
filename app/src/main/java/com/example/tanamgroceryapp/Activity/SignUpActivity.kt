@@ -2,25 +2,20 @@ package com.example.tanamgroceryapp.Activity
 
 import android.app.ProgressDialog
 import android.content.Intent
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.service.controls.ControlsProviderService.TAG
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.util.Log.d
 import android.util.Patterns
 import android.widget.*
-import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.example.tanamgroceryapp.Data.UserProfile
 import com.example.tanamgroceryapp.R
-import com.example.tanamgroceryapp.databinding.ActivitySignInBinding
+import com.example.tanamgroceryapp.SharePref
 import com.example.tanamgroceryapp.databinding.ActivitySignUpBinding
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthException
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_home.*
@@ -29,8 +24,6 @@ import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.activity_sign_up.etPassword
 import kotlinx.android.synthetic.main.activity_sign_up.ivEye
 import kotlinx.android.synthetic.main.fragment_details.*
-import kotlinx.android.synthetic.main.fragment_details.etEmail
-import java.util.Calendar.getInstance
 
 open class SignUpActivity : AppCompatActivity() {
 
@@ -41,9 +34,13 @@ open class SignUpActivity : AppCompatActivity() {
     private lateinit var email: String
     private lateinit var password : String
     private lateinit var databaseReference :DatabaseReference
-    private  lateinit var firebaseDatabase : FirebaseDatabase
+    private  lateinit var database : FirebaseDatabase
     var user:FirebaseUser? = null
-    lateinit var userprofile : UserProfile
+    private lateinit var userprofile : UserProfile
+    private lateinit var editor: SharedPreferences.Editor
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +53,9 @@ open class SignUpActivity : AppCompatActivity() {
         binding.etPassword.setBackgroundResource(R.drawable.edittext_selector)
 
         firebaseAuth = FirebaseAuth.getInstance()
-
         prg = ProgressDialog(this)
+
+
 
         binding.signinBtn.setOnClickListener {
             startActivity(Intent(this, SignInActivity::class.java))
@@ -113,7 +111,7 @@ open class SignUpActivity : AppCompatActivity() {
             prg?.dismiss()
             //  etEmail.setError(getResources().getString(R.string.email_error));
         }
-        else if (!Patterns.EMAIL_ADDRESS.matcher(etEmailUp.text.toString()).matches() ) {
+        else if (!Patterns.EMAIL_ADDRESS.matcher(etEmailUp.text.toString()).matches() || VerifyEmail() ) {
             invalid=false
             etEmailUp.error = resources.getString(R.string.error_invalid_email)
             etEmailUp.requestFocus()
@@ -146,37 +144,41 @@ open class SignUpActivity : AppCompatActivity() {
             etUserName.error = null
             etEmailUp.error =null
             etPassword.error= null
+            user= firebaseAuth.currentUser
+
             firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener  { task ->
 
                 if (task.isSuccessful ) {
-                        prg?.dismiss()
-                    user =firebaseAuth.currentUser
-                    user!!.sendEmailVerification().addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                firebaseAuth.fetchSignInMethodsForEmail(etEmailUp.text.toString()).addOnCompleteListener { task ->
-                                    if (task.isSuccessful){
-                                            Senddata()
-                                        VerifyEmail()
+                    prg?.dismiss()
+                    Senddata()
 
-                                        Toast.makeText(this, "${task.exception?.message}" + username, Toast.LENGTH_LONG).show()
-                                            Log.d("TAG","Successfully Registration")
+                    user?.sendEmailVerification()?.addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+
+                            firebaseAuth.fetchSignInMethodsForEmail(etEmailUp.text.toString()).addOnCompleteListener { task ->
+                                if (task.isSuccessful){
 
 
-                                          //  Log.d("TAG","Email not valid")
-                                            //Toast.makeText(this, "${task.exception?.message}" + username, Toast.LENGTH_LONG).show()
+                                    startActivity(Intent(this, SignInActivity::class.java))
 
-                                    }else{
-                                        Log.d("TAG","Email Exits")
-                                        // startActivity(Intent(this, SignUpActivity::class.java))
-                                        Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
-                                    }
+                                    Toast.makeText(this, "Successfully Registration$username", Toast.LENGTH_LONG).show()
+                                    d("TAG", "Successfully Registration\nemail: $email\n username: $username\n password: $password")
+                                    finish()
+
+                                    //  Log.d("TAG","Email not valid")
+                                    //Toast.makeText(this, "${task.exception?.message}" + username, Toast.LENGTH_LONG).show()
+
+                                }else{
+                                    Log.d("TAG","Email Exits")
+                                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
                                 }
-
-                            }else{
-
-                                Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()
                             }
+
+                        }else{
+
+                            Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()
                         }
+                    }
                 } else {
                         prg?.dismiss()
                     Log.d("TAG","Email Exits")
@@ -206,7 +208,7 @@ open class SignUpActivity : AppCompatActivity() {
         return false
     }
 
-     fun  VerifyEmail(): Boolean{
+     private fun  VerifyEmail(): Boolean{
         val firebaseUser : FirebaseUser? = firebaseAuth.currentUser
          firebaseUser?.sendEmailVerification()?.addOnCompleteListener { task ->
              if (task.isSuccessful){
@@ -224,59 +226,42 @@ open class SignUpActivity : AppCompatActivity() {
      }
 
 
-      fun Senddata(){
+      private fun Senddata(): Boolean {
            userprofile = UserProfile(username,email,password)
             databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://tanamgroceryapp-default-rtdb.firebaseio.com/")
           databaseReference.child("Users").addListenerForSingleValueEvent(object : ValueEventListener{
               override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.hasChild(username)){
-                        Toast.makeText(this@SignUpActivity,"User already Exits", Toast.LENGTH_LONG).show()
-                        etUserName.requestFocus()
-                        d("TAG","User already Exits")
-                        prg?.dismiss()
-                    }else if (snapshot.hasChild("Email").equals(user)){
-                        Toast.makeText(this@SignUpActivity,"Email already Exits", Toast.LENGTH_LONG).show()
-                        prg?.dismiss()
-                    }
-                    else{
+                  when {
+                      snapshot.hasChild(username) -> {
+                          Toast.makeText(this@SignUpActivity,"User already Exits", Toast.LENGTH_LONG).show()
+                          etUserName.requestFocus()
+                          d("TAG","User already Exits")
+                          prg?.dismiss()
+                      }
+                      snapshot.hasChild("Email") -> {
+                          Toast.makeText(this@SignUpActivity,"Email already Exits", Toast.LENGTH_LONG).show()
+                          etEmailUp.requestFocus()
+                          prg?.dismiss()
+                      }
+                      else -> {
 
-                        databaseReference.child("Users").child(username).child("Username").setValue(username)
-                        databaseReference.child("Users").child(username).child("Email").setValue(email)
-                        databaseReference.child("Users").child(username).child("Password").setValue(password)
-                        Toast.makeText(this@SignUpActivity,"User Successfully Registration", Toast.LENGTH_LONG).show()
-                        prg?.dismiss()
+                          databaseReference.child("Users").child(username).child("Username").setValue(username)
+                          databaseReference.child("Users").child(username).child("Email").setValue(email)
+                          databaseReference.child("Users").child(username).child("Password").setValue(password)
+                          Toast.makeText(this@SignUpActivity,"User Successfully Registration", Toast.LENGTH_LONG).show()
+                          prg?.dismiss()
 
-                        d("TAG", "email: $email\nusername: $username")
-                       d("TAG","senddate")
-                    }
+                          d("TAG", "email: $email\nusername: $username")
+                          d("TAG","senddate")
+                      }
+                  }
               }
               override fun onCancelled(error: DatabaseError) {
+                error.message
               }
 
           })
-
-
-          /* username = etUserName.text.toString().trim()
-           email = etEmailUp.text.toString().trim()
-           password   = etPassword.text.toString().trim()
-          firebaseDatabase = FirebaseDatabase.getInstance()
-          databaseReference = firebaseDatabase.reference.child("Users")
-          val User = UserProfile(username,email,password)
-          databaseReference.child(username).setValue(User).addOnSuccessListener {
-              binding.etUserName.text.clear()
-              binding.etEmailUp.text.clear()
-              binding.etPassword.text.clear()
-
-          }.addOnFailureListener {
-              Toast.makeText(this,"Failed",Toast.LENGTH_LONG).show()
-
-          }*/
-        /*  userprofile.setusername(etUserName.text.toString())
-          userprofile.setemail(etEmailUp.text.toString())
-          userprofile.setpassword(etPassword.text.toString())
-
-          databaseReference.child(userprofile.getusername()!!).setValue(userprofile)
-*/
+          return true
     }
 }
 

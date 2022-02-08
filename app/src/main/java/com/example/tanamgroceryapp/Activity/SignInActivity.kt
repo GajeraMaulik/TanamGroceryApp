@@ -1,42 +1,39 @@
 package com.example.tanamgroceryapp.Activity
 
 import android.app.ProgressDialog
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.util.Log.d
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tanamgroceryapp.R
+import com.example.tanamgroceryapp.SharePref
 import com.example.tanamgroceryapp.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_sign_in.*
-import kotlinx.android.synthetic.main.activity_sign_in.etPassword
-import kotlinx.android.synthetic.main.activity_sign_up.*
-import android.widget.Toast
-import com.example.tanamgroceryapp.Data.UserProfile
-import com.google.firebase.database.ktx.getValue
-
-import kotlinx.android.synthetic.main.fragment_details.*
 
 
 class SignInActivity() : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignInBinding
-    private lateinit var username : String
+    private  var username : String? = null
     private lateinit var password : String
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var currentUser:FirebaseUser
     private lateinit var ref : DatabaseReference
     private var prg: ProgressDialog? = null
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,51 +43,19 @@ class SignInActivity() : AppCompatActivity() {
         setContentView(view)
         val firebaseDatabase = FirebaseDatabase.getInstance()
 
+
+
+
         ref= firebaseDatabase.reference
-
         ref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://tanamgroceryapp-default-rtdb.firebaseio.com/")
-
         prg = ProgressDialog(this)
 
         binding.etUser.setBackgroundResource(R.drawable.edittext_selector)
         binding.etPassword.setBackgroundResource(R.drawable.edittext_selector)
 
         binding.signinBtn.setOnClickListener {
-       /*     username = binding.etUser.text.toString()
-            password = binding.etPassword.text.toString()
-
-            if (username.isEmpty() || password.isEmpty()){
-                Toast.makeText(this,"Please Enter Username & password",Toast.LENGTH_LONG).show()
-            }else{
-                ref.child("Users").addListenerForSingleValueEvent(object : ValueEventListener{
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        if (snapshot.hasChild(username)){
-
-                            val getpassword:String = snapshot.child(username).child("Password").value as String
-
-                            if (getpassword == password){
-                                startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
-                                finish()
-                                Toast.makeText(this@SignInActivity,"Successfully login",Toast.LENGTH_LONG).show()
-                            }else{
-                                Log.d("TAG", "Wrong: $password\nusername1: $username")
-                                Toast.makeText(this@SignInActivity,"Wrong password",Toast.LENGTH_LONG).show()
-                            }
-                        }else{
-                            Log.d("TAG", "email2: $username\n pass2: $username")
-                            Toast.makeText(this@SignInActivity,"User Not Found",Toast.LENGTH_LONG).show()
-                        }
-                       // Log.d("TAG", "email: $username\n pass: $password")
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                        error.toException().message
-                    }
-
-                })
-            }
-*/
             isValid()
+            Log.d("TAG","$username")
         }
 
         binding.signupBtn.setOnClickListener {
@@ -132,42 +97,19 @@ class SignInActivity() : AppCompatActivity() {
                 }
             }
         }
-
-        
-      //  val myRefernce = firebaseDatabase?.getReference(currentUser?.uid!!)
-    /*    val currentUser= firebaseAuth.currentUser
-        if (currentUser != null){
-            startActivity(Intent(this, HomeActivity::class.java))
-            finish()
-
-        }else{
-              Toast.makeText(this, "Please Verified Email ", Toast.LENGTH_LONG).show()
-         }
-*/
-
     }
-/*
-    override fun  onStart(){
-        super.onStart()
-        val currentUser= firebaseAuth.currentUser
-        if (currentUser == null){
-            startActivity(Intent(this, HomeActivity::class.java))
-            finish()
-        }
-    }
-*/
 
 
 
     private fun isValid(): Boolean {
         var invalid = true
-         username = binding.etUser.text.toString()
+         username = binding.etUser.text.toString().trim()
          password = binding.etPassword.text.toString()
 
        // val myRefernce = databaseReference?.child(currentuser?.uid!!)
         prg?.setMessage("Please wait...")
         prg?.show()
-        if (username.isEmpty()) {
+        if (username?.isEmpty() == true) {
             invalid = false
             Toast.makeText(applicationContext, "Enter your Username", Toast.LENGTH_SHORT).show()
             etUser.requestFocus()
@@ -187,17 +129,30 @@ class SignInActivity() : AppCompatActivity() {
             invalid = true
             etUser.error = null
             etPassword.error = null
-
             // with database varification
+
            ref.child("Users").addListenerForSingleValueEvent(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.hasChild(username)){
+                    if (snapshot.hasChild(username!!)){
 
-                        val getpassword:String = snapshot.child(username).child("Password").value as String
-                        if (getpassword == password ){
-                            startActivity(Intent(this@SignInActivity, HomeActivity::class.java).putExtra("Username",username))
-                            Toast.makeText(this@SignInActivity,"Successfully login",Toast.LENGTH_LONG).show()
+                        val getpassword:String = snapshot.child(username!!).child("Password").value as String
+
+                        if (getpassword == password){
+
+                            Log.d("login Successfully", "Username: $username\n Password: $username")
+                            SharePref.save(this@SignInActivity,"isLogin",true)
+                            SharePref.save(this@SignInActivity,"username", username!!)
+
+                            val i = Intent(this@SignInActivity, HomeActivity::class.java)
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
+                            startActivity(i);
+
+                            Toast.makeText(this@SignInActivity,"Successfully login $username",Toast.LENGTH_LONG).show()
+
+                            prg?.dismiss()
                             finish()
+
 
                         }else{
                             Log.d("TAG", "Wrong: $password\nusername1: $username")
@@ -205,9 +160,11 @@ class SignInActivity() : AppCompatActivity() {
                             etPassword.error = "Incorrect Password"
                             etPassword.requestFocus()
                             prg?.dismiss()
+                            Log.d("TAG", "email2: $username\n pass2: $username")
                         }
+
                     }else{
-                        Log.d("TAG", "email2: $username\n pass2: $username")
+                        Log.d("TAG", "user2:user not found $username")
                         Toast.makeText(this@SignInActivity,"User Not Found",Toast.LENGTH_LONG).show()
                         etUser.error ="User Not Found"
                         etUser.requestFocus()

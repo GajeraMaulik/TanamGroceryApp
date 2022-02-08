@@ -14,7 +14,7 @@ object Constants {
         text.paintFlags = text.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
     }
 
-  //  val shoppingList: MutableList<ShoppingCartData> = ArrayList()
+    //  val shoppingList: MutableList<ShoppingCartData> = ArrayList()
 
 
     fun roundPoint(input: Double, places: Int): String {
@@ -35,5 +35,26 @@ object Constants {
         df.roundingMode = RoundingMode.HALF_UP
         Log.d("roundPoint 1:  ", df.format(input))
         return df.format(input)
+    }
+
+    fun capitalizeWords(str: String): String {
+        val words = str.split(" ").toMutableList()
+
+        var output = ""
+
+        if(words.size>1){
+            output=words[0].capitalize()+" "+ words[1].capitalize()[0]+"."
+        }else{
+            output=words[0].capitalize()
+        }
+
+
+
+      /*  for (word in words) {
+            output += word.capitalize() + " "
+        }*/
+
+        output = output.trim()
+        return output
     }
 }
