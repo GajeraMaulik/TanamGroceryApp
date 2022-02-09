@@ -260,12 +260,12 @@
             android:text="@string/signup_label"
             android:textColor="#7D8FAB"
             android:textSize="@dimen/_10sdp"
-            app:layout_constraintBottom_toTopOf="@+id/signinBtn"
+            app:layout_constraintBottom_toTopOf="@+id/signinBtnUp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/signinBtn"
+            android:id="@+id/signinBtnUp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_46sdp"
             android:layout_marginBottom="@dimen/_20sdp"

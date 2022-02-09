@@ -12,21 +12,25 @@ import com.example.tanamgroceryapp.Data.OnBoadingData
 import com.example.tanamgroceryapp.Adapter.OnBoadingViewAdapter
 import com.example.tanamgroceryapp.R
 import com.example.tanamgroceryapp.SharePref
+import com.example.tanamgroceryapp.databinding.ActivityHomeBinding
+import com.example.tanamgroceryapp.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private var onBoadingViewAdapter: OnBoadingViewAdapter? = null
     private lateinit var onBoadingViewPager: ViewPager
+    private lateinit var binding: ActivityMainBinding
     var tabLayout: TabLayout? = null
     var position = 0
-    var next: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        if (SharePref.getBooleanValue1(this, "isLogin")) {
+        if (SharePref.getBooleanValue(this, "isLogin")) {
             Log.d("TAG","isLogin")
             val i = Intent(this, HomeActivity::class.java)
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -42,8 +46,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        tabLayout = findViewById(R.id.tab_indicator)
-        next = findViewById<Button>(R.id.next)
 
         val OnBoadingData: MutableList<OnBoadingData> = ArrayList()
         OnBoadingData.add(

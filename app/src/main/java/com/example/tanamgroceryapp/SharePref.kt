@@ -67,10 +67,6 @@ class SharePref {
                 .getBoolean(key, false)
         }
 
-        fun getBooleanValue1(context: Context, key: String?): Boolean {
-            return context.getSharedPreferences(MySharedPref, Context.MODE_PRIVATE)
-                .getBoolean(key, true)
-        }
 
         fun getLongValue(context: Context, key: String?): Long {
             return context.getSharedPreferences(MySharedPref, Context.MODE_PRIVATE).getLong(key, 0)

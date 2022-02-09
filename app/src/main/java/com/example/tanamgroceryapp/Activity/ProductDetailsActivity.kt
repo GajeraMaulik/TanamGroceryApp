@@ -23,15 +23,18 @@ import com.example.tanamgroceryapp.Data.ImageData
 import com.example.tanamgroceryapp.Adapter.ProductDetailsAdapter
 import com.example.tanamgroceryapp.ApplicationInitialize
 import com.example.tanamgroceryapp.R
+import com.example.tanamgroceryapp.databinding.ActivityProductCategoriesBinding
+import com.example.tanamgroceryapp.databinding.ActivityProductDetailsBinding
 import java.util.*
 import kotlin.collections.ArrayList
 import com.viewpagerindicator.CirclePageIndicator
+import kotlinx.android.synthetic.main.activity_product_details.*
 
 
 class ProductDetailsActivity : AppCompatActivity() {
     private lateinit var pdtoolbar: Toolbar
    // private lateinit var productslist: MutableList<CardData>
-
+   private lateinit var binding: ActivityProductDetailsBinding
     private var viewpager: ViewPager? = null
 
 
@@ -44,19 +47,9 @@ class ProductDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true)
-        setContentView(R.layout.activity_product_details)
-
-        pdtoolbar = findViewById<Toolbar>(R.id.pdToolbar)
+        binding = ActivityProductDetailsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setSupportActionBar(pdtoolbar)
-        val pdbackBtn = findViewById<ImageButton>(R.id.pdbackBtn)
-        val pdMinusBtn = findViewById<ImageButton>(R.id.pdMinusBtn)
-        val pdAddBtn = findViewById<ImageButton>(R.id.pdAddBtn)
-        val tvQuantity = findViewById<TextView>(R.id.pdQuantity)
-        val btnAdd = findViewById<LinearLayout>(R.id.pdAdd)
-        val intentValue = intent.getStringExtra("Id")
-        val itemQty=findViewById<LinearLayout>(R.id.itemQty)
-        val pCartBtn=findViewById<ImageButton>(R.id.pCartBtn)
-
 
         val mCardData = CardData(
             10,
@@ -85,24 +78,24 @@ class ProductDetailsActivity : AppCompatActivity() {
         if (ApplicationInitialize.mShoppingCart.size > 0) {
             val getSingleData = ApplicationInitialize.mShoppingCart[mCardData.id]
             if (getSingleData != null) {
-                tvQuantity.text = StringBuilder("").append(getSingleData.quantity)
+                pdQuantity.text = StringBuilder("").append(getSingleData.quantity)
             }
         } else {
-            tvQuantity.text = StringBuilder("").append(mCardData.quantity)
+            pdQuantity.text = StringBuilder("").append(mCardData.quantity)
         }
 
           pdAddBtn.setOnClickListener {
               if (ApplicationInitialize.mShoppingCart.size == 0) {
                    mCardData.quantity = mCardData.quantity + 1
-                  tvQuantity.text = StringBuilder("").append(mCardData.quantity)
+                  pdQuantity.text = StringBuilder("").append(mCardData.quantity)
               } else {
                    val getSingleData = ApplicationInitialize.mShoppingCart[mCardData.id]
                    if (getSingleData != null) {
                       getSingleData.quantity = getSingleData.quantity + 1
-                      tvQuantity.text = StringBuilder("").append(getSingleData.quantity)
+                      pdQuantity.text = StringBuilder("").append(getSingleData.quantity)
                    } else {
                        mCardData.quantity = mCardData.quantity + 1
-                       tvQuantity.text = StringBuilder("").append(mCardData.quantity)
+                       pdQuantity.text = StringBuilder("").append(mCardData.quantity)
                        Log.d("maulik", "error")
                    }
                }
@@ -116,12 +109,12 @@ class ProductDetailsActivity : AppCompatActivity() {
                        getSingleData.quantity = getSingleData.quantity - 1
                        if (getSingleData.quantity <= 0) {
                            Log.d("maulik", "full  0 ")
-                           tvQuantity.text = StringBuilder("").append(getSingleData.quantity)
+                           pdQuantity.text = StringBuilder("").append(getSingleData.quantity)
                            ApplicationInitialize.mShoppingCart.remove(getSingleData.id)
                            Toast.makeText(this, "Remove the ${getSingleData.itemName} From Cart", Toast.LENGTH_LONG).show()
                       } else {
                            Log.d("maulik", "full > 0 ")
-                           tvQuantity.text = StringBuilder("").append(getSingleData.quantity)
+                           pdQuantity.text = StringBuilder("").append(getSingleData.quantity)
                           ApplicationInitialize.mShoppingCart[getSingleData.id] = getSingleData
                        }
 
@@ -130,7 +123,7 @@ class ProductDetailsActivity : AppCompatActivity() {
                    if (mCardData.quantity >0) {
                        Log.d("maulik", "null >0 ")
                        mCardData.quantity = mCardData.quantity - 1
-                       tvQuantity.text = StringBuilder("").append(mCardData.quantity)
+                       pdQuantity.text = StringBuilder("").append(mCardData.quantity)
                       ApplicationInitialize.mShoppingCart[mCardData.id] = mCardData
                    } else {
                        Log.d("maulik", "null  0 ")
@@ -139,8 +132,8 @@ class ProductDetailsActivity : AppCompatActivity() {
                }
 
            }
-         btnAdd.setOnClickListener {
-                btnAdd.backgroundTintMode
+        pdAdd.setOnClickListener {
+            pdAdd.backgroundTintMode
              if(mCardData.quantity >=1) {
                  Toast.makeText(this, "Add To Cart ${mCardData.itemName} ", Toast.LENGTH_LONG).show()
 

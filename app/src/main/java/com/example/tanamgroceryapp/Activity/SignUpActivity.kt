@@ -13,7 +13,6 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tanamgroceryapp.Data.UserProfile
 import com.example.tanamgroceryapp.R
-import com.example.tanamgroceryapp.SharePref
 import com.example.tanamgroceryapp.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -24,6 +23,8 @@ import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.activity_sign_up.etPassword
 import kotlinx.android.synthetic.main.activity_sign_up.ivEye
 import kotlinx.android.synthetic.main.fragment_details.*
+import java.security.AccessController.getContext
+
 
 open class SignUpActivity : AppCompatActivity() {
 
@@ -45,30 +46,29 @@ open class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
-        binding.etEmailUp.setBackgroundResource(R.drawable.edittext_selector)
-        binding.etUserName.setBackgroundResource(R.drawable.edittext_selector)
-        binding.etPassword.setBackgroundResource(R.drawable.edittext_selector)
+        etEmailUp.setBackgroundResource(R.drawable.edittext_selector)
+        etUserName.setBackgroundResource(R.drawable.edittext_selector)
+        etPassword.setBackgroundResource(R.drawable.edittext_selector)
 
         firebaseAuth = FirebaseAuth.getInstance()
         prg = ProgressDialog(this)
 
 
 
-        binding.signinBtn.setOnClickListener {
+        signinBtnUp.setOnClickListener {
             startActivity(Intent(this, SignInActivity::class.java))
             finish()
         }
 
-        binding.registerBtn.setOnClickListener {
+        registerBtn.setOnClickListener {
          isValid()
         }
 
         var isVisiblePassword = false
 
-        binding.ivEye.setOnClickListener {
+        ivEye.setOnClickListener {
             if (!isVisiblePassword) {
                 etPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 ivEye.setImageResource(R.drawable.ic_visibility_on_eye)
@@ -111,7 +111,7 @@ open class SignUpActivity : AppCompatActivity() {
             prg?.dismiss()
             //  etEmail.setError(getResources().getString(R.string.email_error));
         }
-        else if (!Patterns.EMAIL_ADDRESS.matcher(etEmailUp.text.toString()).matches() || VerifyEmail() ) {
+        else if (!Patterns.EMAIL_ADDRESS.matcher(etEmailUp.text.toString()).matches()  ) {
             invalid=false
             etEmailUp.error = resources.getString(R.string.error_invalid_email)
             etEmailUp.requestFocus()
@@ -144,21 +144,20 @@ open class SignUpActivity : AppCompatActivity() {
             etUserName.error = null
             etEmailUp.error =null
             etPassword.error= null
-            user= firebaseAuth.currentUser
 
             firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener  { task ->
 
                 if (task.isSuccessful ) {
                     prg?.dismiss()
-                    Senddata()
+                    user= firebaseAuth.currentUser
 
                     user?.sendEmailVerification()?.addOnCompleteListener { task ->
                         if (task.isSuccessful) {
 
                             firebaseAuth.fetchSignInMethodsForEmail(etEmailUp.text.toString()).addOnCompleteListener { task ->
                                 if (task.isSuccessful){
-
-
+                                    VerifyEmail()
+                                    Senddata()
                                     startActivity(Intent(this, SignInActivity::class.java))
 
                                     Toast.makeText(this, "Successfully Registration$username", Toast.LENGTH_LONG).show()
@@ -175,8 +174,11 @@ open class SignUpActivity : AppCompatActivity() {
                             }
 
                         }else{
-
-                            Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()
+                            try {
+                                throw task.exception!!
+                            } catch (e: Exception) {
+                                Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
+                            }
                         }
                     }
                 } else {
@@ -218,7 +220,11 @@ open class SignUpActivity : AppCompatActivity() {
                 // finish()
 
              }else{
-                 Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()
+                 try {
+                     throw task.exception!!
+                 } catch (e: Exception) {
+                     Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
+                 }
 
              }
          }
@@ -238,7 +244,7 @@ open class SignUpActivity : AppCompatActivity() {
                           d("TAG","User already Exits")
                           prg?.dismiss()
                       }
-                      snapshot.hasChild("Email") -> {
+                      snapshot.hasChild("$username/Email") -> {
                           Toast.makeText(this@SignUpActivity,"Email already Exits", Toast.LENGTH_LONG).show()
                           etEmailUp.requestFocus()
                           prg?.dismiss()
@@ -247,7 +253,7 @@ open class SignUpActivity : AppCompatActivity() {
 
                           databaseReference.child("Users").child(username).child("Username").setValue(username)
                           databaseReference.child("Users").child(username).child("Email").setValue(email)
-                          databaseReference.child("Users").child(username).child("Password").setValue(password)
+                          databaseReference.child("Users").child(username).child("Password").setValue(user?.uid)
                           Toast.makeText(this@SignUpActivity,"User Successfully Registration", Toast.LENGTH_LONG).show()
                           prg?.dismiss()
 

@@ -40,10 +40,10 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded,UnusedAttribute" />
 
-            <TextView
+            <Button
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="@dimen/_25sdp"
                 android:backgroundTint="@color/white"
                 android:layout_marginStart="@dimen/_22sdp"
                 android:layout_marginTop="@dimen/_20sdp"
@@ -53,11 +53,12 @@
                 android:capitalize="words"
                 android:inputType="textCapWords"
                 android:textFontWeight="700"
-                android:textSize="@dimen/_20sdp"
+                android:textSize="@dimen/_10sdp"
                 android:singleLine="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText,TextViewEdits"
+
                 tools:targetApi="p"/>
 
 

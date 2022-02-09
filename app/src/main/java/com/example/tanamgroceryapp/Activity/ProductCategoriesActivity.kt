@@ -13,21 +13,24 @@ import com.example.tanamgroceryapp.Data.HomeCategoriesData
 import com.example.tanamgroceryapp.Data.ShoppingCartData
 import com.example.tanamgroceryapp.R
 import com.example.tanamgroceryapp.Adapter.ProductCategoriesAdapter
+import com.example.tanamgroceryapp.databinding.ActivityProductCategoriesBinding
+import kotlinx.android.synthetic.main.activity_product_categories.*
 
 class ProductCategoriesActivity() : AppCompatActivity(),ProductCategoriesAdapter.ClickListener {
     private  lateinit var rvProductCategories: RecyclerView
     private  lateinit var productCategoriesAdapter: ProductCategoriesAdapter
     val itemList: MutableList<ShoppingCartData> = ArrayList()
-    val productCategoriesList: MutableList<HomeCategoriesData> = ArrayList()
-
+    private val productCategoriesList: MutableList<HomeCategoriesData> = ArrayList()
+    private lateinit var binding: ActivityProductCategoriesBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product_categories)
-        setSupportActionBar(findViewById(R.id.pcToolbar))
+        binding = ActivityProductCategoriesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setSupportActionBar(pcToolbar)
         rvProductCategories =findViewById(R.id.rvProductCategories)
 
 
-        val pcbackBtn=findViewById<ImageButton>(R.id.pcbackBtn)
         pcbackBtn.setOnClickListener {
             onBackPressed()
             return@setOnClickListener
